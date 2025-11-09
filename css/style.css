@@ -28,6 +28,7 @@ html,body{
     position: relative;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     background-color: var(--menu_color);
 }
  
@@ -42,6 +43,7 @@ html,body{
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    transition: all 1s;
 }
 
 /* ______________header____________ */
@@ -60,12 +62,12 @@ html,body{
 .menu_header{
     position: absolute;
     left: calc(var(--setting-icon_size) + var(--base_gap) *3);
-    top: 45%;
+    top: 50%;
     transform: translateY(-50%);
     font-size: var(--header_font-size);
 }
 
-.menu_add-note{
+.menu_add-note-header{
     font-size: var(--header_font-size);
 }
 
@@ -87,12 +89,12 @@ html,body{
 
 /* ____________notes__________ */
 
-.main_notes{
+.main_note-headers{
     width: 100%;
     height: 80%;
 }
 
-.note{
+.note-header{
     width: 100%;
     height: var(--note_height);
     background-color: var(--notes_color);
@@ -104,11 +106,11 @@ html,body{
     padding: var(--base_gap) calc(var(--base_gap) * 2);
 }
 
-.note_name{
+.note-header_name{
     font-size: var(--text_font-size);
 }
 
-.note_headers{
+.note-header_headers{
     width: 200px;
     height: 100%;
     font-size: var(--text_font-size);
@@ -117,6 +119,103 @@ html,body{
     justify-content: center;
     background-color: var(--button_color);
     border-radius: var(--base_border-radius);
+}
+
+/* ________note-header-settings_______ */
+
+.note-header-settings-screen{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: calc(var(--base_border-radius)*2);
+    transform: translateY(120%);
+    background-color: var(--notes_color);
+    /* position: relative; */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: all 1s;
+}
+
+.note-header_settings{
+    width: calc(60% - var(--base_gap));
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+}
+
+.note-header_create{
+    width: 40%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.note-header-settings_header{
+    font-size: var(--header_font-size);
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: var(--border_weight) solid black;
+}
+
+.option{
+    font-size: var(--text_font-size);
+    width: 100%;
+    height: calc(14% - var(--base_gap));
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option_input{
+    height: 80%;
+    width: 40%;
+    background-color:var(--button_color);
+    outline: none;
+    border: none;
+    border-radius: var(--base_border-radius);
+    text-align: center;
+}
+
+.example{
+    background-color: var(--menu_color);
+    background-size: contain;
+    width: 500px;
+    height: 280px;
+    border-radius: var(--base_border-radius);
+}
+
+.note-header_submit,
+.note-header_create-example{
+    width: 220px;
+    height: 50px;
+    background-color: var(--button_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
+}
+
+.note-header_exit{
+    position: absolute;
+    right: calc(var(--base_gap) * 2);
+    top: var(--base_gap);
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
 }
 
 /* ______________settings_____________ */

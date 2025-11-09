@@ -20,15 +20,50 @@
                 <div class="setting-icon_block3"></div>
             </div>
             <div class="menu_header">notes</div>
-            <div class="menu_add-note">+</div>
+            <div class="menu_add-note-header">+</div>
         </div>
-        <div class="main_notes notes">
-            <div class="notes_note note note-javaScript">
-                <div class="note-javaScript_name note_name">javaScript</div>
-                <div class="note-javaScript_name note_headers">32 headers</div>
+        <div class="main_note-headers note-headers">
+            <div class="note-headers_note-header note-header note-header-javaScript">
+                <div class="note-header_name">javaScript</div>
+                <div class="note-header_headers">32 headers</div>
             </div>
         </div>
     </div>
-    <script src="script/main.js"></script>
+    <!-- note-header-setting-screen -->
+     <div class="note-header-settings-screen note-header">
+        <div class="note-header_settings note-header-settings">
+            <h1 class="note-header-settings_header">header settings</h1>
+            <div class="note-header-settings_option option">
+                <span class="option_header">●   backGround url :</span>
+                <input type="text" class="option_input option_backGround-url" placeholder="url...">
+            </div>
+            <div class="note-header-settings_option option">
+                <span class="option_header">●   header :</span>
+                <input type="text" class="option_input option_header-txt" placeholder="header...">
+            </div>
+            <div class="note-header-settings_option option">
+                <span class="option_header">●   header font size :</span>
+                <input type="text" class="option_input option_header-font-size" placeholder="font size...">
+            </div>
+            <div class="note-header-settings_option option">
+                <span class="option_header">●   description :</span>
+                <input type="text" class="option_input option_description-txt" placeholder="description...">
+            </div>
+            <div class="note-header-settings_option option">
+                <span class="option_header">●   description font size :</span>
+                <input type="text" class="option_input option_description-font-size" placeholder="font size...">
+            </div>
+        </div>
+        <div class="note-header_create">
+            <div class="note-header_example example">
+                <span class="example_head"></span>
+                <span class="example_txt"></span>
+            </div>
+            <div class="note-header_create-example">create-example</div>
+            <div class="note-header_submit">create</div>
+        </div>
+        <div class="note-header_exit">+</div>
+     </div>
+    <script src="script/main.js" type="module"></script>
 </body>
 </html>
