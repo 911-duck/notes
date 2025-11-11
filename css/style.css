@@ -195,7 +195,17 @@ html,body{
     background-size: contain;
     width: 500px;
     height: 280px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
     border-radius: var(--base_border-radius);
+}
+
+.example_txt{
+    width: 100%;
 }
 
 .note-header_submit,
@@ -216,6 +226,16 @@ html,body{
     top: var(--base_gap);
     font-size: var(--header_font-size);
     transform: rotate(45deg);
+}
+
+.option_input-color{
+    height: 80%;
+    width: 40%;
+    background-color: var(--notes_color);
+    outline: none;
+    border: none;
+    border-radius: var(--base_border-radius);
+    text-align: center;
 }
 
 /* ______________settings_____________ */
