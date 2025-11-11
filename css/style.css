@@ -121,4 +121,45 @@ html,body{
 
 /* ______________settings_____________ */
 
-/* code here */
+.settings-screen{
+    position: absolute;
+}
+.settings{
+    width: 19%;
+    height: 100%;
+    background-color: var(--notes_color);
+    border: calc(var(--border_weight) * 1.5) solid black;
+    border-radius: var(--base_border-radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap:var(--base_gap);
+    align-items: center;
+}
+.settings__visual{
+    width: 70%;
+    height: 5%;
+    border-bottom: var(--border_weight) solid black;
+    text-align: center;
+    font-size: 25px;
+}
+.setting__technical{
+    width: 70%;
+    height: 5%;
+    border-bottom: var(--border_weight) solid black;
+    text-align: center;
+    font-size: 25px;
+}
+.settings__shortcuts{
+    width: 70%;
+    height: 5%;
+    border-bottom: var(--border_weight) solid black;
+    text-align: center;
+    font-size: 25px;
+}
+.settings__header{
+    width: 90%;
+    text-align: center;
+    font-size: 45px;
+    border-bottom: var(--border_weight) solid black;
+}
