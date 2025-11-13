@@ -12,7 +12,7 @@ let active_header;
 
 // !code here 
 
-// _______________create-header_______________
+// _______________create-header______________
 
 function noteHeaderClose(element) {
     element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
