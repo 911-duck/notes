@@ -1,21 +1,18 @@
+//___________________import__________________
+
+import ELEMENTS from "../elements.js";
+
+// __________________values__________________
+
+let headers = [];
+let notes = [];
+let active_header;
+
+//__________________settings_________________
+
 // !code here 
 
 // _______________create-header_______________
-
-let headers = [];
-let active_header;
-
-const MAIN = document.querySelector(".main");
-const HEADERS = document.querySelector(".note-headers")
-const HEADER_SETTINGS = document.querySelector(".add-header-screen");
-
-const OPTION_HEADER = document.querySelector(".add-header-screen_input");
-
-const BUTTON_ADD_HEADER = document.querySelector(".menu_add-note-header");
-const BUTTON_RESET_HEADER = document.querySelector(".add-header-screen_exit");
-const BUTTON_SUBMIT_HEADER_CREATE = document.querySelector(".add-header-screen_submit")
-
-let BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
 
 function noteHeaderClose(element) {
     element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
@@ -38,12 +35,12 @@ function noteHeaderOpen(element) {
 
 function createHeader(event) {
     const NOTE_TEMP = document.createElement("div");
-    HEADERS.appendChild(NOTE_TEMP);
+    ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
     NOTE_TEMP.classList.add("note-headers_note-header");
     NOTE_TEMP.classList.add("note-header");
     NOTE_TEMP.innerHTML += `
                 <div class="note-header_main">
-                    <div class="note-header_name">${OPTION_HEADER.value}</div>
+                    <div class="note-header_name">${ELEMENTS.OPTION_HEADER.value}</div>
                     <div class="note-header_headers">0 note</div>
                 </div>
                 <div class="note-header_note-list">
@@ -62,106 +59,87 @@ function createHeader(event) {
         }
     });
 
-    BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
-    BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
-    BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
+    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
+    ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
+    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
 
-    headers.push(OPTION_HEADER.value);
+    ELEMENTS.MAIN.style.backgroundImage = "none";
+    headers.push(ELEMENTS.OPTION_HEADER.value);
     closeHeaderSettings();
 }
 
 function closeHeaderSettings(event) {
-    HEADER_SETTINGS.style.transform = `translateY(-${MAIN.offsetHeight}px)`;
+    ELEMENTS.HEADER_SETTINGS.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
 
-    BUTTON_SUBMIT_HEADER_CREATE.removeEventListener('click', createHeader);
-    BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
-    BUTTON_RESET_HEADER.removeEventListener('click', closeHeaderSettings);
+    ELEMENTS.BUTTON_SUBMIT_HEADER_CREATE.removeEventListener('click', createHeader);
+    ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
+    ELEMENTS.BUTTON_RESET_HEADER.removeEventListener('click', closeHeaderSettings);
 }
 
 function openHeaderSettings(event) {
-    HEADER_SETTINGS.style.transform = "translateY(-50%)";
+    ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
 
-    BUTTON_SUBMIT_HEADER_CREATE.addEventListener('click', createHeader);
-    BUTTON_ADD_HEADER.removeEventListener('click', openHeaderSettings);
-    BUTTON_RESET_HEADER.addEventListener('click', closeHeaderSettings);
+    ELEMENTS.BUTTON_SUBMIT_HEADER_CREATE.addEventListener('click', createHeader);
+    ELEMENTS.BUTTON_ADD_HEADER.removeEventListener('click', openHeaderSettings);
+    ELEMENTS.BUTTON_RESET_HEADER.addEventListener('click', closeHeaderSettings);
 }
 
 function createNote(note) {
-    active_header.innerHTML+=`
+    active_header.innerHTML += `
     <div class="note-header_note-child">
         <div class="note-header_header-child">${note[0].header}</div>
     </div>
-    `
-
-    // active_header.parentElement.querySelector(".note-header_main>.note-header_name").innerHTML = " notes";
+    `;
 }
 
-BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
+ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 
 // ________________create-note________________
 
-let notes = [];
-
-const NODE_SETTINGS = document.querySelector(".note-settings-screen");
-const EXAMPLE = document.querySelector(".example");
-const EXAMPLE_HEAD = document.querySelector(".example_head");
-const EXAMPLE_TXT = document.querySelector(".example_txt");
-
-const OPTION_URL = document.querySelector(".option_backGround-url");
-const OPTION_HEAD = document.querySelector(".option_header-txt");
-const OPTION_HEAD_FS = document.querySelector(".option_header-font-size");
-const OPTION_TXT = document.querySelector(".option_description-txt");
-const OPTION_TXT_FS = document.querySelector(".option_description-font-size");
-const OPTION_TXT_COLOR = document.querySelector(".option_txt-color");
-
-const BUTTON_SUBMIT = document.querySelector(".note_submit");
-const BUTTON_RESET_NOTE = document.querySelector(".note_exit");
-const BUTTON_CREATE_EXAMPLE = document.querySelector(".note_create-example");
-
 function createExample(event) {
-    EXAMPLE.style.backgroundImage = `url("${OPTION_URL.value}")`;
-    EXAMPLE.style.backgroundSize = `cover`;
-    EXAMPLE_HEAD.innerText = OPTION_HEAD.value;
-    EXAMPLE_HEAD.style.color = OPTION_TXT_COLOR.value;
-    EXAMPLE_HEAD.style.fontSize = OPTION_HEAD_FS.value + "px";
-    EXAMPLE_TXT.innerText = OPTION_TXT.value;
-    EXAMPLE_TXT.style.color = OPTION_TXT_COLOR.value;
-    EXAMPLE_TXT.style.fontSize = OPTION_TXT_FS.value + "px";
+    ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;
+    ELEMENTS.EXAMPLE.style.backgroundSize = `cover`;
+    ELEMENTS.EXAMPLE_HEAD.innerText = ELEMENTS.OPTION_HEAD.value;
+    ELEMENTS.EXAMPLE_HEAD.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
+    ELEMENTS.EXAMPLE_HEAD.style.fontSize = ELEMENTS.OPTION_HEAD_FS.value + "px";
+    ELEMENTS.EXAMPLE_TXT.innerText = ELEMENTS.OPTION_TXT.value;
+    ELEMENTS.EXAMPLE_TXT.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
+    ELEMENTS.EXAMPLE_TXT.style.fontSize = ELEMENTS.OPTION_TXT_FS.value + "px";
 }
 
 function closeNoteSettings(event) {
-    MAIN.style.transform = `translateY(0%)`;
-    NODE_SETTINGS.style.transform = `translateY(120%)`;
+    ELEMENTS.MAIN.style.transform = `translateY(0%)`;
+    ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(120%)`;
 
-    BUTTON_SUBMIT.removeEventListener('click', createNode);
-    BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
-    BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
+    ELEMENTS.BUTTON_SUBMIT.removeEventListener('click', createNode);
+    ELEMENTS.BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
+    ELEMENTS.BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
 }
 
 function createNode(event) {
     let note_txt = {
-        header: OPTION_HEAD.value,
-        txt: OPTION_TXT.value
+        header: ELEMENTS.OPTION_HEAD.value,
+        txt: ELEMENTS.OPTION_TXT.value
     };
     let note_styles = {
-        header_fontSize: OPTION_HEAD_FS.value,
-        txt_fontSize: OPTION_TXT_FS.value,
-        txt_color: OPTION_TXT_COLOR.value,
-        picture_url: OPTION_URL.value
+        header_fontSize: ELEMENTS.OPTION_HEAD_FS.value,
+        txt_fontSize: ELEMENTS.OPTION_TXT_FS.value,
+        txt_color: ELEMENTS.OPTION_TXT_COLOR.value,
+        picture_url: ELEMENTS.OPTION_URL.value
     };
 
-    notes.push([ note_txt, note_styles ]);
-    createNote(notes[notes.length-1]);
+    notes.push([note_txt, note_styles]);
+    createNote(notes[notes.length - 1]);
 }
 
 function openNoteSettings(event) {
-    MAIN.style.transform = `translateY(-${MAIN.offsetHeight}px)`;
-    NODE_SETTINGS.style.transform = `translateY(0px)`;
+    ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
+    ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
 
     active_header = event.target.parentElement;
-    BUTTON_SUBMIT.addEventListener('click', createNode);
-    BUTTON_RESET_NOTE.addEventListener('click', closeNoteSettings);
-    BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
+    ELEMENTS.BUTTON_SUBMIT.addEventListener('click', createNode);
+    ELEMENTS.BUTTON_RESET_NOTE.addEventListener('click', closeNoteSettings);
+    ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
-BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
+ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
