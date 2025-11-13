@@ -41,10 +41,10 @@ function createHeader(event) {
     NOTE_TEMP.innerHTML += `
                 <div class="note-header_main">
                     <div class="note-header_name">${ELEMENTS.OPTION_HEADER.value}</div>
-                    <div class="note-header_headers">0 note</div>
+                    <div class="note-header_headers">0 заметок</div>
                 </div>
                 <div class="note-header_note-list">
-                    <div class="note-header_note-add">+ add note</div>
+                    <div class="note-header_note-add">+ добавить</div>
                 </div>
     `;
     let counter = 0;
@@ -84,12 +84,19 @@ function openHeaderSettings(event) {
     ELEMENTS.BUTTON_RESET_HEADER.addEventListener('click', closeHeaderSettings);
 }
 
+function deleteChild(event) {
+    event.target.parentElement.remove();
+}
+
 function createNote(note) {
     active_header.innerHTML += `
     <div class="note-header_note-child">
         <div class="note-header_header-child">${note[0].header}</div>
+        <div class="note-header_delete-child">+</div>
     </div>
     `;
+    document.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', deleteChild)); 
+    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
 }
 
 ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
@@ -113,6 +120,7 @@ function closeNoteSettings(event) {
 
     ELEMENTS.BUTTON_SUBMIT.removeEventListener('click', createNode);
     ELEMENTS.BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
+ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
     ELEMENTS.BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
 }
 
@@ -130,6 +138,7 @@ function createNode(event) {
 
     notes.push([note_txt, note_styles]);
     createNote(notes[notes.length - 1]);
+    closeNoteSettings();
 }
 
 function openNoteSettings(event) {
@@ -142,4 +151,4 @@ function openNoteSettings(event) {
     ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
-ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
+document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 

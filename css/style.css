@@ -14,8 +14,8 @@
     --notes_color: #fef2e3;
     --button_color: #f5c993;
     --border_weight: 2px;
-    --header_font-size: 60px;
-    --text_font-size: 30px;
+    --header_font-size: 50px;
+    --text_font-size: 25px;
     --setting-icon_size: 40px;
     --note_height: 60px;
     --base_border-radius: 20px;
@@ -46,7 +46,7 @@ html,body{
     justify-content: space-between;
     background-image: url("../img/notes.png");
     background-position: 50% 50%;
-    background-size: 5%;
+    background-size: 20%;
     background-repeat: no-repeat;
     transition: var(--transition);
 }
@@ -117,6 +117,7 @@ html,body{
     flex-direction: column;
     padding: var(--base_gap) calc(var(--base_gap) * 2);
     overflow: hidden;
+    overflow-y: auto;
     transition: var(--transition);
 }
 
@@ -131,7 +132,8 @@ html,body{
 
 .note-header_note-list{
     width: 100%;
-    padding: 0;
+    height: auto;
+    /* padding: 0; */
     display: none;
     align-items: center;
     justify-content: flex-start;
@@ -154,6 +156,9 @@ html,body{
 
 .note-header_header-child{
     font-size: var(--text_font-size);
+    display: flex ;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .note-header_note-add{
@@ -170,13 +175,18 @@ html,body{
 
 .note-header_headers{
     width: 200px;
-    height: 100%;
+    height: var(--note_height);
     font-size: var(--text_font-size);
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--button_color);
     border-radius: var(--base_border-radius);
+}
+
+.note-header_delete-child{
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
 }
 
 /* ________note-header-settings_______ */
