@@ -1,6 +1,10 @@
 //___________________import__________________
 
 import ELEMENTS from "../elements.js";
+import deleteChild from "./deleteChild.js";
+import createExample from "./createExample.js"
+import noteHeaderOpen from "./noteHeaderOpen.js";
+import noteHeaderClose from "./noteHeaderClose.js";
 
 // __________________values__________________
 
@@ -13,25 +17,6 @@ let active_header;
 // !code here 
 
 // _______________create-header______________
-
-function noteHeaderClose(element) {
-    element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
-    element.querySelector(".note-header_note-list").style.opacity = "0"
-    element.querySelector(".note-header_note-list").style.display = "none"
-    setTimeout(() => {
-        element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
-    }, 1000);
-}
-
-function noteHeaderOpen(element) {
-    element.style.height = "calc(var(--note_height) * 8 + var(--base_gap) * 2)";
-    setTimeout(() => {
-        element.querySelector(".note-header_note-list").style.display = "flex"
-        setTimeout(() => {
-            element.querySelector(".note-header_note-list").style.opacity = "1"
-        }, 10);
-    }, 990);
-}
 
 function createHeader(event) {
     const NOTE_TEMP = document.createElement("div");
@@ -84,10 +69,6 @@ function openHeaderSettings(event) {
     ELEMENTS.BUTTON_RESET_HEADER.addEventListener('click', closeHeaderSettings);
 }
 
-function deleteChild(event) {
-    event.target.parentElement.remove();
-}
-
 function createNote(note) {
     active_header.innerHTML += `
     <div class="note-header_note-child">
@@ -103,24 +84,13 @@ ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 
 // ________________create-note________________
 
-function createExample(event) {
-    ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;
-    ELEMENTS.EXAMPLE.style.backgroundSize = `cover`;
-    ELEMENTS.EXAMPLE_HEAD.innerText = ELEMENTS.OPTION_HEAD.value;
-    ELEMENTS.EXAMPLE_HEAD.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
-    ELEMENTS.EXAMPLE_HEAD.style.fontSize = ELEMENTS.OPTION_HEAD_FS.value + "px";
-    ELEMENTS.EXAMPLE_TXT.innerText = ELEMENTS.OPTION_TXT.value;
-    ELEMENTS.EXAMPLE_TXT.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
-    ELEMENTS.EXAMPLE_TXT.style.fontSize = ELEMENTS.OPTION_TXT_FS.value + "px";
-}
-
 function closeNoteSettings(event) {
     ELEMENTS.MAIN.style.transform = `translateY(0%)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(120%)`;
 
     ELEMENTS.BUTTON_SUBMIT.removeEventListener('click', createNode);
     ELEMENTS.BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
-ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
+    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
     ELEMENTS.BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
 }
 
