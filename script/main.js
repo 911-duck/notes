@@ -130,6 +130,7 @@ function createNode(event) {
 function openNoteSettings(event) {
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
+    // document.documentElement.style.cssText = "--menu_color: red";
 
     active_header = event.target.parentElement;
     ELEMENTS.BUTTON_SUBMIT.addEventListener('click', createNode);
