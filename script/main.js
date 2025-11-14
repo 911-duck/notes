@@ -5,6 +5,8 @@ import deleteChild from "./deleteChild.js";
 import createExample from "./createExample.js"
 import noteHeaderOpen from "./noteHeaderOpen.js";
 import noteHeaderClose from "./noteHeaderClose.js";
+import checkHeaderCount from "./checkHeaderCount.js";
+import resetOptions from "./resetOptions.js";
 
 // __________________values__________________
 
@@ -76,16 +78,17 @@ function createNote(note) {
     </div>
     `;
 
-    let Objectlength = Object.keys(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText]).length ;
+    let name = ELEMENTS.OPTION_HEAD.value;
+    checkHeaderCount(active_header);
 
-    active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_headers").innerText = Objectlength + (Objectlength >= 1 ? Objectlength > 1 ? " заметки" : " заметка" : " заметок");
-    document.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e=>{
-        delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]
-        deleteChild(e)
-        Objectlength = Object.keys(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText]).length ;
-        active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_headers").innerText = Objectlength + (Objectlength >= 1 ? Objectlength > 1 ? " заметки" : " заметка" : " заметок");
+    active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e=>{
+        delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
+        deleteChild(e);
+        checkHeaderCount(active_header);
     })); 
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
+
+    resetOptions();
 }
 
 ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);

@@ -267,6 +267,7 @@ html,body{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: hidden;
     gap: 10px;
     border-radius: var(--base_border-radius);
     transition: var(--transition);
