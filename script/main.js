@@ -1,4 +1,4 @@
-//___________________import__________________
+//___________________import_________________
 
 import ELEMENTS from "../elements.js";
 import deleteChild from "./deleteChild.js";
