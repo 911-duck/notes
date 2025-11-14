@@ -8,8 +8,7 @@ import noteHeaderClose from "./noteHeaderClose.js";
 
 // __________________values__________________
 
-let headers = [];
-let notes = [];
+let notes = {};
 let active_header;
 
 //__________________settings_________________
@@ -49,7 +48,7 @@ function createHeader(event) {
     ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
 
     ELEMENTS.MAIN.style.backgroundImage = "none";
-    headers.push(ELEMENTS.OPTION_HEADER.value);
+    notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
     closeHeaderSettings();
 }
 
@@ -72,11 +71,20 @@ function openHeaderSettings(event) {
 function createNote(note) {
     active_header.innerHTML += `
     <div class="note-header_note-child">
-        <div class="note-header_header-child">${note[0].header}</div>
+        <div class="note-header_header-child">${notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value][0].header}</div>
         <div class="note-header_delete-child">+</div>
     </div>
     `;
-    document.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', deleteChild)); 
+
+    let Objectlength = Object.keys(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText]).length ;
+
+    active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_headers").innerText = Objectlength + (Objectlength >= 1 ? Objectlength > 1 ? " заметки" : " заметка" : " заметок");
+    document.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e=>{
+        delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]
+        deleteChild(e)
+        Objectlength = Object.keys(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText]).length ;
+        active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_headers").innerText = Objectlength + (Objectlength >= 1 ? Objectlength > 1 ? " заметки" : " заметка" : " заметок");
+    })); 
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
 }
 
@@ -106,8 +114,13 @@ function createNode(event) {
         picture_url: ELEMENTS.OPTION_URL.value
     };
 
-    notes.push([note_txt, note_styles]);
-    createNote(notes[notes.length - 1]);
+// active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText
+
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]=[];
+    console.log(notes)
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_txt)
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_styles)
+    createNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]);
     closeNoteSettings();
 }
 
