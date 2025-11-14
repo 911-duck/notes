@@ -148,21 +148,24 @@ html,body{
 .settings__visual{
     width: 70%;
     height: 5%;
-    border-bottom: var(--border_weight) solid black;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
     text-align: center;
     font-size: 25px;
 }
 .setting__technical{
     width: 70%;
     height: 5%;
-    border-bottom: var(--border_weight) solid black;
+        background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
     text-align: center;
     font-size: 25px;
 }
 .settings__shortcuts{
     width: 70%;
     height: 5%;
-    border-bottom: var(--border_weight) solid black;
+        background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
     text-align: center;
     font-size: 25px;
 }
@@ -170,28 +173,4 @@ html,body{
     width: 90%;
     text-align: center;
     font-size: 45px;
-}
-.settings-block{
-    width: 5%;
-    height: 100%;
-    background-color: var(--notes_color);
-    position: relative;
-    right: 110px;
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: flex-end;
-    color: lightslategray;
-    font-size: 35px;
-    overflow: hidden;
-}
-.fa-gear{
-    margin-right: 10px;
-    margin-top: 10px;
-}
-.settings-block:hover{
-    border-right: 5px solid black;
-    border-bottom: 5px solid black;
-    border-top: 5px solid black;
-    border-radius: 10px;
 }
