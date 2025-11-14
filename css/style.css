@@ -141,7 +141,7 @@ html,body{
     justify-content: flex-start;
     gap:var(--base_gap);
     align-items: center;
-    animation: example 0.5s linear forwards;
+    transition: left 0.5s linear;
     position: relative;
     left: -200px;
 }
@@ -194,8 +194,4 @@ html,body{
     border-bottom: 5px solid black;
     border-top: 5px solid black;
     border-radius: 10px;
-}
-@keyframes example {
-  from { left: -200px; }
-  to { left: 0px; }
 }
