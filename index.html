@@ -12,9 +12,14 @@
     <!-- setting-screen -->
     <div class="settings-screen"><!-- code here --></div>
     <!-- settings -->
-    <div class="settings"><!-- code here --></div>
+    <div class="false settings">
+        <div class="settings__header">settings</div>
+        <div class="settings__visual">visual</div>
+        <div class="settings__technical">technical</div>
+        <div class="settings__shortcuts">shortcuts</div>
+    </div>
     <!-- visual-settings -->
-    <div class="visual-settings-screen ">
+    <div class="visual-settings-screen">
         <div class="visual-settings-settings">
             <h1 class="visual-settings_header">настройки заметки</h1>
             <!-- <div class="visual-settings_option option">
@@ -23,32 +28,29 @@
             </div> -->
             <div class="visual-settings_option option">
                 <span class="option_header">● заголовок:</span>
-                <input type="text" class="option_input option_header-txt" placeholder="название...">
+                <input type="text" class="option_input option_header-txt-main" placeholder="название...">
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● размер шрифта загаловка:</span>
-                <input type="number" class="option_input option_header-txt" placeholder="размер...">
+                <input type="number" class="option_input option_header-font-size-main" placeholder="размер...">
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● размер шрифта текста:</span>
-                <input type="number" class="option_input option_header-txt" placeholder="размер...">
-            </div>
-            <div class="visual-settings_option option">
-                <span class="option_header">● цвет :</span>
-                <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
+                <input type="number" class="option_input option_txt-font-size-main" placeholder="размер...">
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● цвет основной:</span>
-                <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
+                <input type="color" class="option_input-color option_base-color-main" placeholder="цвет...">
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● цвет кнопок:</span>
-                <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
+                <input type="color" class="option_input-color option_button-color-main" placeholder="цвет...">
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● цвет второй основной:</span>
-                <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
+                <input type="color" class="option_input-color option_second-base-color" placeholder="цвет...">
             </div>
+            <div class="visual-settings_submit">применить</div>
         </div>
         <div class="visual-settings_create">
             <div class="visual-settings_example">

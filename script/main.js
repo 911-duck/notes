@@ -2,11 +2,12 @@
 
 import ELEMENTS from "../elements.js";
 import deleteChild from "./deleteChild.js";
+import resetOptions from "./resetOptions.js";
 import createExample from "./createExample.js"
 import noteHeaderOpen from "./noteHeaderOpen.js";
 import noteHeaderClose from "./noteHeaderClose.js";
 import checkHeaderCount from "./checkHeaderCount.js";
-import resetOptions from "./resetOptions.js";
+import defaultVisualSettings from "./default_visual_settings.js";
 
 // __________________values__________________
 
@@ -15,7 +16,37 @@ let active_header;
 
 //__________________settings_________________
 
-// !code here 
+ELEMENTS.SETTINGS_ICON.addEventListener('click', e => {
+    ELEMENTS.SETTINGS.style.transform = "translateX(0px)"
+})
+
+ELEMENTS.SETTINGS.addEventListener('click', e => {
+    ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
+})
+
+// ___________open-visual-settings___________
+
+ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
+    document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`); 
+    document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`); 
+    document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
+    document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px` );
+    document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
+
+    ELEMENTS.MENU_HEADER.innerText = ELEMENTS.OPTION_MAIN_HEADER.value;
+})
+
+ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
+    ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
+    ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
+
+    defaultVisualSettings();
+})
+
+ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
+    ELEMENTS.MAIN.style.transform = `translateY(0)`;
+    ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(-120%)"
+})
 
 // _______________create-header______________
 
@@ -81,12 +112,12 @@ function createNote(note) {
     let name = ELEMENTS.OPTION_HEAD.value;
     checkHeaderCount(active_header);
 
-    active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e=>{
+    active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
         delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
         deleteChild(e);
         checkHeaderCount(active_header);
-    })); 
-    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
+    }));
+    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
 
     resetOptions();
 }
@@ -101,7 +132,7 @@ function closeNoteSettings(event) {
 
     ELEMENTS.BUTTON_SUBMIT.removeEventListener('click', createNode);
     ELEMENTS.BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
-    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings)); 
+    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
 }
 
@@ -117,9 +148,9 @@ function createNode(event) {
         picture_url: ELEMENTS.OPTION_URL.value
     };
 
-// active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText
+    // active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText
 
-    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]=[];
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value] = [];
     console.log(notes)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_txt)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_styles)
@@ -130,7 +161,6 @@ function createNode(event) {
 function openNoteSettings(event) {
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
-    // document.documentElement.style.cssText = "--menu_color: red";
 
     active_header = event.target.parentElement;
     ELEMENTS.BUTTON_SUBMIT.addEventListener('click', createNode);
