@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 
 /* ____________visual-settings__________ */
@@ -13,6 +14,7 @@
     --menu_color: #ffe4c4;
     --notes_color: #fef2e3;
     --button_color: #f5c993;
+    --txt_color: #000000;
     --border_weight: 2px;
     --header_font-size: 50px;
     --text_font-size: 25px;
@@ -50,6 +52,7 @@ body {
     background-size: 20%;
     background-repeat: no-repeat;
     transition: var(--transition);
+    color: var(--txt_color);
 }
 
 /* ______________header____________ */
@@ -58,7 +61,7 @@ body {
     padding: var(--base_gap);
     width: 100%;
     height: calc(20% - var(--base_gap));
-    border-bottom: black solid var(--border_weight);
+    border-bottom: var(--txt_color) solid var(--border_weight);
     display: flex;
     align-items: center;
     position: relative;
@@ -71,10 +74,12 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: var(--header_font-size);
+    color: var(--txt_color);
 }
 
 .menu_add-note-header {
     font-size: var(--header_font-size);
+    color: var(--txt_color);
 }
 
 .setting-icon {
@@ -91,7 +96,7 @@ body {
 .setting-icon_block3 {
     width: 100%;
     height: calc(var(--border_weight) * 4);
-    background-color: black;
+    background-color: var(--txt_color);
     border-radius: var(--base_border-radius);
 }
 
@@ -105,6 +110,7 @@ body {
     justify-content: flex-start;
     flex-direction: column;
     gap: var(--base_gap);
+    color: var(--txt_color);
 }
 
 .note-header {
@@ -122,6 +128,7 @@ body {
     overflow: hidden;
     overflow-y: auto;
     transition: var(--transition);
+    color: var(--txt_color);
 }
 
 .note-header_main {
@@ -131,6 +138,7 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
+    color: var(--txt_color);
 }
 
 .note-header_note-list {
@@ -143,6 +151,7 @@ body {
     flex-direction: column;
     gap: var(--base_gap);
     opacity: 0;
+    color: var(--txt_color);
     transition: all 1s;
 }
 
@@ -154,6 +163,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--base_gap);
+    color: var(--txt_color);
     background-color: var(--button_color);
 }
 
@@ -162,6 +172,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    color: var(--txt_color);
 }
 
 .note-header_note-add {
@@ -174,6 +185,7 @@ body {
 
 .note-header_name {
     font-size: var(--text_font-size);
+    color: var(--txt_color);
 }
 
 .note-header_headers {
@@ -184,6 +196,7 @@ body {
     align-items: center;
     justify-content: center;
     background-color: var(--button_color);
+    color: var(--txt_color);
     border-radius: var(--base_border-radius);
 }
 
@@ -201,6 +214,7 @@ body {
     border-radius: calc(var(--base_border-radius)*2);
     transform: translateY(120%);
     background-color: var(--notes_color);
+    color: var(--txt_color);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -211,6 +225,7 @@ body {
 }
 
 .note_settings {
+    color: var(--txt_color);
     width: calc(60% - var(--base_gap));
     height: 100%;
     display: flex;
@@ -228,6 +243,7 @@ body {
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    color: var(--txt_color);
 }
 
 .note-settings_header {
@@ -236,8 +252,9 @@ body {
     height: 20%;
     display: flex;
     align-items: center;
+    color: var(--txt_color);
     justify-content: center;
-    border-bottom: var(--border_weight) solid black;
+    border-bottom: var(--border_weight) solid var(--txt_color);
 }
 
 .option {
@@ -246,6 +263,7 @@ body {
     height: calc(14% - var(--base_gap));
     display: flex;
     flex-direction: row;
+    color: var(--txt_color);
     align-items: center;
     justify-content: space-between;
 }
@@ -258,6 +276,8 @@ body {
     border: none;
     border-radius: var(--base_border-radius);
     text-align: center;
+    color: var(--txt_color);
+
 }
 
 .example {
@@ -298,6 +318,7 @@ body {
     top: var(--base_gap);
     font-size: var(--header_font-size);
     transform: rotate(45deg);
+    color: var(--txt_color);
 }
 
 .option_input-color {
@@ -326,6 +347,7 @@ body {
     border-radius: var(--base_border-radius);
     padding: var(--base_gap);
     transition: var(--transition);
+    color: var(--txt_color);
 }
 
 .add-header-screen_exit {
@@ -334,6 +356,8 @@ body {
     top: calc(var(--base_gap)/2);
     font-size: var(--header_font-size);
     transform: rotate(45deg);
+    color: var(--txt_color);
+
 }
 
 .add-header-screen_submit {
@@ -345,6 +369,8 @@ body {
     justify-content: center;
     font-size: var(--text_font-size);
     border-radius: var(--base_border-radius);
+    color: var(--txt_color);
+
 }
 
 .add-header-screen_option {
@@ -355,6 +381,8 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    color: var(--txt_color);
+    
 }
 
 .add-header-screen_input {
@@ -384,6 +412,8 @@ body {
     padding: var(--base_gap);
     transition: var(--transition);
     z-index: 3;
+    color: var(--txt_color);
+
 }
 
 .visual-settings-settings {
@@ -395,6 +425,8 @@ body {
     flex-direction: column;
     gap: var(--base_gap);
     padding: var(--base_gap);
+    color: var(--txt_color);
+
 }
 
 .visual-settings_create {
@@ -404,11 +436,15 @@ body {
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    color: var(--txt_color);
+
 }
 
 .visual-settings_header {
     width: 100%;
     text-align: center;
+    color: var(--txt_color);
+
 }
 
 .visual-settings_example {
@@ -426,6 +462,7 @@ body {
     gap: 10px;
     border-radius: var(--base_border-radius);
     transition: var(--transition);
+    color: var(--txt_color);
 }
 
 .visual-settings_head {
@@ -433,6 +470,8 @@ body {
     position: absolute;
     left: calc(var(--base_gap)*2);
     bottom: calc(var(--base_gap)*3);
+    color: var(--txt_color);
+
 }
 
 .visual-settings_txt {
@@ -519,6 +558,7 @@ body {
     width: 60%;
     height: 7%;
     background-color: var(--menu_color);
+    
 }
 
 .visual-settings_picture {
@@ -556,6 +596,8 @@ body {
     left: 0;
     bottom: 0;
     border: 50px solid transparent;
+    color: var(--txt_color);
+
     border-bottom: 50px solid var(--notes_color);
 }
 
@@ -575,6 +617,8 @@ body {
 
 .settings-screen {
     position: absolute;
+    color: var(--txt_color);
+
 }
 
 .settings {
@@ -591,13 +635,15 @@ body {
     left: 0;
     top: 0;
     transform: translateX(-100%);
-    z-index: 3;
+    z-index: 4;
     transition: var(--transition);
+    color: var(--txt_color);
 }
 
 .settings__visual,
 .settings__technical,
 .settings__shortcuts {
+    color: var(--txt_color);
     width: 70%;
     height: 5%;
     background-color: var(--button_color);
@@ -609,6 +655,7 @@ body {
 }
 
 .settings__header {
+    color: var(--txt_color);
     width: 90%;
     text-align: center;
     font-size: 45px;

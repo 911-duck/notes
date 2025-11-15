@@ -21,6 +21,7 @@ export default ELEMENTS = {
     OPTION_MAIN_HEADER_FONT_SIZE: document.querySelector(".option_header-font-size-main"),
     OPTION_MAIN_TEXT_FONT_SIZE: document.querySelector(".option_txt-font-size-main"),
     OPTION_MAIN_BASE_COLOR: document.querySelector(".option_base-color-main"),
+    OPTION_MAIN_TXT_COLOR: document.querySelector(".option_txt-color-main"),
     OPTION_MAIN_SECOND_BASE_COLOR: document.querySelector(".option_second-base-color"),
     OPTION_MAIN_BUTTON_COLOR: document.querySelector(".option_button-color-main"),
     BUTTON_SUBMIT: document.querySelector(".note_submit"),
