@@ -118,12 +118,12 @@ function openHeaderSettings(event) {
 }
 
 function createNote(note) {
-    
-    active_header.innerHTML += `
-    <div class="note-header_note-child">
+    const NOTE_TEMP = document.createElement("div");
+    active_header.appendChild(NOTE_TEMP);
+    NOTE_TEMP.classList.add("note-header_note-child");
+    NOTE_TEMP.innerHTML += `
         <div class="note-header_header-child">${notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value][0].header}</div>
         <div class="note-header_delete-child">+</div>
-    </div>
     `;
 
     let name = ELEMENTS.OPTION_HEAD.value;
