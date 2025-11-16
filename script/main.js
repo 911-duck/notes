@@ -49,7 +49,7 @@ ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(-120%)"
 })
 
-// _______________create-header______________
+// _______________create-header_____________
 
 function closeHeader(event){
     let element = 0
