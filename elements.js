@@ -3,6 +3,8 @@ let ELEMENTS = {};
 export default ELEMENTS = {
     MAIN: document.querySelector(".main"),
     HEADERS: document.querySelector(".note-headers"),
+    OPEN_NOTE: document.querySelector(".open-note"),
+    OPEN_NOTE_SCREEN: document.querySelector(".open-note_screen"),
     MENU_HEADER: document.querySelector(".menu_header"),
     HEADER_SETTINGS: document.querySelector(".add-header-screen"),
     VISUAL_SETTINGS: document.querySelector('.visual-settings-screen'),
@@ -31,6 +33,7 @@ export default ELEMENTS = {
     BUTTON_ADD_HEADER: document.querySelector(".menu_add-note-header"),
     BUTTON_RESET_HEADER: document.querySelector(".add-header-screen_exit"),
     BUTTON_RESET_VISUAL_SETTINGS : document.querySelector(".visual-settings_exit"),
+    BUTTON_RESET_OPEN_NOTE : document.querySelector(".open-note_exit"),
     BUTTON_SHORTCUTS_SETTINGS: document.querySelector('.settings__shortcuts'),
     BUTTON_TECHNICAL_SETTINGS: document.querySelector('.settings__technical'),
     BUTTON_VISUAL_SETTINGS: document.querySelector('.settings__visual'),
@@ -38,5 +41,5 @@ export default ELEMENTS = {
     BUTTON_ADD_NOTE: document.querySelectorAll(".note-header_note-add"),
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),
-    LOADER: document.querySelector('.loaders-screen')
+    LOADER: document.querySelector('.loaders-screen'),
 };

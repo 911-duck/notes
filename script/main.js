@@ -15,6 +15,84 @@ import openLoading from "./openLoading.js";
 let notes = {};
 let active_header;
 
+//_________________open-notes________________
+
+function closeNote(event){
+    ELEMENTS.OPEN_NOTE.style.right = "-100%"
+    ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ""
+}
+
+function openNote(obj){
+    ELEMENTS.OPEN_NOTE.style.right = "0px"
+    if(obj.note_txt.header != ""){
+        let header = document.createElement("span")
+        ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
+        header.style = `
+        font-size: ${obj.note_styles.header_fontSize}px;
+        top: 30px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        position: absolute;
+        color: ${obj.note_styles.txt_color};
+        z-index: 1;
+        ` 
+        header.innerText =  obj.note_txt.header
+    } else {
+        let header = document.createElement("span")
+        ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
+        header.style = `
+        font-size: 40px;
+        top: 30px;
+        left: calc(50%);
+        transform: translateX(-50%);
+        position: absolute;
+        color: black;
+        z-index: 1;
+        ` 
+        header.innerText =  obj.note_txt.header
+    }
+    if(obj.note_txt.txt != ""){
+        let text = document.createElement("span")
+        ELEMENTS.OPEN_NOTE_SCREEN.appendChild(text);
+        text.style = `
+        font-size: ${obj.note_styles.txt_fontSize}px;
+        top: calc(60px + ${obj.note_styles.txt_fontSize}px);
+        left: 30px;
+        width: auto;
+        position: absolute;
+        color: ${obj.note_styles.txt_color};
+        z-index: 1;
+        ` 
+        text.innerText =  obj.note_txt.txt
+    } else {
+        let text = document.createElement("span")
+        ELEMENTS.OPEN_NOTE_SCREEN.appendChild(text);
+        text.style = `
+        font-size: 20px;
+        top: calc(60px + 20px);
+        left: 30px;
+        width: auto;
+        position: absolute;
+        color: black;
+        z-index: 1;
+        ` 
+        text.innerText =  obj.note_txt.txt
+    }
+    if (obj.note_styles.picture_url != "") {
+        let picture = document.createElement("div")
+        ELEMENTS.OPEN_NOTE_SCREEN.appendChild(picture);
+        picture.style.backgroundImage = `url(${obj.note_styles.picture_url})`
+        picture.style.backgroundRepeat = `no-repeat`
+        picture.style.backgroundSize = `cover`
+        picture.style.zIndex = 0
+        picture.style.width = "100%"
+        picture.style.height = "100%"
+        picture.style.position = "absolute"
+        picture.style.left = "0"
+        picture.style.top = "0"
+    }
+}
+
 //__________________settings_________________
 
 ELEMENTS.SETTINGS_ICON.addEventListener('click', e => {
@@ -129,6 +207,10 @@ function createNote(note) {
     let name = ELEMENTS.OPTION_HEAD.value;
     checkHeaderCount(active_header);
 
+    console.log(note)
+    NOTE_TEMP.addEventListener('click',e=>{openNote(note)})
+    ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click',closeNote)
+
     active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
         delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
         deleteChild(e);
@@ -171,7 +253,8 @@ function createNode(event) {
     console.log(notes)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_txt)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_styles)
-    createNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]);
+    let noteOBJ = {note_txt:note_txt,note_styles:note_styles}
+    createNote(noteOBJ);
     closeNoteSettings();
 }
 
