@@ -8,6 +8,7 @@ import noteHeaderOpen from "./noteHeaderOpen.js";
 import noteHeaderClose from "./noteHeaderClose.js";
 import checkHeaderCount from "./checkHeaderCount.js";
 import defaultVisualSettings from "./default_visual_settings.js";
+import openLoading from "./openLoading.js";
 
 // __________________values__________________
 
@@ -40,13 +41,14 @@ ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
 ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
-
+    openLoading();
     defaultVisualSettings();
 })
 
 ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.MAIN.style.transform = `translateY(0)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(-120%)"
+    openLoading();
 })
 
 // _______________create-header_____________
@@ -139,11 +141,11 @@ function createNote(note) {
     resetOptions();
 }
 
-ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 
 // ________________create-note________________
 
 function closeNoteSettings(event) {
+    openLoading();
     ELEMENTS.MAIN.style.transform = `translateY(0%)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(120%)`;
 
@@ -174,6 +176,7 @@ function createNode(event) {
 }
 
 function openNoteSettings(event) {
+    openLoading();
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
 
@@ -183,4 +186,8 @@ function openNoteSettings(event) {
     ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
-document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
+document.addEventListener('DOMContentLoaded',e=>{
+    ELEMENTS.LOADER.style.display ="none"
+    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
+    ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
+})

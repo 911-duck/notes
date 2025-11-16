@@ -37,5 +37,6 @@ export default ELEMENTS = {
     BUTTON_SUBMIT_HEADER_CREATE: document.querySelector(".add-header-screen_submit"),
     BUTTON_ADD_NOTE: document.querySelectorAll(".note-header_note-add"),
     SETTINGS_ICON: document.querySelector('.setting-icon'),
-    SETTINGS: document.querySelector('.settings')
+    SETTINGS: document.querySelector('.settings'),
+    LOADER: document.querySelector('.loaders-screen')
 };
