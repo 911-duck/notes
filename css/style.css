@@ -144,13 +144,11 @@ body {
 .note-header_note-list {
     width: 100%;
     height: auto;
-    /* padding: 0; */
     display: none;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
     gap: var(--base_gap);
-    opacity: 0;
     color: var(--txt_color);
     transition: all 1s;
 }

@@ -51,6 +51,28 @@ ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
 
 // _______________create-header______________
 
+function closeHeader(event){
+    let element = 0
+    document.querySelectorAll(".note-header_main").forEach((el,i)=>{
+        if(el == event.target) element = document.querySelectorAll(".note-header_main")[i]
+    })
+    if(element == 0) return
+    element.removeEventListener('click', closeHeader);
+    noteHeaderClose(element.parentElement);
+    element.addEventListener('click', openHeader);
+}
+
+function openHeader(event){
+    let element = 0
+    document.querySelectorAll(".note-header_main").forEach((el,i)=>{
+        if(el == event.target) element = document.querySelectorAll(".note-header_main")[i]
+    })
+    if(element == 0) return
+    element.removeEventListener('click', openHeader);
+    noteHeaderOpen(element.parentElement);
+    element.addEventListener('click', closeHeader);
+}
+
 function createHeader(event) {
     const NOTE_TEMP = document.createElement("div");
     ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
@@ -65,17 +87,8 @@ function createHeader(event) {
                     <div class="note-header_note-add">+ добавить</div>
                 </div>
     `;
-    let counter = 0;
-    NOTE_TEMP.addEventListener('click', e => {
-        setTimeout(() => {
-            counter++;
-        }, 2100);
-        if (counter % 2 == 0) {
-            noteHeaderOpen(NOTE_TEMP);
-        } else {
-            noteHeaderClose(NOTE_TEMP);
-        }
-    });
+    NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
+
 
     ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
@@ -103,6 +116,7 @@ function openHeaderSettings(event) {
 }
 
 function createNote(note) {
+    
     active_header.innerHTML += `
     <div class="note-header_note-child">
         <div class="note-header_header-child">${notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value][0].header}</div>
@@ -119,6 +133,8 @@ function createNote(note) {
         checkHeaderCount(active_header);
     }));
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
+    
+    document.querySelector
 
     resetOptions();
 }
@@ -148,8 +164,6 @@ function createNode(event) {
         txt_color: ELEMENTS.OPTION_TXT_COLOR.value,
         picture_url: ELEMENTS.OPTION_URL.value
     };
-
-    // active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText
 
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value] = [];
     console.log(notes)
