@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //___________________import_________________
 
 import ELEMENTS from "../elements.js";
@@ -274,3 +275,5 @@ document.addEventListener('DOMContentLoaded',e=>{
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 })
+=======
+>>>>>>> settings
