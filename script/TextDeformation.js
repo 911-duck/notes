@@ -1,36 +1,3 @@
-let vocabulary = {
-  'брошюра': false,
-  'парашют':  false,
-  'жюри': false,
-  'Жюль': false
-}
-class JsonToggles {
-    constructor(arr, key) {
-        this.arr = arr
-        this.key = key
-    }
-    SaveItem(){
-        if(typeof this.arr == 'string'){
-            localStorage.setItem(this.key, this.arr)
-        }else{
-            localStorage.setItem(this.key, JSON.stringify(this.arr))
-        }
-    }
-    GetItem(){
-        if(JSON.parse(localStorage.getItem(this.key))[0] == '[' || '{'){
-        return JSON.parse(localStorage.getItem(this.key))
-        }
-        else{
-            return localStorage.getItem(this.key)
-        }
-    }
-     ToJson() {
-     return JSON.stringify(this.arr)
-    }
-    ToArr() {
-        return JSON.parse(this.arr)
-    }
-}
 class TextDeformation {
   constructor(str) {
     this.str = str;
@@ -89,6 +56,12 @@ MathInit() {
  return d;
  }
 grammaticalCorrect() {
+  let vocabulary = {
+  'брошюра': false,
+  'парашют':  false,
+  'жюри': false,
+  'Жюль': false
+}
         let d = this.str.split(' ');
         for (let i = 0; i < d.length; i++) {
             if (i > 0 && d[i - 1].length - 1 === '.') {
@@ -129,13 +102,4 @@ grammaticalCorrect() {
         return d.join(' ');
     }
 }
-
-const str = new TextDeformation('привет');
-let a = str.ListCreate(3, true)
-let b = str.ToUpper(true)
-console.log(a);
-console.log(b);
-const str2 = new TextDeformation('жы шы чю щю чя щя')
-let a2 = str2.grammaticalCorrect()
-console.log(a2)
-export default [TextDeformation, JsonToggles]
+export default TextDeformation
