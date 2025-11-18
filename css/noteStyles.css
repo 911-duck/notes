@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--menu_color);
-    right: -100%;
+    right: 0%;
     top: 0;
     display: flex;
     align-items: center;
@@ -64,4 +64,77 @@
     top: calc(var(--base_gap)/2);
     font-size: var(--header_font-size);
     transform: rotate(45deg);
+}
+
+.edit{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(var(--note_height) * 5 + ( var(--base_gap) * 4 ));
+    height: calc(--base_gap);
+    padding: var(--base_gap);
+    gap: var(--base_gap);
+    box-sizing: content-box;
+    background-color: var(--notes_color);
+    border-radius: var(--base_border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit_text,
+.edit_picture,
+.edit_draw,
+.edit_rubber,
+.edit_delete{
+    height: var(--note_height);
+    width: var(--note_height);
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
+    transition: all 0.3s ;
+    border-bottom: var(--menu_color) solid  0px;
+}
+
+.edit_text{
+    background-image: url("../img/free-icon-edit-3597088.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.edit_picture{
+    background-image: url("../img/free-icon-image-gallery-3342176.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.edit_draw{
+    background-image: url("../img/free-icon-pencil-1828911.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.edit_rubber{
+    background-image: url("../img/free-icon-eraser-7358765.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.edit_delete{
+    background-image: url("../img/free-icon-trash-can-6148091.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.edit_text:hover,
+.edit_picture:hover,
+.edit_draw:hover,
+.edit_rubber:hover,
+.edit_delete:hover{
+    border-bottom: var(--menu_color) solid  10px;
 }
