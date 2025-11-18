@@ -286,22 +286,33 @@ document.addEventListener('DOMContentLoaded', e => {
 })
 
 /* __________________text-editor______________ */
+function createTextBlock(){
+    const TEXT = document.querySelector('.ql-editor').innerHTML;
+    const TEXT_BLOCK = document.createElement("div");
+    TEXT_BLOCK.innerHTML = TEXT;
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(TEXT_BLOCK);
+    TEXT_BLOCK.classList.add("move-block")
+    TEXT_BLOCK.style.top = "80px"
+    TEXT_BLOCK.style.left = "80px"
+}
+
 function closeTextEditor(event){
-    ELEMENTS.EDIT_TEXT.addEventListener('click',openTextEditor)
-    ELEMENTS.EDIT_TEXT.removeEventListener('click',closeTextEditor)
+    ELEMENTS.ADD_TEXT.addEventListener('click',openTextEditor)
+    ELEMENTS.ADD_TEXT.removeEventListener('click',closeTextEditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
     ELEMENTS.TEXT_EDITOR.style.top = "150%"
+    createTextBlock();
 }
 
 function openTextEditor(event){
     console.log(document.querySelector('.ql-editor').innerHTML)
 
-    ELEMENTS.EDIT_TEXT.removeEventListener('click',openTextEditor)
-    ELEMENTS.EDIT_TEXT.addEventListener('click',closeTextEditor)
+    ELEMENTS.ADD_TEXT.removeEventListener('click',openTextEditor)
+    ELEMENTS.ADD_TEXT.addEventListener('click',closeTextEditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "60%"
     ELEMENTS.TEXT_EDITOR.style.top = "70%"
 }
 
-ELEMENTS.EDIT_TEXT.addEventListener('click',openTextEditor)
+ELEMENTS.ADD_TEXT.addEventListener('click',openTextEditor)

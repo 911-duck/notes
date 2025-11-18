@@ -43,7 +43,7 @@ export default ELEMENTS = {
     SETTINGS: document.querySelector('.settings'),
     LOADER: document.querySelector('.loaders-screen'),
     EDIT_BLOCK: document.querySelector('.edit'),
-    EDIT_TEXT: document.querySelector('.edit_text'),
+    ADD_TEXT: document.querySelector('.edit_add-text'),
     TEXT_EDITOR: document.querySelector('.editor'),
     TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor')
 };
