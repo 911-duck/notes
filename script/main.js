@@ -17,14 +17,14 @@ let active_header;
 
 //_________________open-notes________________
 
-function closeNote(event){
+function closeNote(event) {
     ELEMENTS.OPEN_NOTE.style.right = "-100%"
     ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ""
 }
 
-function openNote(obj){
+function openNote(obj) {
     ELEMENTS.OPEN_NOTE.style.right = "0px"
-    if(obj.note_txt.header != ""){
+    if (obj.note_txt.header != "") {
         let header = document.createElement("span")
         ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
         header.style = `
@@ -35,8 +35,8 @@ function openNote(obj){
         position: absolute;
         color: ${obj.note_styles.txt_color};
         z-index: 1;
-        ` 
-        header.innerText =  obj.note_txt.header
+        `
+        header.innerText = obj.note_txt.header
     } else {
         let header = document.createElement("span")
         ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
@@ -48,10 +48,10 @@ function openNote(obj){
         position: absolute;
         color: black;
         z-index: 1;
-        ` 
-        header.innerText =  obj.note_txt.header
+        `
+        header.innerText = obj.note_txt.header
     }
-    if(obj.note_txt.txt != ""){
+    if (obj.note_txt.txt != "") {
         let text = document.createElement("span")
         ELEMENTS.OPEN_NOTE_SCREEN.appendChild(text);
         text.style = `
@@ -62,8 +62,8 @@ function openNote(obj){
         position: absolute;
         color: ${obj.note_styles.txt_color};
         z-index: 1;
-        ` 
-        text.innerText =  obj.note_txt.txt
+        `
+        text.innerText = obj.note_txt.txt
     } else {
         let text = document.createElement("span")
         ELEMENTS.OPEN_NOTE_SCREEN.appendChild(text);
@@ -75,8 +75,8 @@ function openNote(obj){
         position: absolute;
         color: black;
         z-index: 1;
-        ` 
-        text.innerText =  obj.note_txt.txt
+        `
+        text.innerText = obj.note_txt.txt
     }
     if (obj.note_styles.picture_url != "") {
         let picture = document.createElement("div")
@@ -106,11 +106,11 @@ ELEMENTS.SETTINGS.addEventListener('click', e => {
 // ___________open-visual-settings___________
 
 ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
-    document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`); 
-    document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`); 
+    document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`);
+    document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`);
     document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
     document.querySelector(':root').style.setProperty("--txt_color", ` ${ELEMENTS.OPTION_MAIN_TXT_COLOR.value}`);
-    document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px` );
+    document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
     document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
 
     ELEMENTS.MENU_HEADER.innerText = ELEMENTS.OPTION_MAIN_HEADER.value;
@@ -131,23 +131,23 @@ ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
 
 // _______________create-header_____________
 
-function closeHeader(event){
+function closeHeader(event) {
     let element = 0
-    document.querySelectorAll(".note-header_main").forEach((el,i)=>{
-        if(el == event.target) element = document.querySelectorAll(".note-header_main")[i]
+    document.querySelectorAll(".note-header_main").forEach((el, i) => {
+        if (el == event.target) element = document.querySelectorAll(".note-header_main")[i]
     })
-    if(element == 0) return
+    if (element == 0) return
     element.removeEventListener('click', closeHeader);
     noteHeaderClose(element.parentElement);
     element.addEventListener('click', openHeader);
 }
 
-function openHeader(event){
+function openHeader(event) {
     let element = 0
-    document.querySelectorAll(".note-header_main").forEach((el,i)=>{
-        if(el == event.target) element = document.querySelectorAll(".note-header_main")[i]
+    document.querySelectorAll(".note-header_main").forEach((el, i) => {
+        if (el == event.target) element = document.querySelectorAll(".note-header_main")[i]
     })
-    if(element == 0) return
+    if (element == 0) return
     element.removeEventListener('click', openHeader);
     noteHeaderOpen(element.parentElement);
     element.addEventListener('click', closeHeader);
@@ -208,8 +208,8 @@ function createNote(note) {
     checkHeaderCount(active_header);
 
     console.log(note)
-    NOTE_TEMP.addEventListener('click',e=>{openNote(note)})
-    ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click',closeNote)
+    NOTE_TEMP.addEventListener('click', e => { openNote(note) })
+    ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
 
     active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
         delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
@@ -217,7 +217,7 @@ function createNote(note) {
         checkHeaderCount(active_header);
     }));
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
-    
+
     document.querySelector
 
     resetOptions();
@@ -253,7 +253,7 @@ function createNode(event) {
     console.log(notes)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_txt)
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value].push(note_styles)
-    let noteOBJ = {note_txt:note_txt,note_styles:note_styles}
+    let noteOBJ = { note_txt: note_txt, note_styles: note_styles }
     createNote(noteOBJ);
     closeNoteSettings();
 }
@@ -269,8 +269,39 @@ function openNoteSettings(event) {
     ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
-document.addEventListener('DOMContentLoaded',e=>{
-    ELEMENTS.LOADER.style.display ="none"
-    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
+document.addEventListener('DOMContentLoaded', e => {
+    ELEMENTS.LOADER.style.display = "none"
+    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
+    // start api
+   const quill = new Quill('#editor', {
+    modules: {
+      syntax: true,
+      toolbar: '#toolbar-container',
+    },
+    placeholder: 'Compose an epic...',
+    theme: 'snow',
+  });
+
 })
+
+/* __________________text-editor______________ */
+function closeTextEditor(event){
+    ELEMENTS.EDIT_TEXT.addEventListener('click',openTextEditor)
+    ELEMENTS.EDIT_TEXT.removeEventListener('click',closeTextEditor)
+
+    ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
+    ELEMENTS.TEXT_EDITOR.style.top = "150%"
+}
+
+function openTextEditor(event){
+    console.log(document.querySelector('.ql-editor').innerHTML)
+
+    ELEMENTS.EDIT_TEXT.removeEventListener('click',openTextEditor)
+    ELEMENTS.EDIT_TEXT.addEventListener('click',closeTextEditor)
+
+    ELEMENTS.EDIT_BLOCK.style.bottom = "60%"
+    ELEMENTS.TEXT_EDITOR.style.top = "70%"
+}
+
+ELEMENTS.EDIT_TEXT.addEventListener('click',openTextEditor)
