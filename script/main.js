@@ -286,14 +286,48 @@ document.addEventListener('DOMContentLoaded', e => {
 })
 
 /* __________________text-editor______________ */
+let activeBlock;
+let mouseXY = {
+    X: 0,
+    Y: 0
+}
+
+function unactive(event){
+    activeBlock.style.border = "none"
+    document.querySelector(".open-note_screen").removeEventListener("mousemove",move)
+    activeBlock.addEventListener("mouseup",unactive)
+    activeBlock.addEventListener("mousedown",active)
+}
+
+function move(event){
+    let x = mouseXY.X - event.clientX
+    let y = mouseXY.Y - event.clientY
+    console.log(x,y)
+    activeBlock.style.top =  activeBlock.offsetTop - y + "px"
+    activeBlock.style.left = activeBlock.offsetLeft - x + "px"
+    mouseXY.X = event.clientX
+    mouseXY.Y = event.clientY
+}
+
+function active(event){
+    activeBlock = this
+    activeBlock.style.border = "white solid 2px"
+    document.querySelector(".open-note_screen").addEventListener("mousemove",move)
+    activeBlock.addEventListener("mouseup",unactive)
+    mouseXY.X = event.clientX
+    mouseXY.Y = event.clientY
+    console.log(activeBlock,mouseXY.X,mouseXY.Y)
+}
+
 function createTextBlock(){
     const TEXT = document.querySelector('.ql-editor').innerHTML;
     const TEXT_BLOCK = document.createElement("div");
     TEXT_BLOCK.innerHTML = TEXT;
     ELEMENTS.OPEN_NOTE_SCREEN.appendChild(TEXT_BLOCK);
-    TEXT_BLOCK.classList.add("move-block")
+    TEXT_BLOCK.classList.add(`move-block`)
     TEXT_BLOCK.style.top = "80px"
     TEXT_BLOCK.style.left = "80px"
+    TEXT_BLOCK.addEventListener('mousedown',active)
 }
 
 function closeTextEditor(event){
