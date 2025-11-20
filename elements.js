@@ -38,12 +38,18 @@ export default ELEMENTS = {
     BUTTON_TECHNICAL_SETTINGS: document.querySelector('.settings__technical'),
     BUTTON_VISUAL_SETTINGS: document.querySelector('.settings__visual'),
     BUTTON_SUBMIT_HEADER_CREATE: document.querySelector(".add-header-screen_submit"),
+    BUTTON_SUBMIT_PICTURE_CREATE_DRAFT: document.querySelector(".picture-editor_submit"),
+    BUTTON_SUBMIT_PICTURE_CREATE: document.querySelector(".picture-editor_submit-create"),
     BUTTON_ADD_NOTE: document.querySelectorAll(".note-header_note-add"),
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),
     LOADER: document.querySelector('.loaders-screen'),
     EDIT_BLOCK: document.querySelector('.edit'),
     ADD_TEXT: document.querySelector('.edit_add-text'),
+    ADD_PICTURE: document.querySelector(".edit_picture"),
+    EDIT_TEXT: document.querySelector('.edit_text'),
+    PICTURE_EDITOR: document.querySelector('.picture-editor'),
     TEXT_EDITOR: document.querySelector('.editor'),
-    TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor')
+    TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor'),
+    DELETE_ACTIVE_BLOCK: document.querySelector('.edit_delete')
 };

@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--menu_color);
-    right: 0%;
+    right: -100%;
     top: 0;
     display: flex;
     align-items: center;
@@ -182,14 +182,63 @@
     position: absolute;
 }
 
-.ql-size-huge{
-    font-size: larger;
+.picture-editor{
+    z-index: 3;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    padding: var(--base_gap);
+    background-color: var(--notes_color);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--base_gap);
+    border-radius: var(--base_border-radius);
+    transition: var(--transition);
 }
 
-.ql-size-large{
-    font-size: large;
+.picture-editor_option{
+    width: 100%;
+    height: 10%;
+    gap: var(--base_gap);
 }
 
-.ql-size-small{
-    font-size: small;
+.picture-editor_option-width,
+.picture-editor_option-height{
+    width: 20%;
+}
+
+.picture-editor_test{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
+}
+
+.picture-editor_submit,
+.picture-editor_submit-create{
+    width: 30%;
+    height: 90%;
+    background-color: var(--button_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
+}
+
+
+.test_picture{
+    width: 100px;
+    height: 100px;
+    background-image: url("../img/free-icon-image-gallery-3342176.png");
+    background-size: cover;
 }
