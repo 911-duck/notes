@@ -490,9 +490,93 @@ html,body{
 }
 
 /* ______________settings_____________ */
+.settings-screen {
+    position: absolute;
+    color: var(--txt_color);
 
-/* code here */
+}
 
+.settings {
+    width: 19%;
+    height: 100%;
+    background-color: var(--notes_color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--base_gap);
+    border-radius: 0 var(--base_border-radius) var(--base_border-radius) 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 4;
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+.settings__visual,
+.settings__technical,
+.settings__shortcuts {
+    color: var(--txt_color);
+    width: 70%;
+    height: 5%;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.settings__header {
+    color: var(--txt_color);
+    width: 90%;
+    text-align: center;
+    font-size: 45px;
+}
+/* settings-shorcuts */
+.shortcuts-settings-screen{
+    position: absolute;
+    transform: translateX(120%);
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: calc(var(--base_border-radius)*2);
+    background-color: var(--notes_color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: var(--transition);
+    z-index: 3;
+}
+.shortcuts-settings-exit{
+    position: absolute;
+    right: calc(var(--base_gap));
+    top: calc(var(--base_gap)/2);
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
+}
+.option-shortcuts{
+    font-size: var(--text_font-size);
+    width: 100%;
+    height: calc(14% - var(--base_gap));
+    display: flex;
+    flex-direction: row;
+    color: var(--txt_color);
+    align-items: center;
+    justify-content: space-between;
+}
+.button-shortcuts{
+    background-color: var(--button_color);
+    border: 20px solid var(--button_color);
+    border-radius: var(--base_border-radius);
+    position: relative;
+    right: 50px;
+}
 
 /*
  <div class="visual-settings-screen ">

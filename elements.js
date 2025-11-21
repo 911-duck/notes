@@ -42,4 +42,10 @@ export default ELEMENTS = {
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),
     LOADER: document.querySelector('.loaders-screen'),
+    SHORTCUTS: document.querySelector('.shortcuts-settings-screen'),
+    SHORTCUTS_EXIT: document.querySelector('.shortcuts-settings-exit'),
+    BUTTON_SHORTCUTSV1: document.querySelector('.button-shortcutsV1'),
+    BUTTON_SHORTCUTSV2: document.querySelector('.button-shortcutsV2'),
+    BUTTON_SHORTCUTSV3: document.querySelector('.button-shortcutsV3'),
+    BUTTON_SHORTCUTSV4: document.querySelector('.button-shortcutsV4'),
 };
