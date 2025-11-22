@@ -327,22 +327,22 @@ ELEMENTS.BUTTON_SHORTCUTSV4.addEventListener('click', () => {
 });
 
 // ___________use-shortcuts__________
-window.addEventListener('keydown', (e) => {
-    if (OpenSettings === e.code && e.altKey) {
-        e.preventDefault();
+window.addEventListener('keydown', (ev) => {
+    if (OpenSettings === ev.code && ev.altKey) {
+        ev.preventDefault();
         ELEMENTS.SETTINGS.style.transform = "translateX(0px)";
     }
-    else if (OpenShortcuts === e.code && e.altKey) {
-        e.preventDefault();
+    else if (OpenShortcuts === ev.code && ev.altKey) {
+        ev.preventDefault();
         ELEMENTS.SHORTCUTS.style.transform = "translateX(0px)";
     }
-    else if (OpenVisual === e.code && e.altKey) {
-        e.preventDefault();
+    else if (OpenVisual === ev.code && ev.altKey) {
+        ev.preventDefault();
     ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
     }
-    else if (OpenNoteCreate === e.code && e.altKey) {
-        e.preventDefault();
+    else if (OpenNoteCreate === ev.code && ev.altKey) {
+        ev.preventDefault();
          ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
     }
 });
