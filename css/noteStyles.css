@@ -1,3 +1,14 @@
+/* _____________base-struct___________ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* ____________visual-settings__________ */
+
 :root {
     --base_gap: 20px;
     --menu_color: #ffe4c4;
@@ -13,57 +24,337 @@
     --transition: all 1s;
 }
 
-.open-note{
-    position: absolute;
+html,
+body {
     width: 100%;
     height: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     background-color: var(--menu_color);
-    right: -100%;
-    top: 0;
+}
+
+/* _______________main_____________ */
+
+.main {
+    width: 80%;
+    height: 100%;
+    padding: var(--base_gap);
+    gap: var(--base_gap);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-image: url("../img/notes.png");
+    background-position: 50% 50%;
+    background-size: 20%;
+    background-repeat: no-repeat;
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+/* ______________header____________ */
+
+.menu {
+    padding: var(--base_gap);
+    width: 100%;
+    height: calc(20% - var(--base_gap));
+    border-bottom: var(--txt_color) solid var(--border_weight);
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: space-between;
+}
+
+.menu_header {
+    position: absolute;
+    left: calc(var(--setting-icon_size) + var(--base_gap) *3);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--header_font-size);
+    color: var(--txt_color);
+}
+
+.menu_add-note-header {
+    font-size: var(--header_font-size);
+    color: var(--txt_color);
+}
+
+.setting-icon {
+    width: var(--setting-icon_size);
+    height: var(--setting-icon_size);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.setting-icon_block1,
+.setting-icon_block2,
+.setting-icon_block3 {
+    width: 100%;
+    height: calc(var(--border_weight) * 4);
+    background-color: var(--txt_color);
+    border-radius: var(--base_border-radius);
+}
+
+/* ____________notes__________ */
+
+.main_note-headers {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: var(--base_gap);
+    color: var(--txt_color);
+}
+
+.note-header {
+    gap: calc(var(--base_gap)*2);
+    width: 100%;
+    height: calc(var(--note_height) + var(--base_gap) * 2);
+    /* height: calc(var(--note_height) * 8 + var(--base_gap) * 2); */
+    background-color: var(--notes_color);
+    border-radius: var(--base_border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: var(--base_gap) calc(var(--base_gap) * 2);
+    overflow: hidden;
+    overflow-y: auto;
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+.note-header_main {
+    width: 100%;
+    height: var(--note_height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    color: var(--txt_color);
+}
+
+.note-header_note-list {
+    width: 100%;
+    height: auto;
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: var(--base_gap);
+    color: var(--txt_color);
+    transition: all 1s;
+}
+
+.note-header_note-child {
+    width: 100%;
+    height: var(--note_height);
+    border-radius: var(--base_border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--base_gap);
+    color: var(--txt_color);
+    background-color: var(--button_color);
+}
+
+.note-header_header-child {
+    font-size: var(--text_font-size);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--txt_color);
+}
+
+.note-header_note-add {
+    font-size: var(--text_font-size);
+    background-color: blue;
+    border-radius: var(--base_border-radius);
+    padding: calc(var(--base_gap) / 2);
+    color: white;
+}
+
+.note-header_name {
+    font-size: var(--text_font-size);
+    color: var(--txt_color);
+}
+
+.note-header_headers {
+    width: 200px;
+    height: var(--note_height);
+    font-size: var(--text_font-size);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 1s;
+    background-color: var(--button_color);
+    color: var(--txt_color);
+    border-radius: var(--base_border-radius);
 }
 
-.open-note_screen{
-    position: relative;
-    width: 100%;
+.note-header_delete-child {
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
+}
+
+/* ________note-header-settings_______ */
+
+.note-settings-screen {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: calc(var(--base_border-radius)*2);
+    transform: translateY(120%);
+    background-color: var(--notes_color);
+    color: var(--txt_color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: var(--transition);
+}
+
+.note_settings {
+    color: var(--txt_color);
+    width: calc(60% - var(--base_gap));
     height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+}
+
+.note_create {
+    width: 40%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: var(--txt_color);
+}
+
+.note-settings_header {
+    font-size: var(--header_font-size);
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    color: var(--txt_color);
+    justify-content: center;
+    border-bottom: var(--border_weight) solid var(--txt_color);
+}
+
+.option {
+    font-size: var(--text_font-size);
+    width: 100%;
+    height: calc(14% - var(--base_gap));
+    display: flex;
+    flex-direction: row;
+    color: var(--txt_color);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.option_input {
+    height: 80%;
+    width: 40%;
+    background-color: var(--button_color);
+    outline: none;
+    border: none;
+    border-radius: var(--base_border-radius);
+    text-align: center;
+    color: var(--txt_color);
+
+}
+
+.example {
     background-color: var(--menu_color);
-    transition: all 1s;
+    background-size: contain;
+    width: 500px;
+    height: 280px;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 10px;
+    border-radius: var(--base_border-radius);
+    transition: var(--transition);
 }
 
-.open-note_header{
-    top: 30px;
-    left: calc(50%);
-    transform: translateX(-50%);
-    position: absolute;
-    color: black;
-    font-size: 20px;
+.example_txt {
+    width: 100%;
 }
 
-.open-note_txt{
-    position: absolute;
-    top: 80px;
-    left: 30px;
-    color: black;
-    font-size: 20px;
-}
-
-.open-note_exit{
-    width: var(--header_font-size);
-    height: var(--header_font-size);
-    position: absolute;
+.note_submit,
+.note_create-example {
+    width: 220px;
+    height: 50px;
     background-color: var(--button_color);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    left: calc(var(--base_gap));
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
+}
+
+.note_exit {
+    position: absolute;
+    right: calc(var(--base_gap) * 2);
+    top: var(--base_gap);
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
+    color: var(--txt_color);
+}
+
+.option_input-color {
+    height: 80%;
+    width: 40%;
+    background-color: var(--notes_color);
+    outline: none;
+    border: none;
+    border-radius: var(--base_border-radius);
+    text-align: center;
+}
+
+/* __________header-add-screen________ */
+
+.add-header-screen {
+    width: 500px;
+    height: 300px;
+    background-color: var(--button_color);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-500%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: var(--base_border-radius);
+    padding: var(--base_gap);
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+.add-header-screen_exit {
+    position: absolute;
+    right: calc(var(--base_gap));
     top: calc(var(--base_gap)/2);
     font-size: var(--header_font-size);
     transform: rotate(45deg);
+<<<<<<< HEAD
 }
 
 .edit{
@@ -137,4 +428,309 @@
 .edit_rubber:hover,
 .edit_delete:hover{
     border-bottom: var(--menu_color) solid  10px;
+=======
+    color: var(--txt_color);
+
+}
+
+.add-header-screen_submit {
+    width: 220px;
+    height: 50px;
+    background-color: var(--notes_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
+    color: var(--txt_color);
+
+}
+
+.add-header-screen_option {
+    font-size: var(--text_font-size);
+    width: 80%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--txt_color);
+    
+}
+
+.add-header-screen_input {
+    height: 80%;
+    width: 40%;
+    background-color: var(--notes_color);
+    outline: none;
+    border: none;
+    border-radius: var(--base_border-radius);
+    text-align: center;
+}
+
+/* ___________visual-settings_________ */
+
+.visual-settings-screen {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border-radius: calc(var(--base_border-radius)*2);
+    transform: translateY(-120%);
+    background-color: var(--notes_color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: var(--transition);
+    z-index: 3;
+    color: var(--txt_color);
+
+}
+
+.visual-settings-settings {
+    width: calc(50% - var(--base_gap));
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    color: var(--txt_color);
+
+}
+
+.visual-settings_create {
+    width: 60%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: var(--txt_color);
+
+}
+
+.visual-settings_header {
+    width: 100%;
+    text-align: center;
+    color: var(--txt_color);
+
+}
+
+.visual-settings_example {
+    background-color: var(--menu_color);
+    background-size: contain;
+    position: relative;
+    width: 500px;
+    height: 100%;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 10px;
+    border-radius: var(--base_border-radius);
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+.visual-settings_head {
+    font-size: 150px;
+    position: absolute;
+    left: calc(var(--base_gap)*2);
+    bottom: calc(var(--base_gap)*3);
+    color: var(--txt_color);
+
+}
+
+.visual-settings_txt {
+    font-size: 50px;
+    position: absolute;
+    left: calc(var(--base_gap)*2);
+    bottom: calc(var(--base_gap)*2);
+}
+
+.visual-settings_button-w1 {
+    position: absolute;
+    right: calc(var(--base_gap)*2);
+    bottom: calc(var(--base_gap)*2);
+    width: 100px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--notes_color);
+    border-radius: var(--base_border-radius);
+    background-color: var(--button_color);
+}
+
+.visual-settings_button-w2 {
+    position: absolute;
+    right: calc(var(--base_gap)*2);
+    bottom: calc(var(--base_gap)*3 + 50px);
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--notes_color);
+    border-radius: var(--base_border-radius);
+    background-color: var(--button_color);
+}
+
+.visual-settings_button-w3 {
+    position: absolute;
+    right: calc(var(--base_gap)*2);
+    bottom: calc(var(--base_gap)*4 + 100px);
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--notes_color);
+    border-radius: var(--base_border-radius);
+    background-color: var(--button_color);
+}
+
+.visual-settings_exit {
+    position: absolute;
+    right: calc(var(--base_gap));
+    top: calc(var(--base_gap)/2);
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
+}
+
+.visual-settings_window {
+    position: relative;
+    top: calc(var(--base_gap));
+    border-radius: var(--base_border-radius);
+    width: calc(100% - var(--base_gap)*3);
+    height: 40%;
+    background-color: var(--notes_color);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: calc(var(--base_gap)/2);
+    padding: var(--base_gap);
+}
+
+.visual-settings_exit-example {
+    position: absolute;
+    right: calc(var(--base_gap));
+    top: calc(var(--base_gap)/2);
+    font-size: calc(var(--header_font-size)/2);
+    transform: rotate(45deg);
+}
+
+.visual-settings_txt-example {
+    width: 60%;
+    height: 7%;
+    background-color: var(--menu_color);
+    
+}
+
+.visual-settings_picture {
+    position: absolute;
+    bottom: var(--base_gap);
+    width: 30%;
+    height: 40%;
+    background-color: var(--menu_color);
+}
+
+.visual-settings_sun {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: var(--notes_color);
+}
+
+.visual-settings_mountain {
+    height: 100%;
+    width: 60%;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    left: 4px;
+    bottom: 5px;
+    color: #fff;
+}
+
+.visual-settings_mountain::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: 50px solid transparent;
+    color: var(--txt_color);
+
+    border-bottom: 50px solid var(--notes_color);
+}
+
+.visual-settings_submit {
+    width: 220px;
+    height: 50px;
+    margin-left: calc(50% - 110px);
+    background-color: var(--button_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
+}
+
+/* ______________settings_____________ */
+
+.settings-screen {
+    position: absolute;
+    color: var(--txt_color);
+
+}
+
+.settings {
+    width: 19%;
+    height: 100%;
+    background-color: var(--notes_color);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--base_gap);
+    border-radius: 0 var(--base_border-radius) var(--base_border-radius) 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 4;
+    transition: var(--transition);
+    color: var(--txt_color);
+}
+
+.settings__visual,
+.settings__technical,
+.settings__shortcuts {
+    color: var(--txt_color);
+    width: 70%;
+    height: 5%;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.settings__header {
+    color: var(--txt_color);
+    width: 90%;
+    text-align: center;
+    font-size: 45px;
+>>>>>>> ff109ddf390ac677a5f4774ef5f95861ad35b465
 }

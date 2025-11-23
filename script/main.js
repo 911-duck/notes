@@ -9,11 +9,21 @@ import noteHeaderClose from "./noteHeaderClose.js";
 import checkHeaderCount from "./checkHeaderCount.js";
 import defaultVisualSettings from "./default_visual_settings.js";
 import openLoading from "./openLoading.js";
+import JsonToggles from "./JsonToggles.js";
+import TextDeformation from "./TextDeformation.js"
 
 // __________________values__________________
 
 let notes = {};
 let active_header;
+let OpenSettings =  '';
+let OpenShortcuts=  '';
+let OpenVisual =  '';
+let OpenNoteCreate =  '';
+let OpenTechnical =  '';
+let version = '6.41';
+let developers = 'Бирюк Евгений, Шитенков Кирилл';
+let data = 'Nov 9, 2025';
 
 //_________________open-notes________________
 
@@ -102,7 +112,6 @@ ELEMENTS.SETTINGS_ICON.addEventListener('click', e => {
 ELEMENTS.SETTINGS.addEventListener('click', e => {
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
 })
-
 // ___________open-visual-settings___________
 
 ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
@@ -274,3 +283,115 @@ document.addEventListener('DOMContentLoaded',e=>{
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings)); 
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 })
+//  ___________open-shortcuts-settings___________
+
+ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click',(e)=>{
+    ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
+})
+ELEMENTS.SHORTCUTS_EXIT.addEventListener('click',(e)=>{
+    ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
+})
+// ___________add-shortcuts___________
+function listenerRemoveV1(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV1.innerText = `текущая настройка: 'Alt + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV1);
+    OpenSettings = e.code;
+}
+
+function listenerRemoveV2(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV2.innerText = `текущая настройка: 'Alt + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV2);
+    OpenShortcuts = e.code;
+}
+
+function listenerRemoveV3(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV3.innerText = `текущая настройка: 'Alt + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV3);
+    OpenVisual = e.code;
+}
+
+function listenerRemoveV4(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV4.innerText = `текущая настройка: 'Alt + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV4);
+    OpenNoteCreate = e.code;
+}
+function listenerRemoveV5(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV5.innerText = `текущая настройка: 'Alt + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV5);
+    OpenTechnical = e.code;
+}
+
+ELEMENTS.BUTTON_SHORTCUTSV1.addEventListener('click', () => {
+    window.addEventListener('keydown', listenerRemoveV1);
+});
+
+ELEMENTS.BUTTON_SHORTCUTSV2.addEventListener('click', () => {
+    window.addEventListener('keydown', listenerRemoveV2);
+});
+
+ELEMENTS.BUTTON_SHORTCUTSV3.addEventListener('click', () => {
+    window.addEventListener('keydown', listenerRemoveV3);
+});
+
+ELEMENTS.BUTTON_SHORTCUTSV4.addEventListener('click', () => {
+    window.addEventListener('keydown', listenerRemoveV4);
+});
+ELEMENTS.BUTTON_SHORTCUTSV5.addEventListener('click', () => {
+    window.addEventListener('keydown', listenerRemoveV5);
+});
+// ___________use-shortcuts__________
+window.addEventListener('keydown', (ev) => {
+    if (OpenSettings === ev.code && ev.altKey) {
+        ev.preventDefault();
+        ELEMENTS.SETTINGS.style.transform = "translateX(0px)";
+    }
+    else if (OpenShortcuts === ev.code && ev.altKey) {
+        ev.preventDefault();
+        ELEMENTS.SHORTCUTS.style.transform = "translateX(0px)";
+    }
+    else if (OpenVisual === ev.code && ev.altKey) {
+        ev.preventDefault();
+    ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
+    ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
+    }
+    else if (OpenNoteCreate === ev.code && ev.altKey) {
+        ev.preventDefault();
+         ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
+    }
+    else if (OpenTechnical === ev.code && ev.altKey) {
+        ev.preventDefault();
+        ELEMENTS.TECHNICAL.style.transform = "translateY(0px)";
+    }
+});
+//_________open-technical__________
+ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click',(e)=>{
+    ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
+})
+ELEMENTS.TECHNICAL_EXIT.addEventListener('click',(e)=>{
+    ELEMENTS.TECHNICAL.style.transform = "translateY(130%)"
+})
+//__________use-technical_________
+ELEMENTS.BUTTON_TECHNICALV1.addEventListener('click', () => {
+    ELEMENTS.TECHNICAL_SCREEN.innerText = version
+    ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    setTimeout(() => {
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+    }, 2000);
+});
+ELEMENTS.BUTTON_TECHNICALV2.addEventListener('click', () => {
+    ELEMENTS.TECHNICAL_SCREEN.innerText = developers
+    ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '35px'
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    setTimeout(() => {
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+    }, 2000);
+});
+ELEMENTS.BUTTON_TECHNICALV3.addEventListener('click', () => {
+    ELEMENTS.TECHNICAL_SCREEN.innerText = data
+        ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    setTimeout(() => {
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+    }, 2000);
+});
