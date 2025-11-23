@@ -524,9 +524,11 @@ document.addEventListener('DOMContentLoaded', e => {
 //  ___________open-shortcuts-settings___________
 
 ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click',(e)=>{
+    ELEMENTS.MAIN.style.transform = `translateX(-${document.querySelector("body").offsetWidth}px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
 })
 ELEMENTS.SHORTCUTS_EXIT.addEventListener('click',(e)=>{
+    ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
 })
 // ___________add-shortcuts___________
@@ -603,9 +605,11 @@ window.addEventListener('keydown', (ev) => {
 });
 //_________open-technical__________
 ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click',(e)=>{
+    ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
 })
 ELEMENTS.TECHNICAL_EXIT.addEventListener('click',(e)=>{
+    ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(130%)"
 })
 //__________use-technical_________
