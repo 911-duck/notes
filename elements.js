@@ -1,7 +1,7 @@
 let ELEMENTS = {};
 
 export default ELEMENTS = {
-    MAIN: document.querySelector(".main"),
+     MAIN: document.querySelector(".main"),
     HEADERS: document.querySelector(".note-headers"),
     OPEN_NOTE: document.querySelector(".open-note"),
     OPEN_NOTE_SCREEN: document.querySelector(".open-note_screen"),
@@ -44,7 +44,6 @@ export default ELEMENTS = {
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),
     LOADER: document.querySelector('.loaders-screen'),
-<<<<<<< HEAD
     SHORTCUTS: document.querySelector('.shortcuts-settings-screen'),
     SHORTCUTS_EXIT: document.querySelector('.shortcuts-settings-exit'),
     BUTTON_SHORTCUTSV1: document.querySelector('.button-shortcutsV1'),
@@ -57,9 +56,8 @@ export default ELEMENTS = {
     BUTTON_TECHNICALV1: document.querySelector('.button-technicalV1'),
     BUTTON_TECHNICALV2: document.querySelector('.button-technicalV2'),
     BUTTON_TECHNICALV3: document.querySelector('.button-technicalV3'),
-    TECHNICAL_SCREEN: document.querySelector('.button-screen')
-=======
-    EDIT_BLOCK: document.querySelector('.edit'),
+    TECHNICAL_SCREEN: document.querySelector('.button-screen'),
+     EDIT_BLOCK: document.querySelector('.edit'),
     ADD_TEXT: document.querySelector('.edit_add-text'),
     ADD_PICTURE: document.querySelector(".edit_picture"),
     EDIT_TEXT: document.querySelector('.edit_text'),
@@ -67,5 +65,4 @@ export default ELEMENTS = {
     TEXT_EDITOR: document.querySelector('.editor'),
     TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor'),
     DELETE_ACTIVE_BLOCK: document.querySelector('.edit_delete')
->>>>>>> text-editor
 };

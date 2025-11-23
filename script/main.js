@@ -330,6 +330,7 @@ ELEMENTS.SETTINGS_ICON.addEventListener('click', e => {
 ELEMENTS.SETTINGS.addEventListener('click', e => {
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
 })
+
 // ___________open-visual-settings___________
 
 ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
@@ -509,7 +510,16 @@ document.addEventListener('DOMContentLoaded', e => {
     ELEMENTS.LOADER.style.display = "none"
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
-<<<<<<< HEAD
+    // start api
+    const quill = new Quill('#editor', {
+        modules: {
+            syntax: true,
+            toolbar: '#toolbar-container',
+        },
+        placeholder: 'Compose an epic...',
+        theme: 'snow',
+    });
+
 })
 //  ___________open-shortcuts-settings___________
 
@@ -623,17 +633,3 @@ ELEMENTS.BUTTON_TECHNICALV3.addEventListener('click', () => {
         ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
     }, 2000);
 });
-=======
-    // start api
-    const quill = new Quill('#editor', {
-        modules: {
-            syntax: true,
-            toolbar: '#toolbar-container',
-        },
-        placeholder: 'Compose an epic...',
-        theme: 'snow',
-    });
-
-})
-
->>>>>>> text-editor
