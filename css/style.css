@@ -577,7 +577,64 @@ html,body{
     position: relative;
     right: 50px;
 }
-
+/* technical */
+.technical-settings-screen{
+    position: absolute;
+    transform: translateY(120%);
+    width: 80%;
+    height: 80%;
+    border-radius: calc(var(--base_border-radius)*2);
+    background-color: var(--notes_color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: var(--transition);
+    z-index: 3;
+}
+.technical-settings-exit{
+    position: absolute;
+    right: calc(var(--base_gap));
+    top: calc(var(--base_gap)/2);
+    font-size: var(--header_font-size);
+    transform: rotate(45deg);
+}
+.option-technical{
+    font-size: var(--text_font-size);
+    width: 100%;
+    height: calc(14% - var(--base_gap));
+    display: flex;
+    flex-direction: row;
+    color: var(--txt_color);
+    align-items: center;
+    justify-content: space-between;
+}
+.button-technical{
+    background-color: var(--button_color);
+    border: 20px solid var(--button_color);
+    border-radius: var(--base_border-radius);
+    position: relative;
+    right: 50px;
+}
+.button-screen{
+    position: absolute;
+    transform: translateX(330%);
+    width: 30%;
+    height: 15%;
+    border-radius: calc(var(--base_border-radius)*2);
+    background-color: var(--menu_color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    transition: var(--transition);
+    z-index: 3;
+    font-size: 55px;
+}
 /*
  <div class="visual-settings-screen ">
         <div class="visual-settings-settings">

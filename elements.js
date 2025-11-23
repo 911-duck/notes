@@ -48,4 +48,11 @@ export default ELEMENTS = {
     BUTTON_SHORTCUTSV2: document.querySelector('.button-shortcutsV2'),
     BUTTON_SHORTCUTSV3: document.querySelector('.button-shortcutsV3'),
     BUTTON_SHORTCUTSV4: document.querySelector('.button-shortcutsV4'),
+    BUTTON_SHORTCUTSV5: document.querySelector('.button-shortcutsV5'),
+    TECHNICAL: document.querySelector('.technical-settings-screen'),
+    TECHNICAL_EXIT: document.querySelector('.technical-settings-exit'),
+    BUTTON_TECHNICALV1: document.querySelector('.button-technicalV1'),
+    BUTTON_TECHNICALV2: document.querySelector('.button-technicalV2'),
+    BUTTON_TECHNICALV3: document.querySelector('.button-technicalV3'),
+    TECHNICAL_SCREEN: document.querySelector('.button-screen')
 };
