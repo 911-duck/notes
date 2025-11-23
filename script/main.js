@@ -40,7 +40,9 @@ function move(event) {
 
 function active(event) {
     activeBlock = this
+    activePBlock = 0
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
+    document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
     activeBlock.style.border = "white solid 2px"
     document.querySelector(".open-note_screen").addEventListener("mousemove", move)
     activeBlock.addEventListener("mouseup", unactive)
@@ -104,6 +106,7 @@ function resetActiveBlock(event) {
     activeBlock = 0;
     activePBlock = 0;
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
+    document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
 }
 
 function deleteActiveBlock(event) {
@@ -118,7 +121,7 @@ function deleteActiveBlock(event) {
 let url
 let width
 let height
-let activePBlock
+let activePBlock = 0
 
 function unactiveP(event) {
     document.querySelector(".open-note_screen").removeEventListener("mousemove", moveP)
@@ -136,12 +139,27 @@ function moveP(event) {
     mouseXY.Y = event.clientY
 }
 
+// function shortcutsTools(event) {
+//     console.log(event.code,window.getComputedStyle(this).zIndex,window.getComputedStyle(activePBlock).zIndex)
+//     if (activeBlock != 0) {
+//         if (event.code == "KeyU") activeBlock.style.zIndex = window.getComputedStyle(activeBlock).zIndex + 1
+//         if (event.code == "KeyD") activeBlock.style.zIndex = window.getComputedStyle(activeBlock).zIndex - 1
+//     }
+//     if (activePBlock != 0) {
+//         if (event.code == "KeyU") activePBlock.style.zIndex = window.getComputedStyle(activePBlock).zIndex + 1
+//         if (event.code == "KeyD") activePBlock.style.zIndex = window.getComputedStyle(activePBlock).zIndex - 1
+//     }
+// }
+
 function activeP(event) {
     activePBlock = this
+    activeBlock = 0
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
+    document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
     activePBlock.style.border = "white solid 2px"
     document.querySelector(".open-note_screen").addEventListener("mousemove", moveP)
     activePBlock.addEventListener("mouseup", unactiveP)
+    // document.addEventListener('keydown', shortcutsTools)
     mouseXY.X = event.clientX
     mouseXY.Y = event.clientY
     console.log(activePBlock, mouseXY.X, mouseXY.Y)
@@ -153,7 +171,7 @@ function createPictureBlock(event) {
     PICTURE_BLOCK.style.backgroundSize = `cover`
     PICTURE_BLOCK.style.width = `${width}px`
     PICTURE_BLOCK.style.height = `${height}px`
-    PICTURE_BLOCK.classList.add(`move-block`)
+    PICTURE_BLOCK.classList.add(`move-p-block`)
     ELEMENTS.OPEN_NOTE_SCREEN.appendChild(PICTURE_BLOCK);
     PICTURE_BLOCK.style.top = "80px"
     PICTURE_BLOCK.style.left = "80px"
@@ -187,12 +205,14 @@ function addPicture(event) {
     ELEMENTS.PICTURE_EDITOR.style.top = "70%"
 }
 
+
 ELEMENTS.DELETE_ACTIVE_BLOCK.addEventListener('click', deleteActiveBlock)
 ELEMENTS.OPEN_NOTE_SCREEN.addEventListener('dblclick', resetActiveBlock)
 
 ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
 ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
 ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+// document.addEventListener('keydown', shortcutsTools)
 
 //_________________open-notes________________
 
@@ -201,12 +221,13 @@ let active_note;
 function closeNote(event) {
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].innerHtml = ELEMENTS.OPEN_NOTE_SCREEN.innerHTML
     ELEMENTS.OPEN_NOTE.style.right = "-100%"
-    ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ""
+    ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ``
     console.log(notes)
 }
 
 function openNote(obj) {
     active_note = obj.note_txt.header
+    console.log(active_note)
     if (obj.innerHtml == 0) {
         ELEMENTS.OPEN_NOTE.style.right = "0px"
         if (obj.note_txt.header != "") {
@@ -284,8 +305,9 @@ function openNote(obj) {
         }
     } else {
         ELEMENTS.OPEN_NOTE.style.right = "0px"
-
         ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = obj.innerHtml
+        document.querySelectorAll('.move-p-block').forEach(el => el.addEventListener('mousedown', activeP));
+        document.querySelectorAll('.move-block').forEach(el => el.addEventListener('mousedown', active));
     }
 }
 
@@ -405,9 +427,11 @@ function createNote(note) {
     active_note = name
 
     console.log(note)
-    NOTE_TEMP.addEventListener('click', e => { 
-        console.log(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note])
-        openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note]) })
+    NOTE_TEMP.addEventListener('click', e => {
+        let el = NOTE_TEMP
+        console.log(el)
+        openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][el.querySelector(".note-header_header-child").innerText])
+    })
     ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
 
     active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
@@ -452,9 +476,11 @@ function createNode(event) {
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"] = note_txt
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_styles"] = note_styles
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["innerHtml"] = 0
-    let noteOBJ = { note_txt: note_txt, 
-        note_styles: note_styles, 
-        innerHtml: 0, }
+    let noteOBJ = {
+        note_txt: note_txt,
+        note_styles: note_styles,
+        innerHtml: 0,
+    }
     createNote(noteOBJ);
     closeNoteSettings();
 }

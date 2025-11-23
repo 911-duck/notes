@@ -58,7 +58,8 @@ body {
 /* ______________header____________ */
 
 .menu {
-    padding: var(--base_gap);
+    padding-left: var(--base_gap);
+    padding-right: var(--base_gap);
     width: 100%;
     height: calc(20% - var(--base_gap));
     border-bottom: var(--txt_color) solid var(--border_weight);
@@ -78,26 +79,31 @@ body {
 }
 
 .menu_add-note-header {
-    font-size: var(--header_font-size);
+    width: 80px;
+    height: 60px;
+    background-color: var(--button_color);
+    background-image: url("../img/263122 1.png");
+    background-position: 25% 50%;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    font-size: 35px;
     color: var(--txt_color);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    border-radius: var(--base_border-radius);
+    padding-right: 10px;
 }
 
 .setting-icon {
-    width: var(--setting-icon_size);
-    height: var(--setting-icon_size);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-}
-
-.setting-icon_block1,
-.setting-icon_block2,
-.setting-icon_block3 {
-    width: 100%;
-    height: calc(var(--border_weight) * 4);
-    background-color: var(--txt_color);
-    border-radius: var(--base_border-radius);
+    width: 60px;
+    height: 60px;
+    background-image: url("../img/free-icon-settings-512158.png");
+    background-color: var(--button_color);
+    border-radius: 20%;
+    background-size: 70%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
 }
 
 /* ____________notes__________ */

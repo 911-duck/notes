@@ -67,6 +67,7 @@
 }
 
 .edit{
+    z-index: 30;
     position: absolute;
     bottom: 5%;
     left: 50%;
@@ -150,7 +151,7 @@
 }
 
 .editor{
-    z-index: 3;
+    z-index: 30;
     top: 150%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -179,11 +180,17 @@
 }
 
 .move-block{
+    z-index: 1;
+    position: absolute;
+}
+
+.move-p-block{
+    z-index: 1;
     position: absolute;
 }
 
 .picture-editor{
-    z-index: 3;
+    z-index: 30;
     top: 150%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
