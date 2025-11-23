@@ -358,17 +358,19 @@ body {
 }
 
 .edit{
+    z-index: 30;
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--note_height) * 5 + ( var(--base_gap) * 4 ));
+    width: calc(var(--note_height) * 6 + ( var(--base_gap) * 5 ));
     height: calc(--base_gap);
     padding: var(--base_gap);
     gap: var(--base_gap);
     box-sizing: content-box;
     background-color: var(--notes_color);
     border-radius: var(--base_border-radius);
+    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -378,7 +380,8 @@ body {
 .edit_picture,
 .edit_draw,
 .edit_rubber,
-.edit_delete{
+.edit_delete,
+.edit_add-text{
     height: var(--note_height);
     width: var(--note_height);
     background-color: var(--button_color);
@@ -415,6 +418,13 @@ body {
     background-repeat: no-repeat;
 }
 
+.edit_add-text{
+    background-image: url("../img/free-icon-text-3721901.png");
+    background-position: 50% 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
 .edit_delete{
     background-image: url("../img/free-icon-trash-can-6148091.png");
     background-position: 50% 50%;
@@ -426,8 +436,10 @@ body {
 .edit_picture:hover,
 .edit_draw:hover,
 .edit_rubber:hover,
-.edit_delete:hover{
+.edit_delete:hover,
+.edit_add-text:hover{
     border-bottom: var(--menu_color) solid  10px;
+<<<<<<< HEAD
 =======
     color: var(--txt_color);
 
@@ -678,6 +690,94 @@ body {
     width: 220px;
     height: 50px;
     margin-left: calc(50% - 110px);
+=======
+}
+
+.editor{
+    z-index: 30;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 60%;
+    height: 50%;
+    position: absolute;
+    background-color: var(--button_color);
+    outline: none;
+    border-radius: var(--base_border-radius);
+    transition: var(--transition);
+}
+
+#editor{
+    width: 100%;
+    height: 90%;
+    outline: none;
+    border: none;
+    position: absolute;
+    border-radius: 0 0 var(--base_border-radius)  var(--base_border-radius);
+    background-color: var(--notes_color);
+}
+
+.ql-snow{
+    outline: none;
+    border: none;
+}
+
+.move-block{
+    z-index: 1;
+    position: absolute;
+}
+
+.move-p-block{
+    z-index: 1;
+    position: absolute;
+}
+
+.picture-editor{
+    z-index: 30;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    padding: var(--base_gap);
+    background-color: var(--notes_color);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--base_gap);
+    border-radius: var(--base_border-radius);
+    transition: var(--transition);
+}
+
+.picture-editor_option{
+    width: 100%;
+    height: 10%;
+    gap: var(--base_gap);
+}
+
+.picture-editor_option-width,
+.picture-editor_option-height{
+    width: 20%;
+}
+
+.picture-editor_test{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
+}
+
+.picture-editor_submit,
+.picture-editor_submit-create{
+    width: 30%;
+    height: 90%;
+>>>>>>> text-editor
     background-color: var(--button_color);
     display: flex;
     align-items: center;
@@ -686,6 +786,7 @@ body {
     border-radius: var(--base_border-radius);
 }
 
+<<<<<<< HEAD
 /* ______________settings_____________ */
 
 .settings-screen {
@@ -733,4 +834,12 @@ body {
     text-align: center;
     font-size: 45px;
 >>>>>>> ff109ddf390ac677a5f4774ef5f95861ad35b465
+=======
+
+.test_picture{
+    width: 100px;
+    height: 100px;
+    background-image: url("../img/free-icon-image-gallery-3342176.png");
+    background-size: cover;
+>>>>>>> text-editor
 }

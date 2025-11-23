@@ -7,7 +7,6 @@ function resetOptions() {
     ELEMENTS.OPTION_HEAD_FS.value = "";
     ELEMENTS.OPTION_TXT.value = "";
     ELEMENTS.OPTION_TXT_COLOR.value = "";
-    ELEMENTS.OPTION_TXT_FS.value = "";
 }
 
 export default resetOptions

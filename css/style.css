@@ -53,8 +53,14 @@ html,body{
 
 /* ______________header____________ */
 
+<<<<<<< HEAD
 .menu{
     padding: var(--base_gap);
+=======
+.menu {
+    padding-left: var(--base_gap);
+    padding-right: var(--base_gap);
+>>>>>>> text-editor
     width: 100%;
     height: calc(20% - var(--base_gap));
     border-bottom: black solid var(--border_weight);
@@ -72,6 +78,7 @@ html,body{
     font-size: var(--header_font-size);
 }
 
+<<<<<<< HEAD
 .menu_add-note-header{
     font-size: var(--header_font-size);
 }
@@ -90,6 +97,34 @@ html,body{
     height: calc(var(--border_weight) * 4);
     background-color: black;
     border-radius: var(--base_border-radius);
+=======
+.menu_add-note-header {
+    width: 80px;
+    height: 60px;
+    background-color: var(--button_color);
+    background-image: url("../img/263122 1.png");
+    background-position: 25% 50%;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    font-size: 35px;
+    color: var(--txt_color);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    border-radius: var(--base_border-radius);
+    padding-right: 10px;
+}
+
+.setting-icon {
+    width: 60px;
+    height: 60px;
+    background-image: url("../img/free-icon-settings-512158.png");
+    background-color: var(--button_color);
+    border-radius: 20%;
+    background-size: 70%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+>>>>>>> text-editor
 }
 
 /* ____________notes__________ */
