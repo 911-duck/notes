@@ -387,7 +387,7 @@ function openNote(obj) {
     }
 }
 
-//__________________settings_________________
+//__________________settings________________
 
 function closeSettings(event){
     ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
