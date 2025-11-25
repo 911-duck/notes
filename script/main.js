@@ -288,7 +288,6 @@ ELEMENTS.OPEN_NOTE_SCREEN.addEventListener('dblclick', resetActiveBlock)
 ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
 ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
 ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
-// document.addEventListener('keydown', shortcutsTools)
 
 //_________________open-notes________________
 
@@ -394,7 +393,7 @@ function closeSettings(event){
 ELEMENTS.SETTINGS_ICON.removeEventListener('click', closeSettings)
 
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
-    ELEMENTS.MAIN.style.transform = `translateX(0px)`
+    ELEMENTS.MAIN.style.marginLeft = `0px`
 }
 
 function openSettings(event){
@@ -402,7 +401,7 @@ ELEMENTS.SETTINGS_ICON.removeEventListener('click', openSettings)
 ELEMENTS.SETTINGS_ICON.addEventListener('click', closeSettings)
 
     ELEMENTS.SETTINGS.style.transform = "translateX(0px)"
-    ELEMENTS.MAIN.style.transform = `translateX(${ELEMENTS.SETTINGS.offsetWidth/2}px)`
+    ELEMENTS.MAIN.style.marginLeft = ELEMENTS.SETTINGS.offsetWidth + "px"
 }
 
 ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
@@ -423,6 +422,7 @@ ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
 ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
+    closeSettings();
     openLoading();
     defaultVisualSettings();
 })
