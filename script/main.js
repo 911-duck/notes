@@ -16,14 +16,89 @@ import TextDeformation from "./TextDeformation.js"
 
 let notes = {};
 let active_header;
-let OpenSettings =  '';
-let OpenShortcuts=  '';
-let OpenVisual =  '';
-let OpenNoteCreate =  '';
-let OpenTechnical =  '';
+let OpenSettings = '';
+let OpenShortcuts = '';
+let OpenVisual = '';
+let OpenNoteCreate = '';
+let OpenTechnical = '';
 let version = '6.41';
 let developers = 'Бирюк Евгений, Шитенков Кирилл';
 let data = 'Nov 9, 2025';
+
+/* _______________right-edit-board____________ */
+
+let editEl = 0;
+
+function deleteFonts(element){
+    const fontsClasses = [
+        "none",
+        "noto-sans",
+        "playfair-display" ,
+        "pacifico-regular" ,
+        "science-gothic",
+        "ibm-plex-mono-regular" ,
+        "great-vibes-regular",
+        "Rubik Wet Paint" ,
+        "rubik-wet-paint-regular",
+        "press-start-2p-regular" ,
+        "playfair-display-sc-regular" ,
+        "el-messiri",
+        "montserrat-underline" ,
+        "rubik-bubbles-regular",
+        "rampart-one-regular"
+    ]
+    fontsClasses.forEach(el=>{if(element.classList.contains(el) == true) element.classList.remove(el)})
+}
+
+function editElement(event){
+    deleteFonts(editEl);
+    editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
+    editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+    editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
+    editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
+    editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
+    editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
+    editEl.classList.add(`${ELEMENTS.OPTION_BOARD_FONT.value}`)
+    editEl.style.backgroundColor =  ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked == true ? ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value : "none"
+}
+
+function closeRightBoardEditor(){
+    ELEMENTS.BOARD.style.backgroundImage = 'url("img/free-icon-leaf-7486777.png")'
+    ELEMENTS.BOARD_EDITOR.style.display = "none"
+    ELEMENTS.BUTTON_BOARD_SUBMIT.removeEventListener('click',editElement)
+    openRightBoardEditor(editEl);
+}
+
+function openRightBoardEditor(el){
+    editEl = el
+    ELEMENTS.BOARD.style.backgroundImage = "none"
+    ELEMENTS.BOARD_EDITOR.style.display = "flex"
+    ELEMENTS.OPTION_BOARD_HEIGHT.value = el.offsetHeight 
+    ELEMENTS.OPTION_BOARD_WIDTH.value = el.offsetWidth 
+    ELEMENTS.OPTION_BOARD_X.value = el.offsetLeft 
+    ELEMENTS.OPTION_BOARD_Y.value = el.offsetTop
+    ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value = window.getComputedStyle(el).borderRadius.slice(0,-2)
+    ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked = false
+    ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value = "#ffffff"
+    ELEMENTS.OPTION_BOARD_Z_INDEX.value = window.getComputedStyle(el).zIndex
+    ELEMENTS.BUTTON_BOARD_SUBMIT.addEventListener('click',editElement)
+}
+
+function closeBoard(event) {
+    ELEMENTS.BUTTON_OPEN_BOARD.addEventListener('click', openBoard)
+    ELEMENTS.BOARD.style.transform = "translateX(calc(100% + var(--base_gap)))"
+    ELEMENTS.BUTTON_OPEN_BOARD.style.transform = `translateX(0px)`
+    ELEMENTS.BUTTON_OPEN_BOARD.removeEventListener('click', closeBoard)
+}
+
+function openBoard(event) {
+    ELEMENTS.BUTTON_OPEN_BOARD.removeEventListener('click', openBoard)
+    ELEMENTS.BOARD.style.transform = "translateX(0px)"
+    ELEMENTS.BUTTON_OPEN_BOARD.style.transform = `translateX(calc(-${ELEMENTS.BOARD.offsetWidth}px - var(--base_gap)))`
+    ELEMENTS.BUTTON_OPEN_BOARD.addEventListener('click', closeBoard)
+}
+
+ELEMENTS.BUTTON_OPEN_BOARD.addEventListener('click', openBoard)
 
 /* __________________text-editor______________ */
 let activeBlock = 0;
@@ -41,7 +116,7 @@ function unactive(event) {
 function move(event) {
     let x = mouseXY.X - event.clientX
     let y = mouseXY.Y - event.clientY
-    console.log(x, y)
+    openRightBoardEditor(activeBlock);
     activeBlock.style.top = activeBlock.offsetTop - y + "px"
     activeBlock.style.left = activeBlock.offsetLeft - x + "px"
     mouseXY.X = event.clientX
@@ -50,6 +125,7 @@ function move(event) {
 
 function active(event) {
     activeBlock = this
+    openRightBoardEditor(activeBlock);
     activePBlock = 0
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
     document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
@@ -117,6 +193,7 @@ function resetActiveBlock(event) {
     activePBlock = 0;
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
     document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
+    closeRightBoardEditor();
 }
 
 function deleteActiveBlock(event) {
@@ -142,27 +219,16 @@ function unactiveP(event) {
 function moveP(event) {
     let x = mouseXY.X - event.clientX
     let y = mouseXY.Y - event.clientY
-    console.log(x, y)
+    openRightBoardEditor(activePBlock)
     activePBlock.style.top = activePBlock.offsetTop - y + "px"
     activePBlock.style.left = activePBlock.offsetLeft - x + "px"
     mouseXY.X = event.clientX
     mouseXY.Y = event.clientY
 }
 
-// function shortcutsTools(event) {
-//     console.log(event.code,window.getComputedStyle(this).zIndex,window.getComputedStyle(activePBlock).zIndex)
-//     if (activeBlock != 0) {
-//         if (event.code == "KeyU") activeBlock.style.zIndex = window.getComputedStyle(activeBlock).zIndex + 1
-//         if (event.code == "KeyD") activeBlock.style.zIndex = window.getComputedStyle(activeBlock).zIndex - 1
-//     }
-//     if (activePBlock != 0) {
-//         if (event.code == "KeyU") activePBlock.style.zIndex = window.getComputedStyle(activePBlock).zIndex + 1
-//         if (event.code == "KeyD") activePBlock.style.zIndex = window.getComputedStyle(activePBlock).zIndex - 1
-//     }
-// }
-
 function activeP(event) {
     activePBlock = this
+    openRightBoardEditor(activePBlock);
     activeBlock = 0
     document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
     document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
@@ -323,13 +389,23 @@ function openNote(obj) {
 
 //__________________settings_________________
 
-ELEMENTS.SETTINGS_ICON.addEventListener('click', e => {
-    ELEMENTS.SETTINGS.style.transform = "translateX(0px)"
-})
+function closeSettings(event){
+    ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
+ELEMENTS.SETTINGS_ICON.removeEventListener('click', closeSettings)
 
-ELEMENTS.SETTINGS.addEventListener('click', e => {
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
-})
+    ELEMENTS.MAIN.style.transform = `translateX(0px)`
+}
+
+function openSettings(event){
+ELEMENTS.SETTINGS_ICON.removeEventListener('click', openSettings)
+ELEMENTS.SETTINGS_ICON.addEventListener('click', closeSettings)
+
+    ELEMENTS.SETTINGS.style.transform = "translateX(0px)"
+    ELEMENTS.MAIN.style.transform = `translateX(${ELEMENTS.SETTINGS.offsetWidth/2}px)`
+}
+
+ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
 
 // ___________open-visual-settings___________
 
@@ -523,11 +599,11 @@ document.addEventListener('DOMContentLoaded', e => {
 })
 //  ___________open-shortcuts-settings___________
 
-ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click',(e)=>{
+ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(-${document.querySelector("body").offsetWidth}px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
 })
-ELEMENTS.SHORTCUTS_EXIT.addEventListener('click',(e)=>{
+ELEMENTS.SHORTCUTS_EXIT.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
 })
@@ -591,12 +667,12 @@ window.addEventListener('keydown', (ev) => {
     }
     else if (OpenVisual === ev.code && ev.altKey) {
         ev.preventDefault();
-    ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
-    ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
+        ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
+        ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
     }
     else if (OpenNoteCreate === ev.code && ev.altKey) {
         ev.preventDefault();
-         ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
+        ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
     }
     else if (OpenTechnical === ev.code && ev.altKey) {
         ev.preventDefault();
@@ -604,11 +680,11 @@ window.addEventListener('keydown', (ev) => {
     }
 });
 //_________open-technical__________
-ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click',(e)=>{
+ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
 })
-ELEMENTS.TECHNICAL_EXIT.addEventListener('click',(e)=>{
+ELEMENTS.TECHNICAL_EXIT.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(130%)"
 })
@@ -616,7 +692,7 @@ ELEMENTS.TECHNICAL_EXIT.addEventListener('click',(e)=>{
 ELEMENTS.BUTTON_TECHNICALV1.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = version
     ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
     setTimeout(() => {
         ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
     }, 2000);
@@ -624,15 +700,15 @@ ELEMENTS.BUTTON_TECHNICALV1.addEventListener('click', () => {
 ELEMENTS.BUTTON_TECHNICALV2.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = developers
     ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '35px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
     setTimeout(() => {
         ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
     }, 2000);
 });
 ELEMENTS.BUTTON_TECHNICALV3.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = data
-        ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)'; 
+    ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
     setTimeout(() => {
         ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
     }, 2000);

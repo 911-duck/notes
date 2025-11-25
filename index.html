@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/loader.css">
     <link rel="stylesheet" href="css/noteStyles.css">
+    <link rel="stylesheet" href="css/fontsStyles.css">
     <!-- api styles -->
     <link href="/styles.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
@@ -18,6 +19,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400..700&family=Great+Vibes&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat+Underline:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Press+Start+2P&family=Rampart+One&family=Rubik+Bubbles&family=Rubik+Wet+Paint&family=Science+Gothic:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -168,11 +173,11 @@
             <div class="note-settings_option option">
                 <span class="option_header">● размер шрифта заголовка:</span>
                 <select class="option_input option_header-font-size">
-				<option value="h1">h1</option>
-				<option value="h2">h2</option>
-				<option value="h3">h3</option>
-				<option value="h4">h4</option>
-                </select>
+				        <option value="h1">h1</option>
+				        <option value="h2">h2</option>
+				        <option value="h3">h3</option>
+				        <option value="h4">h4</option>
+                    </select>
             </div>
             <div class="note-settings_option option">
                 <span class="option_header">● описание:</span>
@@ -247,6 +252,73 @@
                  <div class="picture-editor_submit-create">создать</div>
             </div>
         </div>
+        <div class="right-board">
+            <div class="right-board_editor">
+                <div class="right-board_header">настройки элемента</div>
+                <div class="right-board_format">
+                    <div class="right-board_x right-board_input">
+                        <span>x смещение</span>
+                        <input type="number" class="right-board_x-input input-s">
+                    </div>
+                    <div class="right-board_y right-board_input">
+                        <span>y смещение</span>
+                        <input type="number" class="right-board_y-input input-s">
+                    </div>
+                    <div class="right-board_z-index right-board_input">
+                        <span>z индекс</span>
+                        <input type="number" class="right-board_z-index-input input-s">
+                    </div>
+                </div>
+                
+                <div class="right-board_width right-board_input">
+                    <span>ширина</span>
+                    <input type="number" class="right-board_width-input input-s">
+                </div>
+                <div class="right-board_height right-board_input">
+                    <span>высота</span>
+                    <input type="number" class="right-board_height-input input-s">
+                </div>
+                <div class="right-board_format">
+                <div class="right-board_border-radius right-board_input">
+                    <span>закругление</span>
+                    <input type="number" class="right-board_border-radius-input input-s">
+                </div>
+                <div class="right-board_font right-board_input">
+                    <span>шрифт</span>
+                    
+                    <select class="input-s right-board_font-input">
+				<option value="none" class="none">по умолчанию</option>
+				<option value="noto-sans" class="noto-sans">Noto Sans</option>
+				<option value="playfair-display" class="playfair-display">Playfair Display</option>
+				<option value="pacifico-regular" class="pacifico-regula">Pacifico</option>
+				<option value="science-gothic" class="science-gothic">Science Gothic</option>
+				<option value="ibm-plex-mono-regular" class="ibm-plex-mono-regular">IBM Plex Mono</option>
+				<option value="great-vibes-regular" class="great-vibes-regular">Great Vibes</option>
+				<option value="Rubik Wet Paint" class="Rubik Wet Paint">Science Gothic</option>
+				<option value="rubik-wet-paint-regular" class="rubik-wet-paint-regular">Rubik Wet Paint</option>
+				<option value="press-start-2p-regular" class="press-start-2p-regular">Press Start 2P</option>
+				<option value="playfair-display-sc-regular" class="playfair-display-sc-regular">Playfair Display SC</option>
+				<option value="el-messiri" class="el-messiri">El Messiri</option>
+				<option value="montserrat-underline" class="montserrat-underline">Montserrat Underline</option>
+				<option value="rubik-bubbles-regular" class="rubik-bubbles-regular">Rubik Bubbles</option>
+				<option value="rampart-one-regular" class="rampart-one-regular">Rampart One</option>
+                </select>
+                </div>
+                </div>
+                <div class="right-board_background-index right-board_input">
+                    <input type="checkbox" class="right-board_checkBox-background-color">
+                    <span>фон</span>
+                    <input type="color" class="right-board_background-input">
+                </div>
+                <!-- <div class="right-board_shadow-index right-board_input">
+                    <input type="checkbox" class="right-board_checkBox-shadow">
+                    <span>тень</span>
+                    <input type="number" class="right-board_shadow-input input-s">
+                </div> -->
+                <div class="right-board_change">изменить</div>
+            </div>
+        </div>
+        <div class="open-note_open-right-board"></div>
         <div class="open-note_exit">+</div>
         <div class="open-note_editor edit">
             <div class="edit_text"></div>
