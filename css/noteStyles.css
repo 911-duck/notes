@@ -31,6 +31,9 @@
     width: 100%;
     height: 100%;
     background-color: var(--menu_color);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
     transition: all 1s;
 }
 
@@ -262,7 +265,7 @@
     right: var(--base_gap);
     transform: translateX(calc(100% + var(--base_gap)));
     background-image: url("../img/free-icon-leaf-7486777.png");
-    background-position: 50% 50%;
+    background-position: 50% 70%;
     background-repeat: no-repeat;
     background-size: 60%;
     padding: var(--base_gap);
@@ -375,4 +378,36 @@
     justify-content: space-between;
     gap: var(--base_gap);
     flex-direction: column;
+}
+
+.right-board_editor-bg{
+    display: flex;
+    width: 100%;
+    height: 103%;
+    /* box-shadow: ; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--base_gap);
+    padding: var(--base_gap);
+    /* border-top: 2px solid grey; */
+}
+
+.right-board_background-input-bg{
+    width: 40%;
+    height: 100%;
+    outline: none;
+    border: none;
+    text-align: center;
+    border-radius: var(--base_border-radius);
+}
+
+.right-board_change-bg{
+    width: 50%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button_color);
+    border-radius: var(--base_border-radius);
 }

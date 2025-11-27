@@ -66,7 +66,7 @@ function closeRightBoardEditor(){
     ELEMENTS.BOARD.style.backgroundImage = 'url("img/free-icon-leaf-7486777.png")'
     ELEMENTS.BOARD_EDITOR.style.display = "none"
     ELEMENTS.BUTTON_BOARD_SUBMIT.removeEventListener('click',editElement)
-    openRightBoardEditor(editEl);
+    // openRightBoardEditor(editEl);
 }
 
 function openRightBoardEditor(el){
@@ -149,6 +149,8 @@ function createTextBlock() {
 }
 
 function closeTextEditor(event) {
+    ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
+        ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
     ELEMENTS.ADD_TEXT.removeEventListener('click', closeTextEditor)
 
@@ -160,6 +162,8 @@ function closeTextEditor(event) {
 function openTextEditor(event) {
     console.log(document.querySelector('.ql-editor').innerHTML)
 
+    ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
+        ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', closeTextEditor)
 
@@ -168,7 +172,9 @@ function openTextEditor(event) {
 }
 
 function closeTextReeditor(event) {
-    ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+    ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
+        ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+    ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
     ELEMENTS.EDIT_TEXT.removeEventListener('click', closeTextReeditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
@@ -180,7 +186,9 @@ function openTextReeditor(event) {
     if (activeBlock != 0) {
         document.querySelector('.ql-editor').innerHTML = activeBlock.innerHTML
 
+    ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
         ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
+    ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
         ELEMENTS.EDIT_TEXT.addEventListener('click', closeTextReeditor)
 
         ELEMENTS.EDIT_BLOCK.style.bottom = "60%"
@@ -266,6 +274,8 @@ function createDraftPicture(event) {
 
 function closePictureEditor(event) {
     ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
+        ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+    ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
     ELEMENTS.ADD_PICTURE.removeEventListener('click', closePictureEditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
@@ -274,6 +284,8 @@ function closePictureEditor(event) {
 
 function addPicture(event) {
     ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
+        ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
+    ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
     ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE_DRAFT.addEventListener('click', createDraftPicture)
     ELEMENTS.ADD_PICTURE.addEventListener('click', closePictureEditor)
 
@@ -281,13 +293,32 @@ function addPicture(event) {
     ELEMENTS.PICTURE_EDITOR.style.top = "70%"
 }
 
+function openPenEditor(event){
+    // code here
+}
+
+function openRubberEditor(event){
+    // code here
+}
 
 ELEMENTS.DELETE_ACTIVE_BLOCK.addEventListener('click', deleteActiveBlock)
 ELEMENTS.OPEN_NOTE_SCREEN.addEventListener('dblclick', resetActiveBlock)
 
+ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
+ELEMENTS.RUBBER.addEventListener('click', openRubberEditor)
 ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
 ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
 ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+
+//_______________background-edit_____________
+
+function setBGSettings(event) {
+    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = ELEMENTS.OPTION_BG_C.value
+    if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
+    else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
+}
+
+ELEMENTS.BUTTON_BOARD_BG_SUBMIT.addEventListener('click',setBGSettings)
 
 //_________________open-notes________________
 
@@ -295,8 +326,11 @@ let active_note;
 
 function closeNote(event) {
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].innerHtml = ELEMENTS.OPEN_NOTE_SCREEN.innerHTML
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].screen = [ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor,ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage]
     ELEMENTS.OPEN_NOTE.style.right = "-100%"
     ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ``
+    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = `var(--menu_color)`
+    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
     console.log(notes)
 }
 
@@ -366,21 +400,13 @@ function openNote(obj) {
             text.addEventListener('mousedown', active)
         }
         if (obj.note_styles.picture_url != "") {
-            let picture = document.createElement("div")
-            ELEMENTS.OPEN_NOTE_SCREEN.appendChild(picture);
-            picture.style.backgroundImage = `url(${obj.note_styles.picture_url})`
-            picture.style.backgroundRepeat = `no-repeat`
-            picture.style.backgroundSize = `cover`
-            picture.style.zIndex = 0
-            picture.style.width = "100%"
-            picture.style.height = "100%"
-            picture.style.position = "absolute"
-            picture.style.left = "0"
-            picture.style.top = "0"
+            ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${obj.note_styles.picture_url}")`
         }
     } else {
         ELEMENTS.OPEN_NOTE.style.right = "0px"
         ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = obj.innerHtml
+        ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = obj.screen[0]
+        ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = obj.screen[1]
         document.querySelectorAll('.move-p-block').forEach(el => el.addEventListener('mousedown', activeP));
         document.querySelectorAll('.move-block').forEach(el => el.addEventListener('mousedown', active));
     }
@@ -451,6 +477,11 @@ function openHeader(event) {
     document.querySelectorAll(".note-header_main").forEach((el, i) => {
         if (el == event.target) element = document.querySelectorAll(".note-header_main")[i]
     })
+    // element.querySelectorAll(".note-header_note-child").forEach(el=>el.addEventListener('click', e => {
+    //     let el = this
+    //     console.log(el)
+    //     openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][el.querySelector(".note-header_header-child").innerText])
+    // }))
     if (element == 0) return
     element.removeEventListener('click', openHeader);
     noteHeaderOpen(element.parentElement);
@@ -515,8 +546,9 @@ function createNote(note) {
     console.log(note)
     NOTE_TEMP.addEventListener('click', e => {
         let el = NOTE_TEMP
+        let active_header = el.parentElement
         console.log(el)
-        openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][el.querySelector(".note-header_header-child").innerText])
+        openNote(notes[el.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][el.querySelector(".note-header_header-child").innerText])
     })
     ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
 
@@ -527,7 +559,7 @@ function createNote(note) {
     }));
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
 
-    document.querySelector
+    // document.querySelector
 
     resetOptions();
 }
@@ -562,6 +594,7 @@ function createNode(event) {
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"] = note_txt
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_styles"] = note_styles
     notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["innerHtml"] = 0
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["screen"] = [0,0]
     let noteOBJ = {
         note_txt: note_txt,
         note_styles: note_styles,
