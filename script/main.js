@@ -310,7 +310,7 @@ ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
 ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
 ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
 
-//_______________background-edit_____________
+//_______________background-edit____________
 
 function setBGSettings(event) {
     ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = ELEMENTS.OPTION_BG_C.value
