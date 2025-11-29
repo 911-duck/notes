@@ -570,7 +570,7 @@ function setBGSettings(event) {
 
 ELEMENTS.BUTTON_BOARD_BG_SUBMIT.addEventListener('click',setBGSettings)
 
-//_________________open-notes________________
+//_________________open-notes_______________
 
 let active_note;
 
