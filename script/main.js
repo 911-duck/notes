@@ -56,6 +56,7 @@ function editElement(event){
     editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
     editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
     editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
+    editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
     editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
     editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
     editEl.classList.add(`${ELEMENTS.OPTION_BOARD_FONT.value}`)
@@ -64,20 +65,26 @@ function editElement(event){
 
 function closeRightBoardEditor(){
     ELEMENTS.BOARD.style.backgroundImage = 'url("img/free-icon-leaf-7486777.png")'
+    ELEMENTS.BG_EDITOR.style.display = "flex"
     ELEMENTS.BOARD_EDITOR.style.display = "none"
     ELEMENTS.BUTTON_BOARD_SUBMIT.removeEventListener('click',editElement)
-    // openRightBoardEditor(editEl);
 }
 
 function openRightBoardEditor(el){
     editEl = el
     ELEMENTS.BOARD.style.backgroundImage = "none"
     ELEMENTS.BOARD_EDITOR.style.display = "flex"
+    ELEMENTS.BG_EDITOR.style.display = "none"
     ELEMENTS.OPTION_BOARD_HEIGHT.value = el.offsetHeight 
+    const values = window.getComputedStyle(el).transform.match(/matrix\((.+)\)/)[1].split(', ');
+    const a = parseFloat(values[0]);
+    const b = parseFloat(values[1]);
+    const angle = Math.round(Math.atan2(b, a) * (180 / Math.PI)); // Преобразование в градусы
+    ELEMENTS.OPTION_ROTATE.value = angle
     ELEMENTS.OPTION_BOARD_WIDTH.value = el.offsetWidth 
     ELEMENTS.OPTION_BOARD_X.value = el.offsetLeft 
     ELEMENTS.OPTION_BOARD_Y.value = el.offsetTop
-    ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value = window.getComputedStyle(el).borderRadius.slice(0,-2)
+    ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value = window.getComputedStyle(el).borderRadius[window.getComputedStyle(el).borderRadius.length-1] == 'x' ? window.getComputedStyle(el).borderRadius.slice(0,-2) : window.getComputedStyle(el).borderRadius.slice(0,-1) * el.offsetHeight / 100
     ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked = false
     ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value = "#ffffff"
     ELEMENTS.OPTION_BOARD_Z_INDEX.value = window.getComputedStyle(el).zIndex
@@ -214,8 +221,6 @@ function deleteActiveBlock(event) {
 }
 
 let url
-let width
-let height
 let activePBlock = 0
 
 function unactiveP(event) {
@@ -250,51 +255,297 @@ function activeP(event) {
 }
 
 function createPictureBlock(event) {
+    url = ELEMENTS.OPTION_PICTURE_URL.value
+
     const PICTURE_BLOCK = document.createElement("div");
     PICTURE_BLOCK.style.backgroundImage = `url("${url}")`
-    PICTURE_BLOCK.style.backgroundSize = `cover`
-    PICTURE_BLOCK.style.width = `${width}px`
-    PICTURE_BLOCK.style.height = `${height}px`
+    PICTURE_BLOCK.style.backgroundSize = `contain`
+    PICTURE_BLOCK.style.backgroundPosition = `50% 50%`
+    PICTURE_BLOCK.style.backgroundRepeat = `no-repeat`
+    PICTURE_BLOCK.style.width = `${100}px`
+    PICTURE_BLOCK.style.height = `${100}px`
     PICTURE_BLOCK.classList.add(`move-p-block`)
     ELEMENTS.OPEN_NOTE_SCREEN.appendChild(PICTURE_BLOCK);
-    PICTURE_BLOCK.style.top = "80px"
-    PICTURE_BLOCK.style.left = "80px"
+    PICTURE_BLOCK.style.top = "100px"
+    PICTURE_BLOCK.style.left = "100px"
     PICTURE_BLOCK.addEventListener('mousedown', activeP)
 }
 
 function createDraftPicture(event) {
-    url = document.querySelector(".picture-editor_option-backGround-url").value
-    width = document.querySelector(".picture-editor_option-width").value
-    height = document.querySelector(".picture-editor_option-height").value
+    url = ELEMENTS.OPTION_PICTURE_URL.value
     document.querySelector('.test_picture').style.backgroundImage = `url("${url}")`
-    document.querySelector('.test_picture').style.width = `${width}px`
-    document.querySelector('.test_picture').style.height = `${height}px`
-    ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.addEventListener('click', createPictureBlock)
+    // ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.addEventListener('click', createPictureBlock)
+
 }
 
 function closePictureEditor(event) {
     ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
-        ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
+    ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
     ELEMENTS.ADD_PICTURE.removeEventListener('click', closePictureEditor)
-
+    ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.removeEventListener('click', createPictureBlock)
+    
     ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
     ELEMENTS.PICTURE_EDITOR.style.top = "150%"
 }
 
 function addPicture(event) {
     ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
-        ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
+    ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
     ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE_DRAFT.addEventListener('click', createDraftPicture)
     ELEMENTS.ADD_PICTURE.addEventListener('click', closePictureEditor)
+    ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.addEventListener('click', createPictureBlock)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "60%"
     ELEMENTS.PICTURE_EDITOR.style.top = "70%"
 }
 
+function closePenEditor(event){
+    ELEMENTS.DRAW_BOARD.style.transform = "translateY(100%)"
+    ELEMENTS.DRAW_BOARD.style.bottom = "0%"
+    
+    ELEMENTS.PENCIL.removeEventListener('click', closePenEditor)
+    ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
+}
+
+//____________rectangle_______________
+
+
+let rectangleStartAndEnd = {
+    start_X: 0,
+    start_Y: 0,
+    end_X: 0,
+    end_Y: 0
+}
+
+let draftRectangleblock = 0
+
+function createRectangle(event){
+    rectangleStartAndEnd.end_X = event.clientX
+    rectangleStartAndEnd.end_Y = event.clientY
+
+    let rectangle = document.createElement("div")
+    rectangle.style.width = Math.abs(rectangleStartAndEnd.start_X-rectangleStartAndEnd.end_X) + "px"
+    rectangle.style.height = Math.abs(rectangleStartAndEnd.start_Y-rectangleStartAndEnd.end_Y) + "px"
+    
+    rectangle.classList.add("move-p-block")
+    rectangle.addEventListener('mousedown', activeP)
+
+    if(rectangleStartAndEnd.start_X < rectangleStartAndEnd.end_X) rectangle.style.left = rectangleStartAndEnd.start_X + "px"
+    else rectangle.style.left = rectangleStartAndEnd.end_X + "px"
+    if(rectangleStartAndEnd.start_Y < rectangleStartAndEnd.end_Y) rectangle.style.top = rectangleStartAndEnd.start_Y + "px"
+    else rectangle.style.top = rectangleStartAndEnd.end_Y + "px"
+
+    rectangle.style.backgroundColor = "black"
+    document.removeEventListener("mousemove",draftRectangle)
+    document.removeEventListener("mouseup",createRectangle)
+    draftRectangleblock.remove()
+    draftRectangleblock = 0
+
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(rectangle)
+    
+}
+
+function draftRectangle(event){
+    if (draftRectangleblock != 0)draftRectangleblock.remove()
+
+    rectangleStartAndEnd.end_X = event.clientX
+    rectangleStartAndEnd.end_Y = event.clientY
+
+    draftRectangleblock = document.createElement("div")
+    draftRectangleblock.style.width = Math.abs(rectangleStartAndEnd.start_X-rectangleStartAndEnd.end_X) + "px"
+    draftRectangleblock.style.height = Math.abs(rectangleStartAndEnd.start_Y-rectangleStartAndEnd.end_Y) + "px"
+    
+    draftRectangleblock.classList.add("move-p-block")
+    
+    if(rectangleStartAndEnd.start_X < rectangleStartAndEnd.end_X) draftRectangleblock.style.left = rectangleStartAndEnd.start_X + "px"
+    else draftRectangleblock.style.left = rectangleStartAndEnd.end_X + "px"
+    if(rectangleStartAndEnd.start_Y < rectangleStartAndEnd.end_Y) draftRectangleblock.style.top = rectangleStartAndEnd.start_Y + "px"
+    else draftRectangleblock.style.top = rectangleStartAndEnd.end_Y + "px"
+    
+    draftRectangleblock.style.backgroundColor = "grey"
+    
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(draftRectangleblock)
+}
+
+function createRectangleStart(event){
+    document.removeEventListener("mousedown",createRectangleStart)
+    rectangleStartAndEnd.start_X = event.clientX
+    rectangleStartAndEnd.start_Y = event.clientY
+
+    document.addEventListener("mousemove",draftRectangle)
+    document.addEventListener("mouseup",createRectangle)
+}
+
+function drawRectangle(event){
+    // setTimeout(() => {
+        closePenEditor();
+        document.addEventListener("mousedown",createRectangleStart)
+    // }, 1000);
+}
+
+//____________rectangle_______________
+
+let ovalStartAndEnd = {
+    start_X: 0,
+    start_Y: 0,
+    end_X: 0,
+    end_Y: 0
+}
+
+let draftOvalblock = 0
+
+function createOval(event){
+    ovalStartAndEnd.end_X = event.clientX
+    ovalStartAndEnd.end_Y = event.clientY
+
+    let oval = document.createElement("div")
+    oval.style.width = Math.abs(ovalStartAndEnd.start_X-ovalStartAndEnd.end_X) + "px"
+    oval.style.height = Math.abs(ovalStartAndEnd.start_Y-ovalStartAndEnd.end_Y) + "px"
+    
+    oval.classList.add("move-p-block")
+    oval.addEventListener('mousedown', activeP)
+
+    if(ovalStartAndEnd.start_X < ovalStartAndEnd.end_X) oval.style.left = ovalStartAndEnd.start_X + "px"
+    else oval.style.left = ovalStartAndEnd.end_X + "px"
+    if(ovalStartAndEnd.start_Y < ovalStartAndEnd.end_Y) oval.style.top = ovalStartAndEnd.start_Y + "px"
+    else oval.style.top = ovalStartAndEnd.end_Y + "px"
+
+    oval.style.borderRadius = "50%"
+    oval.style.backgroundColor = "black"
+    document.removeEventListener("mousemove",draftOval)
+    document.removeEventListener("mouseup",createOval)
+    draftOvalblock.remove()
+    draftOvalblock = 0
+
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(oval)
+}
+
+
+function draftOval(event){
+    if (draftOvalblock != 0)draftOvalblock.remove()
+
+    ovalStartAndEnd.end_X = event.clientX
+    ovalStartAndEnd.end_Y = event.clientY
+
+    draftOvalblock = document.createElement("div")
+    draftOvalblock.style.width = Math.abs(ovalStartAndEnd.start_X-ovalStartAndEnd.end_X) + "px"
+    draftOvalblock.style.height = Math.abs(ovalStartAndEnd.start_Y-ovalStartAndEnd.end_Y) + "px"
+    
+    draftOvalblock.classList.add("move-p-block")
+    
+    if(ovalStartAndEnd.start_X < ovalStartAndEnd.end_X) draftOvalblock.style.left = ovalStartAndEnd.start_X + "px"
+    else draftOvalblock.style.left = ovalStartAndEnd.end_X + "px"
+    if(ovalStartAndEnd.start_Y < ovalStartAndEnd.end_Y) draftOvalblock.style.top = ovalStartAndEnd.start_Y + "px"
+    else draftOvalblock.style.top = ovalStartAndEnd.end_Y + "px"
+    
+    draftOvalblock.style.backgroundColor = "grey"
+    draftOvalblock.style.borderRadius = "50%"
+    
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(draftOvalblock)
+}
+
+function createOvalStart(event){
+    document.removeEventListener("mousedown",createOvalStart)
+    ovalStartAndEnd.start_X = event.clientX
+    ovalStartAndEnd.start_Y = event.clientY
+
+    document.addEventListener("mousemove",draftOval)
+    document.addEventListener("mouseup",createOval)
+}
+
+function drawOval(event){
+    // setTimeout(() => {
+        closePenEditor();
+        document.addEventListener("mousedown",createOvalStart)
+    // }, 1000);
+}
+
+//____________line_______________
+
+let lineStartAndEnd = {
+    start_X: 0,
+    start_Y: 0,
+    end_X: 0,
+    end_Y: 0
+}
+
+let draftLineblock = 0
+
+function createLine(event){
+    lineStartAndEnd.end_X = event.clientX
+    lineStartAndEnd.end_Y = event.clientY
+
+    let line = document.createElement("div")
+    line.style.height = 2 + "px"
+    line.style.width = Math.abs(lineStartAndEnd.start_X-lineStartAndEnd.end_X) + "px"
+    
+    line.classList.add("move-p-block")
+    line.addEventListener('mousedown', activeP)
+
+    line.style.left = lineStartAndEnd.start_X + "px"
+
+    line.style.top = lineStartAndEnd.end_Y + "px"
+
+    line.style.backgroundColor = "black"
+    document.removeEventListener("mousemove",draftLine)
+    document.removeEventListener("mouseup",createLine)
+    draftLineblock.remove()
+    draftLineblock = 0
+
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(line)
+}
+
+
+function draftLine(event){
+    if (draftLineblock != 0)draftLineblock.remove()
+
+    lineStartAndEnd.end_X = event.clientX
+    lineStartAndEnd.end_Y = event.clientY
+
+    draftLineblock = document.createElement("div")
+    draftLineblock.style.height = 2 + "px"
+    draftLineblock.style.width = Math.abs(lineStartAndEnd.start_X-lineStartAndEnd.end_X) + "px"
+    
+    draftLineblock.classList.add("move-p-block")
+    
+    draftLineblock.style.left = lineStartAndEnd.start_X + "px"    
+    draftLineblock.style.top = lineStartAndEnd.end_Y + "px"
+    
+    draftLineblock.style.backgroundColor = "grey"
+    
+    ELEMENTS.OPEN_NOTE_SCREEN.appendChild(draftLineblock)
+}
+
+function createLineStart(event){
+    document.removeEventListener("mousedown",createLineStart)
+    lineStartAndEnd.start_X = event.clientX
+    lineStartAndEnd.start_Y = event.clientY
+
+    document.addEventListener("mousemove",draftLine)
+    document.addEventListener("mouseup",createLine)
+}
+
+function drawLine(event){
+    // setTimeout(() => {
+        closePenEditor();
+        document.addEventListener("mousedown",createLineStart)
+    // }, 1000);
+}
+
+//________________pen-tools_________
+
 function openPenEditor(event){
-    // code here
+    ELEMENTS.DRAW_BOARD.style.transform = "translateY(0%)"
+    ELEMENTS.DRAW_BOARD.style.bottom = "20%"
+    
+    ELEMENTS.OPTION_DRAW_SECTIONS[0].addEventListener("click",drawLine)
+    ELEMENTS.OPTION_DRAW_SECTIONS[1].addEventListener("click",drawRectangle)
+    ELEMENTS.OPTION_DRAW_SECTIONS[2].addEventListener("click",drawOval)
+
+    ELEMENTS.PENCIL.removeEventListener('click', openPenEditor)
+    ELEMENTS.PENCIL.addEventListener('click', closePenEditor)
 }
 
 function openRubberEditor(event){
@@ -305,7 +556,6 @@ ELEMENTS.DELETE_ACTIVE_BLOCK.addEventListener('click', deleteActiveBlock)
 ELEMENTS.OPEN_NOTE_SCREEN.addEventListener('dblclick', resetActiveBlock)
 
 ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
-ELEMENTS.RUBBER.addEventListener('click', openRubberEditor)
 ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
 ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
 ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)

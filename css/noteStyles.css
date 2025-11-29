@@ -18,7 +18,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--menu_color);
-    right: -100%;
+    right: 0%;
     top: 0;
     display: flex;
     align-items: center;
@@ -76,7 +76,7 @@
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--note_height) * 6 + ( var(--base_gap) * 5 ));
+    width: calc(var(--note_height) * 5 + ( var(--base_gap) * 4 ));
     height: calc(--base_gap);
     padding: var(--base_gap);
     gap: var(--base_gap);
@@ -150,7 +150,8 @@
 .edit_draw:hover,
 .edit_rubber:hover,
 .edit_delete:hover,
-.edit_add-text:hover{
+.edit_add-text:hover,
+.draw_section:hover{
     border-bottom: var(--menu_color) solid  10px;
 }
 
@@ -186,6 +187,7 @@
 .move-block{
     z-index: 1;
     border-radius: 0px;
+    transform: rotate(0deg);
     position: absolute;
 }
 
@@ -193,6 +195,7 @@
     z-index: 1;
     border-radius: 0px;
     position: absolute;
+    transform: rotate(0deg);
     overflow: hidden;
 }
 
@@ -220,6 +223,9 @@
     width: 100%;
     height: 10%;
     gap: var(--base_gap);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .picture-editor_option-width,
@@ -254,7 +260,9 @@
     width: 100px;
     height: 100px;
     background-image: url("../img/free-icon-image-gallery-3342176.png");
-    background-size: cover;
+    background-size: contain;
+    background-position: 50% 50% ;
+    background-repeat: no-repeat;
 }
 
 .right-board{
@@ -309,7 +317,8 @@
 .right-board_editor{
     display: none;
     width: 100%;
-    height: 103%;
+    height: 100%;
+    overflow-y: scroll;
     /* box-shadow: ; */
     flex-direction: column;
     align-items: center;
@@ -317,6 +326,16 @@
     gap: var(--base_gap);
     padding: var(--base_gap);
     /* border-top: 2px solid grey; */
+}
+
+.right-board_scroll{
+    width: 100%;
+    height: 120%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--base_gap);
+    justify-content: flex-start;
 }
 
 .right-board_input{
@@ -410,4 +429,56 @@
     justify-content: center;
     background-color: var(--button_color);
     border-radius: var(--base_border-radius);
+}
+
+.draw_editor{
+    width: 200px;
+    height: 300px;
+    position: absolute;
+    left: 36.8%;
+    bottom: 0%;
+    z-index: 30;
+    transform: translateY(100%);
+    border-radius: var(--base_border-radius);
+    background-color: var(--notes_color);
+    padding: var(--base_gap);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: var(--base_gap);
+    transition: var(--transition);
+}
+
+.draw_section{
+    width: 100%;
+    height: 100%;
+    border-radius: var(--base_border-radius);
+    background-color: var(--button_color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--base_gap);
+    border: var(--button_color) solid 0px;
+    transition: all 0.3s ;
+}
+
+.draw_line{
+    width: 100%;
+    height: 10%;
+    background-color: black;
+}
+
+.draw_oval{
+    width: 70%;
+    height: 100%;
+    border-radius: 50%;
+    border: black solid 5px;
+}
+
+.draw_rectangle{
+    width: 100%;
+    height: 100%;
+    /* border-radius: 50%; */
+    border: black solid 5px;
 }
