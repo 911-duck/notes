@@ -575,8 +575,8 @@ ELEMENTS.BUTTON_BOARD_BG_SUBMIT.addEventListener('click',setBGSettings)
 let active_note;
 
 function closeNote(event) {
-    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].innerHtml = ELEMENTS.OPEN_NOTE_SCREEN.innerHTML
-    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].screen = [ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor,ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage]
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note]["innerHtml"] = ELEMENTS.OPEN_NOTE_SCREEN.innerHTML
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note]["screen"] = [ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor,ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage]
     ELEMENTS.OPEN_NOTE.style.right = "-100%"
     ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ``
     ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = `var(--menu_color)`
@@ -727,11 +727,6 @@ function openHeader(event) {
     document.querySelectorAll(".note-header_main").forEach((el, i) => {
         if (el == event.target) element = document.querySelectorAll(".note-header_main")[i]
     })
-    // element.querySelectorAll(".note-header_note-child").forEach(el=>el.addEventListener('click', e => {
-    //     let el = this
-    //     console.log(el)
-    //     openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][el.querySelector(".note-header_header-child").innerText])
-    // }))
     if (element == 0) return
     element.removeEventListener('click', openHeader);
     noteHeaderOpen(element.parentElement);
