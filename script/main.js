@@ -11,6 +11,7 @@ import defaultVisualSettings from "./default_visual_settings.js";
 import openLoading from "./openLoading.js";
 import JsonToggles from "./JsonToggles.js";
 import TextDeformation from "./TextDeformation.js"
+import search from "./search.js";
 
 // __________________values__________________
 
@@ -24,6 +25,13 @@ let OpenTechnical = '';
 let version = '6.41';
 let developers = 'Бирюк Евгений, Шитенков Кирилл';
 let data = 'Nov 9, 2025';
+
+/* __________________search___________________ */
+
+document.querySelector(".menu_search").addEventListener("input",e=>{
+    if(document.querySelector(".menu_search").value.length > 0)search(ELEMENTS.HEADERS,document.querySelector(".menu_search").value)
+    else search(ELEMENTS.HEADERS,"0")
+})
 
 /* _______________right-edit-board____________ */
 

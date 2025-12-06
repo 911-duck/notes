@@ -19,7 +19,7 @@
     --setting-icon_size: 40px;
     --note_height: 60px;
     --base_border-radius: 20px;
-    --fontFamily: 'Courier New', Courier, monospace;
+    --fontFamily: ;
     --transition: all 1s;
 }
 
@@ -74,6 +74,16 @@ html,body{
     top: 50%;
     transform: translateY(-50%);
     font-size: var(--header_font-size);
+}
+
+.menu_search{
+    width: 300px;
+    height: 60px;
+    outline: none;
+    border: none;
+    text-align: center;
+    font-size: var(--text_font-size);
+    border-radius: var(--base_border-radius);
 }
 
 .menu_add-note-header {
