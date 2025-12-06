@@ -548,10 +548,6 @@ function openPenEditor(event){
     ELEMENTS.PENCIL.addEventListener('click', closePenEditor)
 }
 
-function openRubberEditor(event){
-    // code here
-}
-
 ELEMENTS.DELETE_ACTIVE_BLOCK.addEventListener('click', deleteActiveBlock)
 ELEMENTS.OPEN_NOTE_SCREEN.addEventListener('dblclick', resetActiveBlock)
 
@@ -575,13 +571,13 @@ ELEMENTS.BUTTON_BOARD_BG_SUBMIT.addEventListener('click',setBGSettings)
 let active_note;
 
 function closeNote(event) {
-    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note]["innerHtml"] = ELEMENTS.OPEN_NOTE_SCREEN.innerHTML
-    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note]["screen"] = [ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor,ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage]
-    ELEMENTS.OPEN_NOTE.style.right = "-100%"
-    ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = ``
-    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = `var(--menu_color)`
-    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
-    console.log(notes)
+    console.log(notes,active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText,active_note)
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].innerHtml = String(document.querySelector(".open-note_screen").innerHTML)
+    notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][active_note].screen = String([document.querySelector(".open-note_screen").style.backgroundColor,document.querySelector(".open-note_screen").style.backgroundImage])
+    document.querySelector(".open-note").style.right = "-100%"
+    document.querySelector(".open-note_screen").innerHTML = ``
+    document.querySelector(".open-note_screen").style.backgroundColor = `var(--menu_color)`
+    document.querySelector(".open-note_screen").style.backgroundImage = `none`
 }
 
 function openNote(obj) {
@@ -686,13 +682,15 @@ ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
 
 ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
     document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`);
+    document.querySelector(':root').style.setProperty("--fontFamily", `${document.querySelector(".right-board_font-input-vs").value}`);
     document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`);
     document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
     document.querySelector(':root').style.setProperty("--txt_color", ` ${ELEMENTS.OPTION_MAIN_TXT_COLOR.value}`);
     document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
     document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
 
-    ELEMENTS.MENU_HEADER.innerText = ELEMENTS.OPTION_MAIN_HEADER.value;
+    console.log(document.querySelector(".right-board_font-input-vs").value)
+    // ELEMENTS.MENU_HEADER.innerText = ELEMENTS.OPTION_MAIN_HEADER.value;
 })
 
 ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
@@ -791,11 +789,11 @@ function createNote(note) {
     console.log(note)
     NOTE_TEMP.addEventListener('click', e => {
         let el = NOTE_TEMP
-        let active_header = el.parentElement
+        active_header = el.parentElement
         console.log(el)
         openNote(notes[el.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][el.querySelector(".note-header_header-child").innerText])
+        ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
     })
-    ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
 
     active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
         delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
@@ -878,11 +876,13 @@ document.addEventListener('DOMContentLoaded', e => {
 //  ___________open-shortcuts-settings___________
 
 ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click', (e) => {
+    ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
     ELEMENTS.MAIN.style.transform = `translateX(-${document.querySelector("body").offsetWidth}px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
 })
 ELEMENTS.SHORTCUTS_EXIT.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
+    ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
 })
 // ___________add-shortcuts___________
@@ -959,10 +959,12 @@ window.addEventListener('keydown', (ev) => {
 });
 //_________open-technical__________
 ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click', (e) => {
+    ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
 })
 ELEMENTS.TECHNICAL_EXIT.addEventListener('click', (e) => {
+    ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(130%)"
 })

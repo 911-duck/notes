@@ -7,7 +7,7 @@
     <title>NoteCraft</title>
     <!-- styles -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/loader.css">
+    <link rel="stylesheet" href="css/icons.css">
     <link rel="stylesheet" href="css/noteStyles.css">
     <link rel="stylesheet" href="css/fontsStyles.css">
     <!-- api styles -->
@@ -35,10 +35,14 @@
     </div>
     <!-- settings -->
     <div class="false settings">
-        <div class="settings__header">settings</div>
-        <div class="settings__visual">visual</div>
-        <div class="settings__technical">technical</div>
-        <div class="settings__shortcuts">shortcuts</div>
+        <div class="settings__name"><div class="settings__header-icon-nt"></div>NoteCraft</div>
+        <div class="settings__header"><div class="settings__header-icon"></div>settings</div>
+        <div class="settings__visual"><div class="settings__header-icon-vl"></div>visual</div>
+        <div class="settings__technical"><div class="settings__header-icon-tl"></div>technical</div>
+        <div class="settings__shortcuts"><div class="settings__header-icon-sc"></div>shortcuts</div>
+        <div class="settings__header"><div class="settings__header-icon-ab"></div>about</div>
+        <a href="" class="settings__visual"><div class="settings__header-icon-gt"></div>github</a>
+        <a href="" class="settings__shortcuts"><div class="settings__header-icon-yt"></div>youtube</a>
     </div>
     <!-- visual-settings -->
     <div class="visual-settings-screen">
@@ -49,8 +53,30 @@
                 <input type="text" class="option_input option_backGround-url" placeholder="url...">
             </div> -->
             <div class="visual-settings_option option">
-                <span class="option_header">● заголовок:</span>
-                <input type="text" class="option_input option_header-txt-main" placeholder="название...">
+                <span class="option_header">● шрифт:</span>
+                <select class="input-s right-board_font-input-vs">
+                                <option value="none" class="none">по умолчанию</option>
+                                <option value="'Noto Sans', sans-serif" class="noto-sans">Noto Sans</option>
+                                <option value="'Playfair Display', serif" class="playfair-display">Playfair Display</option>
+                                <option value="'Pacifico', cursive" class="pacifico-regula">Pacifico</option>
+                                <option value="'Science Gothic', sans-serif" class="science-gothic">Science Gothic</option>
+                                <option value="'IBM Plex Mono', monospace" class="ibm-plex-mono-regular">IBM Plex Mono
+                                </option>
+                                <option value="'Great Vibes', cursive" class="great-vibes-regular">Great Vibes</option>
+                                <option value="'Rubik Wet Paint', system-ui" class="Rubik Wet Paint">Science Gothic</option>
+                                <option value="'Rubik Wet Paint', system-ui" class="rubik-wet-paint-regular">Rubik Wet Paint
+                                </option>
+                                <option value="'Press Start 2P', system-ui" class="press-start-2p-regular">Press Start 2P
+                                </option>
+                                <option value="'Playfair Display SC', serif", serif" class="playfair-display-sc-regular">Playfair
+                                    Display SC</option>
+                                <option value="'El Messiri', sans-serif" class="el-messiri">El Messiri</option>
+                                <option value="'Montserrat Underline', sans-serif" class="montserrat-underline">Montserrat Underline
+                                </option>
+                                <option value="'Rubik Bubbles', system-ui" class="rubik-bubbles-regular">Rubik Bubbles
+                                </option>
+                                <option value="'Rampart One', sans-serif" class="rampart-one-regular">Rampart One</option>
+                            </select>
             </div>
             <div class="visual-settings_option option">
                 <span class="option_header">● размер шрифта загаловка:</span>
@@ -157,8 +183,9 @@
     </div>
     <!-- header-add-screen -->
     <div class="add-header-screen">
+        <span class="add-header-screen_header"><div class="add-header-screen_icon"></div>добавить раздел</span>
         <div class="add-header-screen_option">
-            <span class="add-header-screen_header">● название раздела:</span>
+            <div class="name"></div>
             <input type="text" class="add-header-screen_input" placeholder="название...">
         </div>
         <div class="add-header-screen_submit">создать</div>

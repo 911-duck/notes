@@ -19,6 +19,7 @@
     --setting-icon_size: 40px;
     --note_height: 60px;
     --base_border-radius: 20px;
+    --fontFamily: 'Courier New', Courier, monospace;
     --transition: all 1s;
 }
 
@@ -49,6 +50,7 @@ html,body{
     background-size: 20%;
     background-repeat: no-repeat;
     transition: var(--transition);
+    font-family: var(--fontFamily);
 }
 
 /* ______________header____________ */
@@ -57,11 +59,13 @@ html,body{
     padding: var(--base_gap);
     width: 100%;
     height: calc(20% - var(--base_gap));
-    border-bottom: black solid var(--border_weight);
+    /* border-bottom: black solid var(--border_weight); */
+    background-color: var(--notes_color);
     display: flex;
     align-items: center;
     position: relative;
     justify-content: space-between;
+    border-radius: var(--base_border-radius);
 }
 
 .menu_header{
@@ -110,6 +114,7 @@ display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    font-family: var(--fontFamily);
 }
 
 .main_scroll{
@@ -222,6 +227,7 @@ display: flex;
     gap: var(--base_gap);
     padding: var(--base_gap);
     transition: var(--transition);
+    font-family: var(--fontFamily);
 }
 
 .note_settings{
@@ -338,8 +344,9 @@ display: flex;
     justify-content: space-evenly;
     flex-direction: column;
     border-radius: var(--base_border-radius);
-    padding: var(--base_gap);
+    /* padding: var(--base_gap); */
     transition: var(--transition);
+    font-family: var(--fontFamily);
 }
 
 .add-header-screen_exit{
@@ -365,15 +372,35 @@ display: flex;
     font-size: var(--text_font-size);
     width: 80%;
     height: 20%;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
+.add-header-screen_header{
+    position: absolute;
+    top: 20px;
+    right: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: var(--base_gap);
+   font-size: 25px;
+    transform: translateX(50%);
+}
+
+.add-header-screen_icon{
+    width: 40px;
+    height: 40px;
+    background-image: url("../img/263122\ 1.png");
+    background-size: cover;
+}
+
 .add-header-screen_input{
-    height: 80%;
-    width: 40%;
+    height: 90%;
+    width: 100%;
     background-color:var(--notes_color);
     outline: none;
     border: none;
@@ -398,6 +425,7 @@ display: flex;
     padding: var(--base_gap);
     transition: var(--transition);
     z-index: 3;
+    font-family: var(--fontFamily);
 }
 
 .visual-settings-settings{
@@ -506,11 +534,27 @@ display: flex;
     transform: rotate(45deg);
 }
 
+.visual-settings_submit{
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height:60px;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: var(--base_border-radius);
+    border-bottom: var(--menu_color)solid 0px;
+    background-color: var(--button_color);
+    transition: all 0.25s;
+}
+
 /* ______________settings_____________ */
 .settings-screen {
     position: absolute;
     color: var(--txt_color);
-
+    font-family: var(--fontFamily);
 }
 
 .settings {
@@ -529,6 +573,7 @@ display: flex;
     transform: translateX(-100%);
     z-index: 4;
     transition: var(--transition);
+    font-family: var(--fontFamily);
     color: var(--txt_color);
 }
 
@@ -537,24 +582,114 @@ display: flex;
 .settings__shortcuts {
     color: var(--txt_color);
     width: 70%;
-    height: 5%;
+    height: 6%;
     background-color: var(--button_color);
     border-radius: var(--base_border-radius);
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    gap: 30px;
+    text-decoration: none;
+    /* padding: var(--base_gap); */
+       border-bottom: var(--menu_color) solid 0px;
     font-size: 25px;
+    transition: all 0.25s;
+}
+
+.settings__visual:hover,
+.settings__technical:hover,
+.settings__shortcuts:hover {
+       border-bottom: var(--menu_color) solid  10px;
+
+}
+
+.settings__header-icon{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/free-icon-settings-563541.png");
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.settings__header-icon-ab{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/information.png");
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.settings__header-icon-gt{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/github.png");
+    background-size: cover;
+}
+
+.settings__header-icon-yt{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/youtube.png");
+    background-size: cover;
+}
+
+.settings__header-icon-vl{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/effect.png");
+    background-size: cover;
+}
+
+.settings__header-icon-tl{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/technology.png");
+    background-size: cover;
+}
+
+.settings__header-icon-sc{
+    width: 30px;
+    height: 30px;
+    background-image: url("../img/copy.png");
+    background-size: cover;
+}
+
+.settings__header-icon-nt{
+    width: 50px;
+    height: 50px;
+    background-image: url("../img/wirte.png");
+    background-size: cover;
+}
+
+.settings__name{
+    margin-top: 20px;
+    font-size: var(--header_font-size);
+    background-color: var(--button_color);
+    width: 100%;
+    height: 80px;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .settings__header {
     color: var(--txt_color);
+    /* border-top: grey solid 2px; */
     width: 90%;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
     font-size: 45px;
 }
 /* settings-shorcuts */
 .shortcuts-settings-screen{
     position: absolute;
+    font-family: var(--fontFamily);
     transform: translateX(120%);
     position: absolute;
     width: 80%;
@@ -609,6 +744,7 @@ display: flex;
     gap: var(--base_gap);
     padding: var(--base_gap);
     transition: var(--transition);
+    font-family: var(--fontFamily);
     z-index: 3;
 }
 .technical-settings-exit{

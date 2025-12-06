@@ -1,0 +1,80 @@
+:root {
+    --base_gap: 20px;
+    --menu_color: #ffe4c4;
+    --notes_color: #fef2e3;
+    --button_color: #f5c993;
+    --txt_color: #000000;
+    --border_weight: 2px;
+    --header_font-size: 50px;
+    --text_font-size: 25px;
+    --setting-icon_size: 40px;
+    --note_height: 60px;
+    --base_border-radius: 20px;
+    --transition: all 1s;
+}
+
+.loaders-screen{
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(116, 116, 116, 0.199);
+}
+.loader {
+  height: 60px;
+  aspect-ratio: 6;
+  --c: #0000 64%, black 66% 98%,#0000 101%;
+  background:
+    radial-gradient(35% 146% at 50% 159%,var(--c)) 0 0,
+    radial-gradient(35% 146% at 50% -59%,var(--c)) 25% 100%;
+  background-size: calc(100%/3) 50%;
+  background-repeat: repeat-x;
+  clip-path: inset(0 100% 0 0);
+  animation: l2 1s infinite linear;
+}
+@keyframes l2{
+  90%,to {clip-path: inset(0)}
+}
+
+/* HTML: <div class="name"></div> */
+.name {
+  position: absolute;
+  right: 65px;
+  top: 38.5%;
+  width: 70px;
+  height: 24px;
+  z-index: 4;
+  background: var(--button_color);
+  border-radius: 50px;
+  --c:no-repeat radial-gradient(farthest-side,#000 92%,#0000);
+  --s:18px 18px;
+  -webkit-mask:
+    var(--c) left  4px top 50%,
+    var(--c) center,
+    var(--c) right 4px top 50%,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask-composite:exclude;
+  -webkit-mask-size:0    0  ,0    0  ,0    0  ,auto
+        }
+        
+        .add-header-screen_option:hover .name{
+          
+          animation: l1 1.5s infinite;
+}
+
+@keyframes l1 {
+  0%    {-webkit-mask-size:0    0  ,0    0  ,0    0  ,auto}
+  16.67%{-webkit-mask-size:var(--s),0    0  ,0    0  ,auto}
+  33.33%{-webkit-mask-size:var(--s),var(--s),0    0  ,auto}
+  50%   {-webkit-mask-size:var(--s),var(--s),var(--s),auto}
+  66.67%{-webkit-mask-size:0    0  ,var(--s),var(--s),auto}
+  83.33%{-webkit-mask-size:0    0  ,0    0  ,var(--s),auto}
+  100%  {-webkit-mask-size:0    0  ,0    0  ,0    0  ,auto}
+}
+
