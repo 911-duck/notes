@@ -1,10 +1,10 @@
 import ELEMENTS from "../elements.js";
 
-function search(str) {
-    const elements = document.querySelectorAll(".note-headers_note-header")
+function searchNote(element, str) {
+    const elements = element.querySelectorAll(".note-header_note-child")
     if (str != 0) {
         elements.forEach(el => {
-            let name = el.querySelector(".note-header_main").querySelector(".note-header_name").innerText
+            let name = el.querySelector(".note-header_header-child").innerText
             name = name.split("")
             let arr = str.split("")
             let result = arr.every(e => name.includes(e))
@@ -17,4 +17,4 @@ function search(str) {
     }
 }
 
-export default search
+export default searchNote

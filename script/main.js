@@ -12,6 +12,7 @@ import openLoading from "./openLoading.js";
 import JsonToggles from "./JsonToggles.js";
 import TextDeformation from "./TextDeformation.js"
 import search from "./search.js";
+import searchNote from "./searchNote.js";
 
 // __________________values__________________
 
@@ -28,7 +29,7 @@ let data = 'Nov 9, 2025';
 
 /* __________________search___________________ */
 
-document.querySelector(".menu_search").addEventListener("input",e=>{
+document.querySelector(".menu_search-m").addEventListener("input",e=>{
     if(document.querySelector(".menu_search").value.length > 0)search(ELEMENTS.HEADERS,document.querySelector(".menu_search").value)
     else search(ELEMENTS.HEADERS,"0")
 })
@@ -750,11 +751,14 @@ function createHeader(event) {
                     <div class="note-header_headers">0 заметок</div>
                 </div>
                 <div class="note-header_note-list">
-                    <div class="note-header_note-add">+ добавить</div>
+                    <div class="note-header_note-add">+ добавить </div><input type="text" placeholder="поиск..." class="note-header_search menu_search"></input>
                 </div>
     `;
     NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
 
+    NOTE_TEMP.querySelector(".note-header_search").addEventListener("input",e=>{
+        searchNote(NOTE_TEMP.querySelector(".note-header_note-list"),NOTE_TEMP.querySelector(".note-header_search").value);
+    })
 
     ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
