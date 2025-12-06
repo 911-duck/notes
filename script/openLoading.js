@@ -1,10 +1,10 @@
 import ELEMENTS from "../elements.js";
 
-function openLoading(){
-    ELEMENTS.LOADER.style.display ="flex"
-        setTimeout(() => {
-        ELEMENTS.LOADER.style.display ="none"
-        }, 1000);
+function openLoading(n) {
+    ELEMENTS.LOADER[n].style.display = "flex"
+    setTimeout(() => {
+        ELEMENTS.LOADER[n].style.display = "none"
+    }, 1000);
 }
 
 export default openLoading

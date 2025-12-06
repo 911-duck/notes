@@ -20,7 +20,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     background-color: rgba(116, 116, 116, 0.199);
@@ -41,6 +41,66 @@
   90%,to {clip-path: inset(0)}
 }
 
+/* HTML: <div class="loader2"></div> */
+.loader2 {
+  width: 130px;
+  aspect-ratio: 1;
+  color: #000;
+  border: 5px solid;
+  display: grid;
+  box-sizing: border-box;
+  animation: l3 3s infinite linear;
+}
+.loader2::before,
+.loader2::after {
+  content: "";
+  grid-area: 1/1;
+  margin: auto;
+  width: 70.7%;
+  aspect-ratio: 1;
+  border: 5px solid;
+  box-sizing: content-box;
+  animation: inherit;
+}
+.loader2::after {
+  width: 50%;
+  aspect-ratio: 1;
+  border: 5px solid;
+  animation-duration: 2s;
+}
+@keyframes l3{
+  100% {transform:rotate(1turn)}
+}
+/* HTML: <div class="loader3"></div> */
+.loader3 {
+  display: inline-grid;
+  width: 130px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  outline: 7px solid #474847;
+  outline-offset: -1px;
+  animation: l3-0 4s linear infinite;
+
+}
+.loader3:before,
+.loader3:after {
+  content:"";
+  grid-area: 1/1;
+}
+.loader3:before {
+  clip-path: polygon(evenodd,0 0,100% 0,100% 100%,0 100%,0 0,100% 50%,83.81% 59.06%,93.3% 75%,74.75% 74.75%,75% 93.3%,59.06% 83.81%,50% 100%,40.94% 83.81%,25% 93.3%,25.25% 74.75%,6.7% 75%,16.19% 59.06%,0% 50%,16.19% 40.94%,6.7% 25%,25.25% 25.25%,25% 6.7%,40.94% 16.19%,50% 0%,59.06% 16.19%,75% 6.7%,74.75% 25.25%,93.3% 25%,83.81% 40.94%,100% 50%);
+  background: #474847;
+}
+.loader3:after {
+  margin: 12.5%;
+  clip-path: polygon(100% 50%,78.19% 60.26%,88.3% 82.14%,65% 75.98%,58.68% 99.24%,44.79% 79.54%,25% 93.3%,27.02% 69.28%,3.02% 67.1%,20% 50%,3.02% 32.9%,27.02% 30.72%,25% 6.7%,44.79% 20.46%,58.68% 0.76%,65% 24.02%,88.3% 17.86%,78.19% 39.74%);
+  background: #C0C0C0;
+  transform: rotate(0turn) translate(15.625%) rotate(0turn);
+  animation: l3-1 2s linear infinite;
+}
+@keyframes l3-0 {to{rotate: -1turn}}
+@keyframes l3-1 {to{transform: rotate(1turn) translate(15.625%) rotate(-1.333turn)}}
 /* HTML: <div class="name"></div> */
 .name {
   position: absolute;

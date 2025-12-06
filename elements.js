@@ -66,7 +66,7 @@ export default ELEMENTS = {
     BUTTON_ADD_NOTE: document.querySelectorAll(".note-header_note-add"),
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),
-    LOADER: document.querySelector('.loaders-screen'),
+    LOADER: document.querySelectorAll('.loaders-screen'),
     SHORTCUTS: document.querySelector('.shortcuts-settings-screen'),
     SHORTCUTS_EXIT: document.querySelector('.shortcuts-settings-exit'),
     BUTTON_SHORTCUTSV1: document.querySelector('.button-shortcutsV1'),

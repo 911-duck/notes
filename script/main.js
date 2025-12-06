@@ -30,8 +30,8 @@ let data = 'Nov 9, 2025';
 /* __________________search___________________ */
 
 document.querySelector(".menu_search-m").addEventListener("input",e=>{
-    if(document.querySelector(".menu_search").value.length > 0)search(ELEMENTS.HEADERS,document.querySelector(".menu_search").value)
-    else search(ELEMENTS.HEADERS,"0")
+    if(document.querySelector(".menu_search").value.length > 0)search(document.querySelector(".menu_search").value)
+    else search("0")
 })
 
 /* _______________right-edit-board____________ */
@@ -706,14 +706,14 @@ ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
     closeSettings();
-    openLoading();
+    openLoading(0);
     defaultVisualSettings();
 })
 
 ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
     ELEMENTS.MAIN.style.transform = `translateY(0)`;
     ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(-120%)"
-    openLoading();
+    openLoading(0);
 })
 
 // _______________create-header_____________
@@ -823,7 +823,7 @@ function createNote(note) {
 // ________________create-note________________
 
 function closeNoteSettings(event) {
-    openLoading();
+    openLoading(0);
     ELEMENTS.MAIN.style.transform = `translateY(0%)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(120%)`;
 
@@ -860,18 +860,20 @@ function createNode(event) {
 }
 
 function openNoteSettings(event) {
-    openLoading();
+    openLoading(0);
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
-
+    closeSettings();
     active_header = event.target.parentElement;
     ELEMENTS.BUTTON_SUBMIT.addEventListener('click', createNode);
     ELEMENTS.BUTTON_RESET_NOTE.addEventListener('click', closeNoteSettings);
     ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
+ELEMENTS.LOADER[0].style.display = "flex"
+
 document.addEventListener('DOMContentLoaded', e => {
-    ELEMENTS.LOADER.style.display = "none"
+    ELEMENTS.LOADER[0].style.display = "none"
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
     // start api
@@ -889,11 +891,13 @@ document.addEventListener('DOMContentLoaded', e => {
 
 ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click', (e) => {
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
+    openLoading(1);
     ELEMENTS.MAIN.style.transform = `translateX(-${document.querySelector("body").offsetWidth}px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
 })
 ELEMENTS.SHORTCUTS_EXIT.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
+    openLoading(1);
     ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
 })
@@ -972,12 +976,16 @@ window.addEventListener('keydown', (ev) => {
 //_________open-technical__________
 ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click', (e) => {
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
+    openLoading(2);
+
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
 })
 ELEMENTS.TECHNICAL_EXIT.addEventListener('click', (e) => {
     ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
+    openLoading(2);
+
     ELEMENTS.TECHNICAL.style.transform = "translateY(130%)"
 })
 //__________use-technical_________
