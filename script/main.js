@@ -729,17 +729,39 @@ ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
 
 // ___________open-visual-settings___________
 
-ELEMENTS.BUTTON_SUBMIT_VISUAL_SETTINGS.addEventListener('click', e => {
+ELEMENTS.OPTION_MAIN_BASE_COLOR.addEventListener("input",e=>{
     document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`);
-    document.querySelector(':root').style.setProperty("--fontFamily", `${document.querySelector(".right-board_font-input-vs").value}`);
-    document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`);
-    document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
-    document.querySelector(':root').style.setProperty("--txt_color", ` ${ELEMENTS.OPTION_MAIN_TXT_COLOR.value}`);
-    document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
-    document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
 
-    console.log(document.querySelector(".right-board_font-input-vs").value)
-    // ELEMENTS.MENU_HEADER.innerText = ELEMENTS.OPTION_MAIN_HEADER.value;
+})
+
+document.querySelector(".right-board_font-input-vs").addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--fontFamily", `${document.querySelector(".right-board_font-input-vs").value}`);
+    
+})
+
+ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`);
+    
+})
+
+ELEMENTS.OPTION_MAIN_BUTTON_COLOR.addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
+    
+})
+
+ELEMENTS.OPTION_MAIN_TXT_COLOR.addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--txt_color", ` ${ELEMENTS.OPTION_MAIN_TXT_COLOR.value}`);
+    
+})
+
+ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
+    
+})
+
+ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.addEventListener("input",e=>{
+    document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
+    
 })
 
 ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
@@ -824,6 +846,57 @@ function openHeaderSettings(event) {
     ELEMENTS.BUTTON_ADD_HEADER.removeEventListener('click', openHeaderSettings);
     ELEMENTS.BUTTON_RESET_HEADER.addEventListener('click', closeHeaderSettings);
 }
+
+ELEMENTS.OPTION_URL.addEventListener("input",e=>{
+    ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;
+
+}
+)
+
+ELEMENTS.OPTION_HEAD.addEventListener("input",e=>{
+    ELEMENTS.EXAMPLE_HEAD.innerText = ELEMENTS.OPTION_HEAD.value;
+
+}
+)
+
+ELEMENTS.OPTION_TXT_COLOR.addEventListener("input",e=>{
+    ELEMENTS.EXAMPLE_HEAD.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
+
+}
+)
+
+ELEMENTS.OPTION_HEAD_FS.addEventListener("input",e=>{
+     switch (ELEMENTS.OPTION_HEAD_FS.value) {
+        case "h1":
+            ELEMENTS.EXAMPLE_HEAD.style.fontSize = 40 + "px";
+            break;
+        case "h2":
+            ELEMENTS.EXAMPLE_HEAD.style.fontSize = 30 + "px";
+            break;
+        case "h3":
+            ELEMENTS.EXAMPLE_HEAD.style.fontSize = 20 + "px";
+            break;
+        case "h4":
+            ELEMENTS.EXAMPLE_HEAD.style.fontSize = 10 + "px";
+            break;
+    
+        default:
+            break;
+    }
+}
+)
+
+ELEMENTS.OPTION_TXT.addEventListener("input",e=>{
+        ELEMENTS.EXAMPLE_TXT.innerText = ELEMENTS.OPTION_TXT.value;
+
+}
+)
+
+ ELEMENTS.OPTION_TXT_COLOR.addEventListener("input",e=>{
+    ELEMENTS.EXAMPLE_TXT.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
+
+}
+)
 
 function createNote(note) {
     const NOTE_TEMP = document.createElement("div");
