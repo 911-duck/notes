@@ -61,8 +61,6 @@ export default ELEMENTS = {
     BUTTON_SUBMIT_PICTURE_CREATE_DRAFT: document.querySelector(".picture-editor_submit"),
     BUTTON_SUBMIT_PICTURE_CREATE: document.querySelector(".picture-editor_submit-create"),
     BUTTON_OPEN_BOARD: document.querySelector(".open-note_open-right-board"),
-    BUTTON_BOARD_SUBMIT: document.querySelector(".right-board_change"),
-    BUTTON_BOARD_BG_SUBMIT: document.querySelector(".right-board_change-bg"),
     BUTTON_ADD_NOTE: document.querySelectorAll(".note-header_note-add"),
     SETTINGS_ICON: document.querySelector('.setting-icon'),
     SETTINGS: document.querySelector('.settings'),

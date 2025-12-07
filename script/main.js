@@ -59,24 +59,58 @@ function deleteFonts(element){
     fontsClasses.forEach(el=>{if(element.classList.contains(el) == true) element.classList.remove(el)})
 }
 
-function editElement(event){
-    deleteFonts(editEl);
+ELEMENTS.OPTION_BOARD_HEIGHT.addEventListener("input",e=>{
     editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
-    editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+})
+
+ELEMENTS.OPTION_BOARD_X.addEventListener("input",e=>{
     editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
+
+})
+
+ELEMENTS.OPTION_BOARD_WIDTH.addEventListener("input",e=>{
+    editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+
+})
+
+ELEMENTS.OPTION_BOARD_Y.addEventListener("input",e=>{
     editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
+
+})
+
+ELEMENTS.OPTION_ROTATE.addEventListener("input",e=>{
     editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
+})
+
+ELEMENTS.OPTION_BOARD_Z_INDEX.addEventListener("input",e=>{
     editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
+
+})
+
+ELEMENTS.OPTION_BOARD_BORDER_RADIUS.addEventListener("input",e=>{
     editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
+
+})
+
+ELEMENTS.OPTION_BOARD_FONT.addEventListener("input",e=>{
+deleteFonts(editEl);
     editEl.classList.add(`${ELEMENTS.OPTION_BOARD_FONT.value}`)
-    editEl.style.backgroundColor =  ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked == true ? ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value : "none"
-}
+})
+
+ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.addEventListener("input",e=>{
+    editEl.style.backgroundColor =  ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked == true ? ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value : "#ffffff00"
+
+})
+
+ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.addEventListener("input",e=>{
+    editEl.style.backgroundColor =  ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked == true ? ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value : "#ffffff00"
+
+})
 
 function closeRightBoardEditor(){
     ELEMENTS.BOARD.style.backgroundImage = 'url("img/free-icon-leaf-7486777.png")'
     ELEMENTS.BG_EDITOR.style.display = "flex"
     ELEMENTS.BOARD_EDITOR.style.display = "none"
-    ELEMENTS.BUTTON_BOARD_SUBMIT.removeEventListener('click',editElement)
 }
 
 function openRightBoardEditor(el){
@@ -97,7 +131,6 @@ function openRightBoardEditor(el){
     ELEMENTS.OPTION_CHECK_BOX_BACKGROUND_COLOR.checked = false
     ELEMENTS.OPTION_BOARD_BACKGROUND_COLOR.value = "#ffffff"
     ELEMENTS.OPTION_BOARD_Z_INDEX.value = window.getComputedStyle(el).zIndex
-    ELEMENTS.BUTTON_BOARD_SUBMIT.addEventListener('click',editElement)
 }
 
 function closeBoard(event) {
@@ -567,13 +600,20 @@ ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
 
 //_______________background-edit____________
 
-function setBGSettings(event) {
+ELEMENTS.OPTION_BG_C.addEventListener("input",e=>{
     ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = ELEMENTS.OPTION_BG_C.value
-    if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
-    else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
-}
+})
 
-ELEMENTS.BUTTON_BOARD_BG_SUBMIT.addEventListener('click',setBGSettings)
+ELEMENTS.OPTION_BG_I.addEventListener("input",e=>{
+if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
+    else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
+})
+
+ELEMENTS.OPTION_CHECK_BOX_I.addEventListener("input",e=>{
+if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
+    else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
+})
+
 
 //_________________open-notes_______________
 
