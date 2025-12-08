@@ -14,7 +14,7 @@
     --notes_color: #fef2e3;
     --button_color: #f5c993;
     --border_weight: 2px;
-    --header_font-size: 50px;
+    --header_font-size: 40px;
     --text_font-size: 25px;
     --setting-icon_size: 40px;
     --note_height: 60px;
@@ -895,7 +895,7 @@ width: 100%;
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1250px) {
     .menu_header{
         display: none;
     }
