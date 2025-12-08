@@ -53,14 +53,15 @@
     <!-- visual-settings -->
     <div class="visual-settings-screen">
         <div class="visual-settings-settings">
+            <div class="scroll">
             <h1 class="visual-settings_header">настройки заметки</h1>
             <!-- <div class="visual-settings_option option">
                 <span class="option_header">● картинка:</span>
                 <input type="text" class="option_input option_backGround-url" placeholder="url...">
             </div> -->
             <div class="visual-settings_option option">
-                <span class="option_header">● шрифт:</span>
-                <select class="input-s right-board_font-input-vs">
+                <span class="option_header">шрифт:</span>
+                <select class="right-board_font-input-vs">
                                 <option value="none" class="none">по умолчанию</option>
                                 <option value="'Noto Sans', sans-serif" class="noto-sans">Noto Sans</option>
                                 <option value="'Playfair Display', serif" class="playfair-display">Playfair Display</option>
@@ -85,28 +86,29 @@
                             </select>
             </div>
             <div class="visual-settings_option option">
-                <span class="option_header">● размер шрифта загаловка:</span>
+                <span class="option_header">размер шрифта загаловка:</span>
                 <input type="number" class="option_input option_header-font-size-main" placeholder="размер...">
             </div>
             <div class="visual-settings_option option">
-                <span class="option_header">● размер шрифта текста:</span>
+                <span class="option_header">размер шрифта текста:</span>
                 <input type="number" class="option_input option_txt-font-size-main" placeholder="размер...">
             </div>
             <div class="note-settings_option option">
-                <span class="option_header">● цвет текста:</span>
+                <span class="option_header">цвет текста:</span>
                 <input type="color" class="option_input-color option_txt-color-main" placeholder="цвет...">
             </div>
             <div class="visual-settings_option option">
-                <span class="option_header">● цвет основной:</span>
+                <span class="option_header">цвет основной:</span>
                 <input type="color" class="option_input-color option_base-color-main" placeholder="цвет...">
             </div>
             <div class="visual-settings_option option">
-                <span class="option_header">● цвет кнопок:</span>
+                <span class="option_header">цвет кнопок:</span>
                 <input type="color" class="option_input-color option_button-color-main" placeholder="цвет...">
             </div>
             <div class="visual-settings_option option">
-                <span class="option_header">● цвет второй основной:</span>
+                <span class="option_header">цвет второй основной:</span>
                 <input type="color" class="option_input-color option_second-base-color" placeholder="цвет...">
+            </div>
             </div>
         </div>
         <div class="visual-settings_create">
@@ -135,38 +137,38 @@
     <div class="shortcuts-settings-screen">
         <div class="shortcuts-settings-exit">+</div>
         <div class="option-shortcuts">
-            <div class="OpenSettings">● Открыть Настройки</div>
+            <div class="OpenSettings">Открыть Настройки</div>
             <div class="button-shortcutsV1 button-shortcuts">текущая настройка:'Alt + '</div>
         </div>
         <div class="option-shortcuts">
-            <div class="OpenShortcuts">● Открыть горячие клавиши</div>
+            <div class="OpenShortcuts">Открыть горячие клавиши</div>
             <div class="button-shortcutsV2 button-shortcuts">текущая настройка:'Alt + '</div>
         </div>
         <div class="option-shortcuts">
-            <div class="OpenVisual">● Открыть визуал</div>
+            <div class="OpenVisual">Открыть визуал</div>
             <div class="button-shortcutsV3 button-shortcuts">текущая настройка:'Alt + '</div>
         </div>
         <div class="option-shortcuts">
-            <div class="OpenNoteCreate">● Открыть создание раздела</div>
+            <div class="OpenNoteCreate">Открыть создание раздела</div>
             <div class="button-shortcutsV4 button-shortcuts">текущая настройка:'Alt + '</div>
         </div>
         <div class="option-shortcuts">
-            <div class="OpenTechnical">● Открыть технические настройки</div>
+            <div class="OpenTechnical">Открыть технические настройки</div>
             <div class="button-shortcutsV5 button-shortcuts">текущая настройка:'Alt + '</div>
         </div>
     </div>
     <!-- technical -->
     <div class="technical-settings-screen">
         <div class="option-technical">
-            <div class="version">● версия:</div>
+            <div class="version">версия:</div>
             <div class="button-technicalV1 button-technical">6.41</div>
         </div>
         <div class="option-technical">
-            <div class="developers">● создатели:</div>
+            <div class="developers">создатели:</div>
             <div class="button-technicalV2 button-technical">Бирюк Евгений, Шитенков Кирилл</div>
         </div>
         <div class="option-technical">
-            <div class="data">● дата создания:</div>
+            <div class="data">дата создания:</div>
             <div class="button-technicalV3 button-technical">Nov 9, 2025</div>
         </div>
         <div class="technical-settings-exit">+</div>
@@ -182,7 +184,7 @@
             <div class="menu_add-note-header">+</div>
         </div>
         <div class="main_scroll">
-        <div class="main_note-headers note-headers">
+            <div class="main_note-headers note-headers">
         </div>
     </div>
         
@@ -191,7 +193,6 @@
     <div class="add-header-screen">
         <span class="add-header-screen_header"><div class="add-header-screen_icon"></div>добавить раздел</span>
         <div class="add-header-screen_option">
-            <div class="name"></div>
             <input type="text" class="add-header-screen_input" placeholder="название...">
         </div>
         <div class="add-header-screen_submit">создать</div>
@@ -200,6 +201,8 @@
     <!-- note-header-setting-screen -->
     <div class="note-settings-screen ">
         <div class="note_settings">
+            <div class="scroll">
+
             <h1 class="note-settings_header">настройки заметки</h1>
             <div class="note-settings_option option">
                 <span class="option_header">● фон:</span>
@@ -226,6 +229,9 @@
                 <span class="option_header">● цвет текста:</span>
                 <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
             </div>
+            <div class="note_submit ns">создать</div>
+
+        </div>
         </div>
         <div class="note_create">
             <div class="note_example example">
@@ -279,7 +285,7 @@
                 <div class="test_picture"></div>
             </div>
             <div class="picture-editor_option option">
-                <span class="option_header">● картинка:</span>
+                <span class="option_header">картинка:</span>
                 <input type="text" class="option_input picture-editor_option-backGround-url" placeholder="url...">
                 <div class="picture-editor_submit">создать эскиз</div>
             </div>

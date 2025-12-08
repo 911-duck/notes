@@ -10,7 +10,7 @@ import checkHeaderCount from "./checkHeaderCount.js";
 import defaultVisualSettings from "./default_visual_settings.js";
 import openLoading from "./openLoading.js";
 import JsonToggles from "./JsonToggles.js";
-import TextDeformation from "./TextDeformation.js"
+import TextDeformation from "./TextDeformation.js";
 import search from "./search.js";
 import searchNote from "./searchNote.js";
 
@@ -712,6 +712,7 @@ function openNote(obj) {
 function closeSettings(event){
     ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
 ELEMENTS.SETTINGS_ICON.removeEventListener('click', closeSettings)
+ELEMENTS.SETTINGS.removeEventListener('click', closeSettings)
 
     ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
     ELEMENTS.MAIN.style.marginLeft = `0px`
@@ -720,9 +721,11 @@ ELEMENTS.SETTINGS_ICON.removeEventListener('click', closeSettings)
 function openSettings(event){
 ELEMENTS.SETTINGS_ICON.removeEventListener('click', openSettings)
 ELEMENTS.SETTINGS_ICON.addEventListener('click', closeSettings)
+ELEMENTS.SETTINGS.addEventListener('click', closeSettings)
 
     ELEMENTS.SETTINGS.style.transform = "translateX(0px)"
-    ELEMENTS.MAIN.style.marginLeft = ELEMENTS.SETTINGS.offsetWidth + "px"
+
+    if(document.querySelector("body").offsetWidth > 1023)ELEMENTS.MAIN.style.marginLeft = ELEMENTS.SETTINGS.offsetWidth + "px"
 }
 
 ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
@@ -832,7 +835,8 @@ function createHeader(event) {
 }
 
 function closeHeaderSettings(event) {
-    ELEMENTS.HEADER_SETTINGS.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
+    ELEMENTS.HEADER_SETTINGS.style.transform = `translateY(-100%)`;
+    ELEMENTS.HEADER_SETTINGS.style.top = `0%`;
 
     ELEMENTS.BUTTON_SUBMIT_HEADER_CREATE.removeEventListener('click', createHeader);
     ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
@@ -841,6 +845,7 @@ function closeHeaderSettings(event) {
 
 function openHeaderSettings(event) {
     ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
+    ELEMENTS.HEADER_SETTINGS.style.top = "50%";
 
     ELEMENTS.BUTTON_SUBMIT_HEADER_CREATE.addEventListener('click', createHeader);
     ELEMENTS.BUTTON_ADD_HEADER.removeEventListener('click', openHeaderSettings);
@@ -1003,7 +1008,6 @@ document.addEventListener('DOMContentLoaded', e => {
 //  ___________open-shortcuts-settings___________
 
 ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click', (e) => {
-    ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
     openLoading(1);
     ELEMENTS.MAIN.style.transform = `translateX(-${document.querySelector("body").offsetWidth}px)`;
     ELEMENTS.SHORTCUTS.style.transform = "translateX(0%)"
@@ -1011,7 +1015,6 @@ ELEMENTS.BUTTON_SHORTCUTS_SETTINGS.addEventListener('click', (e) => {
 ELEMENTS.SHORTCUTS_EXIT.addEventListener('click', (e) => {
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     openLoading(1);
-    ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.SHORTCUTS.style.transform = "translateX(130%)"
 })
 // ___________add-shortcuts___________
@@ -1088,14 +1091,12 @@ window.addEventListener('keydown', (ev) => {
 });
 //_________open-technical__________
 ELEMENTS.BUTTON_TECHNICAL_SETTINGS.addEventListener('click', (e) => {
-    ELEMENTS.SETTINGS.style.transform = "translateX(-100%)"
     openLoading(2);
 
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.TECHNICAL.style.transform = "translateY(0%)"
 })
 ELEMENTS.TECHNICAL_EXIT.addEventListener('click', (e) => {
-    ELEMENTS.SETTINGS.style.transform = "translateX(0%)"
     ELEMENTS.MAIN.style.transform = `translateX(0px)`;
     openLoading(2);
 
@@ -1105,24 +1106,33 @@ ELEMENTS.TECHNICAL_EXIT.addEventListener('click', (e) => {
 ELEMENTS.BUTTON_TECHNICALV1.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = version
     ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
+    ELEMENTS.TECHNICAL_SCREEN.style.right = '50%';
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(50%)';
     setTimeout(() => {
-        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+    ELEMENTS.TECHNICAL_SCREEN.style.right = '0%';
+
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
     }, 2000);
 });
 ELEMENTS.BUTTON_TECHNICALV2.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = developers
     ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '35px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
+    ELEMENTS.TECHNICAL_SCREEN.style.right = '50%';
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(50%)';
     setTimeout(() => {
-        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+        ELEMENTS.TECHNICAL_SCREEN.style.right = '0%';
+
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
     }, 2000);
 });
 ELEMENTS.BUTTON_TECHNICALV3.addEventListener('click', () => {
     ELEMENTS.TECHNICAL_SCREEN.innerText = data
     ELEMENTS.TECHNICAL_SCREEN.style.fontSize = '55px'
-    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(0%)';
+    ELEMENTS.TECHNICAL_SCREEN.style.right = '50%';
+    ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(50%)';
     setTimeout(() => {
-        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(330%)';
+        ELEMENTS.TECHNICAL_SCREEN.style.right = '0%';
+
+        ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
     }, 2000);
 });
