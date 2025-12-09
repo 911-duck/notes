@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function createExample(event) {
     ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;

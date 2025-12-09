@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function defaultVisualSettings(){
     ELEMENTS.OPTION_MAIN_BASE_COLOR.value = window.getComputedStyle(document.querySelector(':root')).getPropertyValue('--menu_color');

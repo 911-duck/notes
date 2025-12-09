@@ -1,0 +1,690 @@
+
+@media (max-width: 1440px) {
+    
+
+    .settings__name{
+        font-size: 30px;
+    }
+
+    .settings__header-icon-nt{
+        width: 30px;
+        height: 30px;
+    }
+
+    .settings__visual,
+    .settings__technical,
+    .settings__shortcuts{
+        font-size: 17px;
+    }
+
+    .settings__header-icon-gt,
+    .settings__header-icon-sc,
+    .settings__header-icon-tl,
+    .settings__header-icon-vl,
+    .settings__header-icon-yt{
+        width: 17px;
+        height: 17px;
+    }
+
+    .visual-settings_header{
+        font-size: 20px;
+    }
+
+    .option{
+        font-size: 12px;
+    }
+
+    .visual-settings_example{
+        width: 400px;
+        height: 400px;
+    }
+
+    .visual-settings_txt{
+        font-size: 25px;
+    }
+
+    .visual-settings_head{
+        font-size: 55px;
+    }
+
+    .settings__header{
+        font-size: 23px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .menu_header{
+        display: none;
+    }
+    .note-header_name{
+        font-size: 20px;
+    }
+    .note-header_header-child{
+        font-size: 17px;
+    }
+    .note-header_note-child{
+        height: 40px;
+    }
+    .menu_add-note-header{
+        height: 40px;
+        width: 60px;
+        font-size: 24px;
+        border-radius: 10px;
+    }
+
+    .note-header_note-add{
+        height: 40px;
+        font-size: 17px;
+    }
+    .note-header_headers{
+        width: 150px;
+        height: 40px;
+        font-size: 17px;
+    }
+    .menu_search{
+        width: 200px;
+        height: 40px;
+        font-size: 17px;
+    }
+    .setting-icon{
+        height: 40px;
+        border-radius: 10px;
+        width: 40px;
+    }
+
+    .visual-settings_example{
+        width: 300px;
+        height: 300px;
+    }
+
+    .visual-settings_txt{
+        font-size: 15px;
+    }
+
+    .visual-settings_head{
+        font-size: 35px;
+    }
+
+    .settings__header{
+        font-size: 17px;
+    }
+
+    .visual-settings_button-w1{
+        height: 30px;
+    }
+    
+    .visual-settings_button-w2{
+        height: 30px;
+        bottom: 80px;
+    }
+
+    .visual-settings_button-w3{
+        height: 30px;
+        bottom: 120px;
+    }
+     .button-technical{
+        font-size: 20px;
+    }
+
+    .note-settings_header{
+        font-size: 30px;
+    }
+
+    .button-shortcuts{
+        font-size: 16px;
+    }
+
+    .option-shortcuts{
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    .menu_add-note-header{
+        height: 30px;
+        width: 47px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+    .note-header_headers{
+        border-radius: 10px;
+        height: 30px;
+        width: 100px;
+        font-size: 10px;
+    }
+    .note-header_header-child{
+        font-size: 10px;
+    }
+    .note-header_delete-child{
+        font-size: 17px;
+    }
+    .note-header_note-child{
+        height: 30px;
+    }
+    .note-header_note-add{
+        border-radius: 10px;
+        height: 30px;
+        font-size: 10px;
+    }
+    .menu_search{
+        width: 100px;
+        height: 30px;
+        border-radius: 10px;
+        font-size: 10px;
+    }
+    .setting-icon{
+        height: 30px;
+        border-radius: 10px;
+        width: 30px;
+    }
+
+    .settings__visual,
+    .settings__technical,
+    .settings__shortcuts{
+        align-items: center;
+        justify-content: center;
+    }
+     .option{
+        font-size: 10px;
+    }
+    .settings__name{
+        font-size: 20px;
+        height: 40px;
+    }
+    
+    .settings__header-icon-nt{
+        width: 20px;
+        height: 20px;
+    }
+
+     .note-settings_header{
+        font-size: 20px;
+    }
+    
+    .settings__header-icon,
+    .settings__header-icon-ab{
+        margin-bottom: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .settings{
+        width: 30%;
+    }
+
+    .note-header{
+        max-height: 300px;
+      /* padding: 10px;
+        height: 50px; */
+    }
+
+    .visual-settings_example{
+        height: 200px;
+        width: 200px;
+    }
+    .visual-settings_txt{
+        font-size: 15px;
+    }
+
+    .visual-settings_head{
+        font-size: 35px;
+    }
+
+    .settings__header{
+        font-size: 17px;
+    }
+
+    .visual-settings_button-w1{
+        height: 15px;
+        right: 9px;
+        font-size: 7px;
+        width: 40px;
+    }
+    
+    .visual-settings_button-w2{
+        height: 15px;
+        bottom: 60px;
+        right: 9px;
+        font-size: 7px;
+        width:60px;
+    }
+
+    .visual-settings_button-w3{
+        height: 15px;
+        bottom: 80px;
+        right: 9px;
+        font-size: 7px;
+        width: 80px;
+    }
+
+    .visual-settings_create{
+        width: 40%;
+    }
+
+    .visual-settings-settings{
+        width: 60%;
+    }
+    .settings__header-icon-gt,
+    .settings__header-icon-sc,
+    .settings__header-icon-tl,
+    .settings__header-icon-vl,
+    .settings__header-icon-yt{
+        display: none;
+    }
+    .add-header-screen{
+        width: 400px;
+        height: 300px;
+    }
+    .add-header-screen_header{
+        font-size: 20px;
+    }
+    .add-header-screen_input{
+        font-size: 14px;
+    }
+
+    .add-header-screen_submit{
+        width: 160px;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .button-technical{
+        font-size: 15px;
+    }
+    .button-shortcuts{
+        font-size: 15px;
+    }
+
+    .option-shortcuts{
+        font-size: 15px;
+    }
+}
+
+.ns{
+    display: none;
+}
+
+@media (max-width: 600px) {
+    
+    .menu_add-note-header{
+        height: 30px;
+        width: 47px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+    .note-header_delete-child{
+        font-size: 25px;
+    }
+    .note-header_header-child{
+        font-size: 15px;
+    }
+    .note-header_note-child{
+        height: 30px;
+    }
+    .menu_add-note-header{
+        height: 40px;
+        width: 60px;
+        font-size: 24px;
+        border-radius: 10px;
+    }
+    .note-header_name{
+        font-size: 30px;
+    }
+    .note-header_headers{
+        border-radius: 10px;
+        height: 30px;
+        width: 100px;
+        font-size: 15px;
+    }
+    .menu_search{
+        width: 70px;
+        height: 40px;
+        font-size: 15px;
+    }
+    .note-header_search{
+        height: 30px;
+        width: 100px;
+    }
+    .note-header_note-add{
+        border-radius: 10px;
+        height: 30px;
+        font-size: 15px;
+    }
+    
+    .setting-icon{
+        height: 40px;
+        border-radius: 10px;
+        width: 40px;
+    }
+
+    .settings__visual,
+    .settings__technical,
+    .settings__shortcuts{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .settings__name{
+        font-size: 20px;
+        height: 40px;
+    }
+    .option_header{
+        font-size: 13px;
+    }
+
+    .visual-settings_header{
+        font-size: 25px;
+    }
+
+    .right-board_font-input-vs{
+        width: 80%;
+        height: 50px;
+    }
+
+    .option{
+        flex-direction: column;
+        height: 80px;
+    }
+    .option_input{
+        width: 80%;
+        height: 50px;
+    }
+
+    .option_input-color{
+        width: 80%;
+        height: 50px;
+    }
+    .settings__header-icon-nt{
+        width: 20px;
+        height: 20px;
+    }
+    
+    .settings__header-icon-gt,
+    .settings__header-icon-sc,
+    .settings__header-icon-tl,
+    .settings__header-icon-vl,
+    .settings__header-icon-yt{
+        display: none;
+    }
+    
+    
+    .settings__header-icon,
+    .settings__header-icon-ab{
+        margin-bottom: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .settings{
+        width: 50%;
+    }
+    .note_settings{
+        width: 100%;
+    }
+    .note_create{
+        display: none;
+    }
+    .visual-settings_create{
+        display: none;
+    }
+    .visual-settings-settings{
+        width: 100%;
+    }
+.add-header-screen_icon{
+        display: none;
+    }
+    .add-header-screen{
+        width: 300px;
+        height: 200px;
+    }
+    .add-header-screen_header{
+        font-size: 20px;
+    }
+    .add-header-screen_input{
+        font-size: 15px;
+    }
+
+    .add-header-screen_submit{
+        width: 100px;
+        font-size: 15px;
+        height: 30px;
+    }
+
+    .option-technical{
+        flex-direction: column;
+        height: 20%;
+    }
+
+    .ns{
+        width: 80%;
+        transform: translateX(12.5%);
+        display: flex;
+    }
+
+    .button-technical{
+        font-size: 15px;
+        width: 100%;
+        height: 60%;
+        right: 0;
+    }
+
+    .option-shortcuts{
+        flex-direction: column;
+        gap: calc(var(--base_gap) / 3);
+    }
+
+    .button-shortcuts{
+        width: 90%;
+        height: 30%;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .edit{
+        width: 190px;
+        height: 30px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .right-board{
+        width: 50%;
+    }
+
+    .right-board_input{
+        flex-direction: column;
+        height: 100px;
+    }
+
+    .right-board_input> *{
+        width: 100%;
+        height: 40%;
+    }
+
+    .right-board_input>span{
+        height: 40%;
+        width: 100%;
+    }
+
+    .edit>div{
+        width: 30px;
+        height: 30px;
+    }
+
+    .open-note_open-right-board{
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 320px) {
+    .main{
+        width: 100%;
+    }
+.note-header_main{
+        align-items: center;
+        justify-content: center;
+    }
+    .note-header_delete-child{
+        font-size: 35px;
+    }
+    .note-header_header-child{
+        font-size: 25px;
+    }
+    .note-header_note-child{
+        height: 50px;
+    }
+    .menu_add-note-header{
+        height: 40px;
+        width: 60px;
+        font-size: 24px;
+        border-radius: 10px;
+    }
+    .note-header_name{
+        font-size: 40px;
+    }
+    .note-header_headers{
+       display: none;
+    }
+    .note-header_note-add{
+        border-radius: 20px;
+        height: 50px;
+        width: 80%;
+        margin: 0;
+        left: 40%;
+        transform: translateX(-50%);
+        font-size: 20px;
+    }
+    .menu_search{
+        display: none;
+    }
+    .option_header{
+        font-size: 13px;
+    }
+
+    .visual-settings_header{
+        font-size: 25px;
+    }
+
+    .right-board_font-input-vs{
+        width: 80%;
+        height: 50px;
+    }
+
+    .option{
+        flex-direction: column;
+        height: 80px;
+    }
+
+    .option_input{
+        width: 80%;
+        height: 50px;
+    }
+
+    .option_input-color{
+        width: 80%;
+        height: 50px;
+    }
+     /* .note-header{
+        padding: 15px;
+        height: 80px;
+    } */
+
+    .menu_add-note-header{
+        height: 30px;
+        width: 47px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+    .menu_search{
+        width: 70px;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+    .setting-icon{
+        height: 30px;
+        border-radius: 10px;
+        width: 30px;
+    }
+
+    .settings__visual,
+    .settings__technical,
+    .settings__shortcuts{
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .settings__name{
+        font-size: 20px;
+        height: 40px;
+    }
+    
+    .settings__header-icon-nt{
+        width: 20px;
+        height: 20px;
+    }
+    
+    .settings__header-icon-gt,
+    .settings__header-icon-sc,
+    .settings__header-icon-tl,
+    .settings__header-icon-vl,
+    .settings__header-icon-yt{
+        display: none;
+    }
+    
+    
+    .settings__header-icon,
+    .settings__header-icon-ab{
+        margin-bottom: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .settings{
+        width: 50%;
+    }
+    .add-header-screen_icon{
+        display: none;
+    }
+    .add-header-screen{
+        width: 230px;
+        height: 300px;
+    }
+    .add-header-screen_exit{
+        font-size: 30px;
+    }
+    .add-header-screen_header{
+        margin-top: 20px;
+        width: 100%;
+        font-size: 20px;
+        text-align: center;
+    }
+    .add-header-screen_input{
+        margin-top: 20px;
+        font-size: 12px;
+        width: 100%;
+        height: 50px;
+    }
+
+    .add-header-screen_submit{
+        width: 150px;
+        font-size: 12px;
+        height: 50px;
+    }
+
+    .option-shortcuts{
+        flex-direction: column;
+        gap: calc(var(--base_gap) / 3);
+    }
+
+    .button-shortcuts{
+        width: 90%;
+        height: 30%;
+        font-size: 12px;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function resetOptions() {
     ELEMENTS.OPTION_URL.value = "";

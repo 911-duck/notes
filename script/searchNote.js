@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function searchNote(element, str) {
     const elements = element.querySelectorAll(".note-header_note-child")

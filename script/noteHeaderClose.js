@@ -1,7 +1,6 @@
-function noteHeaderClose(element) {
-    element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
+function noteHeaderClose(element,h) {
+    element.style.height = h + "px";
     element.querySelector(".note-header_note-list").style.display = "none"
-    element.style.height = "calc(var(--note_height) + var(--base_gap) * 2)";
 }
 
 export default noteHeaderClose

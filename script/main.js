@@ -1,6 +1,6 @@
 //___________________import_________________
 
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 import deleteChild from "./deleteChild.js";
 import resetOptions from "./resetOptions.js";
 import createExample from "./createExample.js"
@@ -26,6 +26,18 @@ let OpenTechnical = '';
 let version = '6.41';
 let developers = 'Бирюк Евгений, Шитенков Кирилл';
 let data = 'Nov 9, 2025';
+
+/* ___________search-for-max-x-and-y__________ */
+
+function maxXY(){
+    let max = [0,0] // x,y
+    let elements = ELEMENTS.OPEN_NOTE_SCREEN.querySelectorAll("*")
+    elements.forEach(el=>{
+        if(max[0] < el.offsetWidth + el.offsetLeft + 40) max[0] = el.offsetHeight + el.offsetLeft + 40
+        if(max[1] < el.offsetHeight + el.offsetTop + 40) max[1] = el.offsetHeight + el.offsetTop + 40
+    })
+    return max
+}
 
 /* __________________search___________________ */
 
@@ -697,6 +709,7 @@ function openNote(obj) {
         if (obj.note_styles.picture_url != "") {
             ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${obj.note_styles.picture_url}")`
         }
+        
     } else {
         ELEMENTS.OPEN_NOTE.style.right = "0px"
         ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = obj.innerHtml
@@ -704,6 +717,8 @@ function openNote(obj) {
         ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = obj.screen[1]
         document.querySelectorAll('.move-p-block').forEach(el => el.addEventListener('mousedown', activeP));
         document.querySelectorAll('.move-block').forEach(el => el.addEventListener('mousedown', active));
+         ELEMENTS.OPEN_NOTE_SCREEN.style.width = maxXY()[0] + "px"
+        // ELEMENTS.OPEN_NOTE_SCREEN.style.height = maxXY()[1] + "px"
     }
 }
 
@@ -783,6 +798,8 @@ ELEMENTS.BUTTON_RESET_VISUAL_SETTINGS.addEventListener('click', e => {
 
 // _______________create-header_____________
 
+let height = 0
+
 function closeHeader(event) {
     let element = 0
     document.querySelectorAll(".note-header_main").forEach((el, i) => {
@@ -790,7 +807,7 @@ function closeHeader(event) {
     })
     if (element == 0) return
     element.removeEventListener('click', closeHeader);
-    noteHeaderClose(element.parentElement);
+    noteHeaderClose(element.parentElement,height);
     element.addEventListener('click', openHeader);
 }
 
@@ -801,7 +818,7 @@ function openHeader(event) {
     })
     if (element == 0) return
     element.removeEventListener('click', openHeader);
-    noteHeaderOpen(element.parentElement);
+    height = noteHeaderOpen(element.parentElement);
     element.addEventListener('click', closeHeader);
 }
 
@@ -903,7 +920,7 @@ ELEMENTS.OPTION_TXT.addEventListener("input",e=>{
 }
 )
 
-function createNote(note) {
+function createNote(note,h,n) {
     const NOTE_TEMP = document.createElement("div");
     active_header.appendChild(NOTE_TEMP);
     NOTE_TEMP.classList.add("note-header_note-child");
@@ -919,9 +936,8 @@ function createNote(note) {
     console.log(note)
     NOTE_TEMP.addEventListener('click', e => {
         let el = NOTE_TEMP
-        active_header = el.parentElement
-        console.log(el)
-        openNote(notes[el.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][el.querySelector(".note-header_header-child").innerText])
+        active_header = NOTE_TEMP.parentElement
+        openNote(notes[NOTE_TEMP.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][h])
         ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
     })
 
@@ -973,7 +989,7 @@ function createNoteCard(event) {
         note_styles: note_styles,
         innerHtml: 0,
     }
-    createNote(noteOBJ);
+    createNote(noteOBJ,ELEMENTS.OPTION_HEAD.value,ELEMENTS.OPTION_TXT.value);
     closeNoteSettings();
 }
 

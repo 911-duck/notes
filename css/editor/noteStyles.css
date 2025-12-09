@@ -13,7 +13,7 @@
     --transition: all 1s;
 }
 
-.open-note{
+.open-note {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -26,20 +26,22 @@
     transition: all 1s;
 }
 
-.open-note_screen{
+.open-note_screen {
     position: relative;
     width: 100%;
     height: 100%;
-    min-width: 0px;
-    min-height: 0px;
+    min-width: 100%;
+    min-height: 100%;
     background-color: var(--menu_color);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
     transition: all 1s;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 
-.open-note_header{
+.open-note_header {
     top: 30px;
     left: calc(50%);
     transform: translateX(-50%);
@@ -48,7 +50,7 @@
     font-size: 20px;
 }
 
-.open-note_txt{
+.open-note_txt {
     position: absolute;
     top: 80px;
     left: 30px;
@@ -56,7 +58,7 @@
     font-size: 20px;
 }
 
-.open-note_exit{
+.open-note_exit {
     width: var(--header_font-size);
     height: var(--header_font-size);
     position: absolute;
@@ -72,13 +74,13 @@
     transform: rotate(45deg);
 }
 
-.edit{
+.edit {
     z-index: 30;
     position: absolute;
     bottom: 5%;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(var(--note_height) * 5 + ( var(--base_gap) * 4 ));
+    width: calc(var(--note_height) * 5 + (var(--base_gap) * 4));
     height: calc(--base_gap);
     padding: var(--base_gap);
     gap: var(--base_gap);
@@ -96,52 +98,52 @@
 .edit_draw,
 .edit_rubber,
 .edit_delete,
-.edit_add-text{
+.edit_add-text {
     height: var(--note_height);
     width: var(--note_height);
     background-color: var(--button_color);
     border-radius: var(--base_border-radius);
-    transition: all 0.3s ;
-    border-bottom: var(--menu_color) solid  0px;
+    transition: all 0.3s;
+    border-bottom: var(--menu_color) solid 0px;
 }
 
-.edit_text{
-    background-image: url("../img/free-icon-edit-3597088.png");
+.edit_text {
+    background-image: url("../../img/icons/free-icon-edit-3597088.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 
-.edit_picture{
-    background-image: url("../img/free-icon-image-gallery-3342176.png");
+.edit_picture {
+    background-image: url("../../img/icons/free-icon-image-gallery-3342176.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 
-.edit_draw{
-    background-image: url("../img/free-icon-pencil-1828911.png");
+.edit_draw {
+    background-image: url("../../img/icons/free-icon-pencil-1828911.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 
-.edit_rubber{
-    background-image: url("../img/free-icon-eraser-7358765.png");
+.edit_rubber {
+    background-image: url("../../img/icons/free-icon-eraser-7358765.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 
-.edit_add-text{
-    background-image: url("../img/free-icon-text-3721901.png");
+.edit_add-text {
+    background-image: url("../../img/icons/free-icon-text-3721901.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
 }
 
-.edit_delete{
-    background-image: url("../img/free-icon-trash-can-6148091.png");
+.edit_delete {
+    background-image: url("../../img/icons/free-icon-trash-can-6148091.png");
     background-position: 50% 50%;
     background-size: 50%;
     background-repeat: no-repeat;
@@ -153,11 +155,11 @@
 .edit_rubber:hover,
 .edit_delete:hover,
 .edit_add-text:hover,
-.draw_section:hover{
-    border-bottom: var(--menu_color) solid  10px;
+.draw_section:hover {
+    border-bottom: var(--menu_color) solid 10px;
 }
 
-.editor{
+.editor {
     z-index: 30;
     top: 150%;
     left: 50%;
@@ -171,29 +173,29 @@
     transition: var(--transition);
 }
 
-#editor{
+#editor {
     width: 100%;
     height: 90%;
     outline: none;
     border: none;
     position: absolute;
-    border-radius: 0 0 var(--base_border-radius)  var(--base_border-radius);
+    border-radius: 0 0 var(--base_border-radius) var(--base_border-radius);
     background-color: var(--notes_color);
 }
 
-.ql-snow{
+.ql-snow {
     outline: none;
     border: none;
 }
 
-.move-block{
+.move-block {
     z-index: 1;
     border-radius: 0px;
     transform: rotate(0deg);
     position: absolute;
 }
 
-.move-p-block{
+.move-p-block {
     z-index: 1;
     border-radius: 0px;
     position: absolute;
@@ -201,7 +203,7 @@
     overflow: hidden;
 }
 
-.picture-editor{
+.picture-editor {
     z-index: 30;
     top: 150%;
     left: 50%;
@@ -221,7 +223,7 @@
     transition: var(--transition);
 }
 
-.picture-editor_option{
+.picture-editor_option {
     width: 100%;
     height: 10%;
     gap: var(--base_gap);
@@ -231,11 +233,11 @@
 }
 
 .picture-editor_option-width,
-.picture-editor_option-height{
+.picture-editor_option-height {
     width: 20%;
 }
 
-.picture-editor_test{
+.picture-editor_test {
     width: 100%;
     height: 80%;
     display: flex;
@@ -246,7 +248,7 @@
 }
 
 .picture-editor_submit,
-.picture-editor_submit-create{
+.picture-editor_submit-create {
     width: 30%;
     height: 90%;
     background-color: var(--button_color);
@@ -258,23 +260,23 @@
 }
 
 
-.test_picture{
+.test_picture {
     width: 100px;
     height: 100px;
-    background-image: url("../img/free-icon-image-gallery-3342176.png");
+    background-image: url("../../img/icons/free-icon-image-gallery-3342176.png");
     background-size: contain;
-    background-position: 50% 50% ;
+    background-position: 50% 50%;
     background-repeat: no-repeat;
 }
 
-.right-board{
-    width: 40%;
+.right-board {
+    width: 400px;
     height: 95%;
     z-index: 32;
     position: absolute;
     right: var(--base_gap);
     transform: translateX(calc(100% + var(--base_gap)));
-    background-image: url("../img/free-icon-leaf-7486777.png");
+    background-image: url("../../img/icons/free-icon-leaf-7486777.png");
     background-position: 50% 70%;
     background-repeat: no-repeat;
     background-size: 60%;
@@ -284,13 +286,13 @@
     transition: var(--transition);
 }
 
-.open-note_open-right-board{
+.open-note_open-right-board {
     z-index: 30;
 
-     width: var(--header_font-size);
+    width: var(--header_font-size);
     height: var(--header_font-size);
     position: absolute;
-    background-image: url("../img/free-icon-dropdown-arrow-4865063.png");
+    background-image: url("../../img/icons/free-icon-dropdown-arrow-4865063.png");
     background-position: 50% 50%;
     background-size: 70%;
     background-repeat: no-repeat;
@@ -306,7 +308,7 @@
     transition: var(--transition);
 }
 
-.right-board_header{
+.right-board_header {
     text-align: center;
     width: 100%;
     height: 7%;
@@ -316,7 +318,7 @@
     font-size: var(--text_font-size);
 }
 
-.right-board_editor{
+.right-board_editor {
     display: none;
     width: 100%;
     height: 100%;
@@ -330,7 +332,7 @@
     /* border-top: 2px solid grey; */
 }
 
-.right-board_scroll{
+.right-board_scroll {
     width: 100%;
     height: 120%;
     display: flex;
@@ -340,7 +342,7 @@
     justify-content: flex-start;
 }
 
-.right-board_input{
+.right-board_input {
     width: 100%;
     height: 40px;
     display: flex;
@@ -348,7 +350,7 @@
     justify-content: space-between;
 }
 
-.right-board_input>span{
+.right-board_input>span {
     width: 40%;
     height: 100%;
     display: flex;
@@ -358,7 +360,7 @@
     background-color: var(--menu_color);
 }
 
-.input-s{
+.input-s {
     width: 40%;
     height: 100%;
     outline: none;
@@ -368,7 +370,7 @@
     background-color: var(--button_color);
 }
 
-.right-board_change{
+.right-board_change {
     width: 50%;
     height: 40px;
     display: flex;
@@ -378,7 +380,7 @@
     border-radius: var(--base_border-radius);
 }
 
-.right-board_background-input{
+.right-board_background-input {
     width: 40%;
     height: 100%;
     outline: none;
@@ -387,7 +389,7 @@
     border-radius: var(--base_border-radius);
 }
 
-.right-board_format{
+.right-board_format {
     height: auto;
     width: 100%;
     padding-top: var(--base_gap);
@@ -401,7 +403,7 @@
     flex-direction: column;
 }
 
-.right-board_editor-bg{
+.right-board_editor-bg {
     display: flex;
     width: 100%;
     height: 103%;
@@ -414,7 +416,7 @@
     /* border-top: 2px solid grey; */
 }
 
-.right-board_background-input-bg{
+.right-board_background-input-bg {
     width: 40%;
     height: 100%;
     outline: none;
@@ -423,7 +425,7 @@
     border-radius: var(--base_border-radius);
 }
 
-.right-board_change-bg{
+.right-board_change-bg {
     width: 50%;
     height: 40px;
     display: flex;
@@ -433,7 +435,7 @@
     border-radius: var(--base_border-radius);
 }
 
-.draw_editor{
+.draw_editor {
     width: 200px;
     height: 300px;
     position: absolute;
@@ -452,7 +454,7 @@
     transition: var(--transition);
 }
 
-.draw_section{
+.draw_section {
     width: 100%;
     height: 100%;
     border-radius: var(--base_border-radius);
@@ -462,58 +464,32 @@
     justify-content: center;
     padding: var(--base_gap);
     border: var(--button_color) solid 0px;
-    transition: all 0.3s ;
+    transition: all 0.3s;
 }
 
-.draw_line{
+.draw_line {
     width: 100%;
     height: 10%;
     background-color: black;
 }
 
-.draw_oval{
+.draw_oval {
     width: 70%;
     height: 100%;
     border-radius: 50%;
     border: black solid 5px;
 }
 
-.draw_rectangle{
+.draw_rectangle {
     width: 100%;
     height: 100%;
     /* border-radius: 50%; */
     border: black solid 5px;
 }
 
-@media (max-width: 600px) {
-    .edit{
-        width: 190px;
-        height: 30px;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .right-board{
-        width: 50%;
-    }
-
-    .right-board_input{
-        flex-direction: column;
-        height: 100px;
-    }
-
-    .right-board_input> *{
-        width: 100%;
-        height: 40%;
-    }
-
-    .right-board_input>span{
-        height: 40%;
-        width: 100%;
-    }
-
-    .edit>div{
-        width: 30px;
-        height: 30px;
-    }
+.right-board_input>span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }

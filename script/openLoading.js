@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function openLoading(n) {
     ELEMENTS.LOADER[n].style.display = "flex"

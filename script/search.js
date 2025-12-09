@@ -1,4 +1,4 @@
-import ELEMENTS from "../elements.js";
+import ELEMENTS from "./elements.js";
 
 function search(str) {
     const elements = document.querySelectorAll(".note-headers_note-header")
