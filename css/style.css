@@ -190,6 +190,8 @@ html,body{
 .note-header_header-child{
     font-size: var(--text_font-size);
     display: flex ;
+    max-width: 70%;
+    overflow-x: auto;
     align-items: center;
     justify-content: space-between;
 }
@@ -902,6 +904,12 @@ width: 100%;
     .note-header_name{
         font-size: 20px;
     }
+    .note-header_header-child{
+        font-size: 17px;
+    }
+    .note-header_note-child{
+        height: 40px;
+    }
     .menu_add-note-header{
         height: 40px;
         width: 60px;
@@ -989,6 +997,15 @@ width: 100%;
         height: 30px;
         width: 100px;
         font-size: 10px;
+    }
+    .note-header_header-child{
+        font-size: 10px;
+    }
+    .note-header_delete-child{
+        font-size: 17px;
+    }
+    .note-header_note-child{
+        height: 30px;
     }
     .note-header_note-add{
         border-radius: 10px;
@@ -1132,6 +1149,21 @@ width: 100%;
         height: 30px;
         width: 47px;
         font-size: 18px;
+        border-radius: 10px;
+    }
+    .note-header_delete-child{
+        font-size: 25px;
+    }
+    .note-header_header-child{
+        font-size: 15px;
+    }
+    .note-header_note-child{
+        height: 30px;
+    }
+    .menu_add-note-header{
+        height: 40px;
+        width: 60px;
+        font-size: 24px;
         border-radius: 10px;
     }
     .note-header_name{
@@ -1290,6 +1322,21 @@ width: 100%;
 .note-header_main{
         align-items: center;
         justify-content: center;
+    }
+    .note-header_delete-child{
+        font-size: 35px;
+    }
+    .note-header_header-child{
+        font-size: 25px;
+    }
+    .note-header_note-child{
+        height: 50px;
+    }
+    .menu_add-note-header{
+        height: 40px;
+        width: 60px;
+        font-size: 24px;
+        border-radius: 10px;
     }
     .note-header_name{
         font-size: 40px;

@@ -945,13 +945,13 @@ function closeNoteSettings(event) {
     ELEMENTS.MAIN.style.transform = `translateY(0%)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(120%)`;
 
-    ELEMENTS.BUTTON_SUBMIT.removeEventListener('click', createNode);
+    ELEMENTS.BUTTON_SUBMIT[0].removeEventListener('click', createNoteCard);
+    ELEMENTS.BUTTON_SUBMIT[1].removeEventListener('click', createNoteCard);
     ELEMENTS.BUTTON_RESET_NOTE.removeEventListener('click', closeNoteSettings);
     ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
-    ELEMENTS.BUTTON_CREATE_EXAMPLE.removeEventListener('click', createExample);
 }
 
-function createNode(event) {
+function createNoteCard(event) {
     let note_txt = {
         header: ELEMENTS.OPTION_HEAD.value,
         txt: ELEMENTS.OPTION_TXT.value
@@ -983,9 +983,9 @@ function openNoteSettings(event) {
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
     closeSettings();
     active_header = event.target.parentElement;
-    ELEMENTS.BUTTON_SUBMIT.addEventListener('click', createNode);
+    ELEMENTS.BUTTON_SUBMIT[0].addEventListener('click', createNoteCard);
+    ELEMENTS.BUTTON_SUBMIT[1].addEventListener('click', createNoteCard);
     ELEMENTS.BUTTON_RESET_NOTE.addEventListener('click', closeNoteSettings);
-    ELEMENTS.BUTTON_CREATE_EXAMPLE.addEventListener('click', createExample);
 }
 
 ELEMENTS.LOADER[0].style.display = "flex"

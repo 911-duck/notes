@@ -46,7 +46,7 @@ export default ELEMENTS = {
     OPTION_BG_I: document.querySelector(".right-board_background-input-im"),
     OPTION_CHECK_BOX_I: document.querySelector(".right-board_checkBox-im"),
     OPTION_BOARD_BACKGROUND_COLOR: document.querySelector(".right-board_background-input"),
-    BUTTON_SUBMIT: document.querySelector(".note_submit"),
+    BUTTON_SUBMIT: document.querySelectorAll(".note_submit"),
     BUTTON_SUBMIT_VISUAL_SETTINGS: document.querySelector(".visual-settings_submit"),
     BUTTON_RESET_NOTE: document.querySelector(".note_exit"),
     BUTTON_CREATE_EXAMPLE: document.querySelector(".note_create-example"),
