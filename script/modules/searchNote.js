@@ -81,12 +81,23 @@ function searchNote(element, str) {
             let name = el.querySelector(".note-header_header-child").innerText
             name = name.split("")
             let arr = str.split("")
-            let result = arr.every(e => name.includes(e))
+            let html = name.map(el=>el)
+
+            let result = arr.every(e => {
+                if(name.includes(e)){
+                    html[name.findIndex(el => el == e)] = `<span class="searchN">${e}</span>`
+                }
+                return name.includes(e)
+
+            })
+            el.querySelector(".note-header_header-child").innerHTML = html.join("")
+
             if (result == false) el.style.display = "none"
         });
     } else {
         elements.forEach(el => {
             el.style.display = "flex"
+            el.querySelector(".note-header_header-child").innerHTML = el.querySelector(".note-header_header-child").innerText
         });
     }
 }

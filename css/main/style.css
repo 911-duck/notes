@@ -848,3 +848,11 @@ width: 100%;
     z-index: 3;
     font-size: 55px;
 }
+
+.searchI{
+    background-color: var(--button_color);
+}
+
+.searchN{
+    background-color: var(--notes_color);
+}
