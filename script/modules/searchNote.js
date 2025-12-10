@@ -72,7 +72,7 @@ import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
 
-//__________________function________________
+//__________________function_______________
 
 function searchNote(element, str) {
     const elements = element.querySelectorAll(".note-header_note-child")
