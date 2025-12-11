@@ -24,8 +24,6 @@ export default ELEMENTS = {
     OPTION_TXT_FS: document.querySelector(".option_description-font-size"),
     OPTION_TXT_COLOR: document.querySelector(".option_txt-color"),
     OPTION_MAIN_HEADER: document.querySelector(".option_header-txt-main"),
-    // OPTION_MAIN_HEADER_FONT_SIZE: document.querySelector(".option_header-font-size-main"),
-    // OPTION_MAIN_TEXT_FONT_SIZE: document.querySelector(".option_txt-font-size-main"),
     OPTION_MAIN_BASE_COLOR: document.querySelector(".option_base-color-main"),
     OPTION_MAIN_TXT_COLOR: document.querySelector(".option_txt-color-main"),
     OPTION_MAIN_SECOND_BASE_COLOR: document.querySelector(".option_second-base-color"),
@@ -86,5 +84,6 @@ export default ELEMENTS = {
     PICTURE_EDITOR: document.querySelector('.picture-editor'),
     TEXT_EDITOR: document.querySelector('.editor'),
     TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor'),
-    DELETE_ACTIVE_BLOCK: document.querySelector('.edit_delete')
+    DELETE_ACTIVE_BLOCK: document.querySelector('.edit_delete'),
+    ERROR_BLOCK: document.querySelector(".error-window")
 };

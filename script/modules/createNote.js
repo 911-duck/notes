@@ -71,39 +71,41 @@ import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
+import errorCheck from "../classes/errorCheck.js";
 
 //__________________function________________
 
 function createNote(note, h, n) {
-    const NOTE_TEMP = document.createElement("div");
-    values.active_header.appendChild(NOTE_TEMP);
-    NOTE_TEMP.classList.add("note-header_note-child");
-    NOTE_TEMP.innerHTML += `
+        const NOTE_TEMP = document.createElement("div");
+        values.active_header.appendChild(NOTE_TEMP);
+        NOTE_TEMP.classList.add("note-header_note-child");
+        NOTE_TEMP.innerHTML += `
         <div class="note-header_header-child">${values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"].header}</div>
         <div class="note-header_delete-child">+</div>
     `;
 
-    let name = ELEMENTS.OPTION_HEAD.value;
-    checkHeaderCount(values.active_header);
-    values.active_note = name
-
-    console.log(note)
-    NOTE_TEMP.addEventListener('click', e => {
-        let el = NOTE_TEMP
-        values.active_header = NOTE_TEMP.parentElement
-        openNote(values.notes[NOTE_TEMP.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][h])
-        ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
-    })
-
-    values.active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
-        delete values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
-        deleteChild(e);
+        let name = ELEMENTS.OPTION_HEAD.value;
         checkHeaderCount(values.active_header);
-    }));
-    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
+        values.active_note = name
+
+        console.log(note)
+        NOTE_TEMP.addEventListener('click', e => {
+            let el = NOTE_TEMP
+            values.active_header = NOTE_TEMP.parentElement
+            openNote(values.notes[NOTE_TEMP.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][h])
+            ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
+        })
+
+        values.active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
+            delete values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
+            deleteChild(e);
+            checkHeaderCount(values.active_header);
+        }));
+        document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
 
 
-    resetOptions();
+        resetOptions();
+    
 }
 
 export default createNote

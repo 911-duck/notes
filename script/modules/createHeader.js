@@ -71,36 +71,39 @@ import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
+import errorCheck from "../classes/errorCheck.js"
 
 //__________________function________________
 
 function createHeader(event) {
-    const NOTE_TEMP = document.createElement("div");
-    ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
-    NOTE_TEMP.classList.add("note-headers_note-header");
-    NOTE_TEMP.classList.add("note-header");
-    NOTE_TEMP.innerHTML += `
-                <div class="note-header_main">
-                    <div class="note-header_name">${ELEMENTS.OPTION_HEADER.value}</div>
-                    <div class="note-header_headers">0 заметок</div>
-                </div>
-                <div class="note-header_note-list">
-                    <div class="note-header_note-add">+ добавить </div><input type="text" placeholder="поиск..." class="note-header_search menu_search"></input>
-                </div>
-    `;
-    NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
+    if(!errorCheck.checkHeaders(ELEMENTS.OPTION_HEADER.value)){
+        const NOTE_TEMP = document.createElement("div");
+        ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
+        NOTE_TEMP.classList.add("note-headers_note-header");
+        NOTE_TEMP.classList.add("note-header");
+        NOTE_TEMP.innerHTML += `
+                    <div class="note-header_main">
+                        <div class="note-header_name">${ELEMENTS.OPTION_HEADER.value}</div>
+                        <div class="note-header_headers">0 заметок</div>
+                    </div>
+                    <div class="note-header_note-list">
+                        <div class="note-header_note-add">+ добавить </div><input type="text" placeholder="поиск..." class="note-header_search menu_search"></input>
+                    </div>
+        `;
+        NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
 
-    NOTE_TEMP.querySelector(".note-header_search").addEventListener("input", e => {
-        searchNote(NOTE_TEMP.querySelector(".note-header_note-list"), NOTE_TEMP.querySelector(".note-header_search").value);
-    })
+        NOTE_TEMP.querySelector(".note-header_search").addEventListener("input", e => {
+            searchNote(NOTE_TEMP.querySelector(".note-header_note-list"), NOTE_TEMP.querySelector(".note-header_search").value);
+        })
 
-    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
-    ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
-    ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
+        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
+        ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
+        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
 
-    ELEMENTS.MAIN.style.backgroundImage = "none";
-    values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
-    closeHeaderSettings();
+        ELEMENTS.MAIN.style.backgroundImage = "none";
+        values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
+        closeHeaderSettings();
+    }
 }
 
 export default createHeader

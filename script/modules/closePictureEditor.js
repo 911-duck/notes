@@ -78,6 +78,7 @@ function closePictureEditor(event) {
     ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
     ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
+    ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
     ELEMENTS.ADD_PICTURE.removeEventListener('click', closePictureEditor)
     ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.removeEventListener('click', createPictureBlock)
 

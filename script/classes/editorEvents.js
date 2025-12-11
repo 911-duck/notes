@@ -66,6 +66,7 @@ import search from "../modules/search.js"
 import searchNote from "../modules/searchNote.js"
 import unactive from "../modules/unactive.js"
 import unactiveP from "../modules/unactiveP.js"
+import errorCheck from "./errorCheck.js";
 
 //__________________class_________________
 
@@ -77,9 +78,10 @@ class editorEvents {
     static deleteBlock() {
         if (values.activeBlock != 0) {
             values.activeBlock.remove()
-        }
-        if (values.activePBlock != 0) {
+        }else if (values.activePBlock != 0) {
             values.activePBlock.remove()
+        }else{
+            errorCheck.checkHaveAnySelectElement(0)
         }
     }
     // reset
@@ -102,9 +104,10 @@ class editorEvents {
     }
     // open text editor
     static textEdit() {
-        if (values.activeBlock != 0) {
+        if (!errorCheck.checkHaveAnySelectElement(values.activeBlock)) {
             document.querySelector('.ql-editor').innerHTML = values.activeBlock.innerHTML
 
+        ELEMENTS.PENCIL.removeEventListener('click', openPenEditor)
             ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
             ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
             ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
@@ -119,6 +122,7 @@ class editorEvents {
         ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
         ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
         ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
+        ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
         ELEMENTS.EDIT_TEXT.removeEventListener('click', closeTextReeditor)
 
         ELEMENTS.EDIT_BLOCK.style.bottom = "5%"
@@ -315,6 +319,7 @@ class editorEvents {
     ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
     ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
+        ELEMENTS.PENCIL.removeEventListener('click', openPenEditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', closeTextEditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "60%"
@@ -324,6 +329,8 @@ static closeEditorText(event){
     ELEMENTS.ADD_PICTURE.addEventListener('click', addPicture)
     ELEMENTS.EDIT_TEXT.addEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.addEventListener('click', openTextEditor)
+        ELEMENTS.PENCIL.addEventListener('click', openPenEditor)
+
     ELEMENTS.ADD_TEXT.removeEventListener('click', closeTextEditor)
 
     ELEMENTS.EDIT_BLOCK.style.bottom = "5%"

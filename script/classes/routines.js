@@ -66,6 +66,7 @@ import search from "../modules/search.js"
 import searchNote from "../modules/searchNote.js"
 import unactive from "../modules/unactive.js"
 import unactiveP from "../modules/unactiveP.js"
+import errorCheck from "./errorCheck.js";
 
 //___________________class______________________
 
@@ -239,32 +240,39 @@ class routines {
         ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 
         ELEMENTS.OPTION_BOARD_HEIGHT.addEventListener("input", e => {
-            values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
+            if(ELEMENTS.OPTION_BOARD_HEIGHT.value == "") errorCheck.getError(104)
+            else values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_X.addEventListener("input", e => {
-            values.editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
+            if( ELEMENTS.OPTION_BOARD_X.value == "") errorCheck.getError(104)
+            else values.editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_WIDTH.addEventListener("input", e => {
-            values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+            if(ELEMENTS.OPTION_BOARD_WIDTH.value == "") errorCheck.getError(104)
+            else values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_Y.addEventListener("input", e => {
-            values.editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
+            if(ELEMENTS.OPTION_BOARD_Y.value == "") errorCheck.getError(104)
+            else values.editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
         })
 
         ELEMENTS.OPTION_ROTATE.addEventListener("input", e => {
-            values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
+            if(ELEMENTS.OPTION_ROTATE.value == "") errorCheck.getError(104)
+            else values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
         })
 
         ELEMENTS.OPTION_BOARD_Z_INDEX.addEventListener("input", e => {
-            values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
+            if(ELEMENTS.OPTION_BOARD_Z_INDEX.value == "") errorCheck.getError(104)
+            else values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
 
         })
 
         ELEMENTS.OPTION_BOARD_BORDER_RADIUS.addEventListener("input", e => {
-            values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
+            if(ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value == "") errorCheck.getError(104)
+            else values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
 
         })
 
@@ -340,16 +348,6 @@ class routines {
 
         })
 
-        // ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.addEventListener("input", e => {
-        //     document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
-
-        // })
-
-        // ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.addEventListener("input", e => {
-        //     document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
-
-        // })
-
         ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
             ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;
             ELEMENTS.VISUAL_SETTINGS.style.transform = "translateY(0)"
@@ -407,7 +405,6 @@ class routines {
 
         ELEMENTS.OPTION_TXT.addEventListener("input", e => {
             ELEMENTS.EXAMPLE_TXT.innerText = ELEMENTS.OPTION_TXT.value;
-
         }
         )
 
@@ -429,21 +426,26 @@ class routines {
         })
 
         ELEMENTS.BUTTON_SHORTCUTSV1.addEventListener('click', () => {
+            errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV1);
         });
 
         ELEMENTS.BUTTON_SHORTCUTSV2.addEventListener('click', () => {
+            errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV2);
         });
 
         ELEMENTS.BUTTON_SHORTCUTSV3.addEventListener('click', () => {
+            errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV3);
         });
 
         ELEMENTS.BUTTON_SHORTCUTSV4.addEventListener('click', () => {
+            errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV4);
         });
         ELEMENTS.BUTTON_SHORTCUTSV5.addEventListener('click', () => {
+            errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV5);
         });
         window.addEventListener('keydown', (ev) => {

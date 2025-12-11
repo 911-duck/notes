@@ -78,6 +78,7 @@ function addPicture(event) {
     ELEMENTS.ADD_PICTURE.removeEventListener('click', addPicture)
     ELEMENTS.EDIT_TEXT.removeEventListener('click', openTextReeditor)
     ELEMENTS.ADD_TEXT.removeEventListener('click', openTextEditor)
+        ELEMENTS.PENCIL.removeEventListener('click', openPenEditor)
     ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE_DRAFT.addEventListener('click', createDraftPicture)
     ELEMENTS.ADD_PICTURE.addEventListener('click', closePictureEditor)
     ELEMENTS.BUTTON_SUBMIT_PICTURE_CREATE.addEventListener('click', createPictureBlock)

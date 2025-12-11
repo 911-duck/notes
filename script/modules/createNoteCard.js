@@ -71,15 +71,18 @@ import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
+import errorCheck from "../classes/errorCheck.js";
 
 //__________________function________________
 
 function createNoteCard(event) {
-    values.notes = routines.makeObj(values.notes, values.active_header)
-    let noteOBJ = routines.makeMiniObj()
+    if (!errorCheck.checkNotes(ELEMENTS.OPTION_HEAD.value, values.active_header.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML)) {
+            values.notes = routines.makeObj(values.notes, values.active_header)
+            let noteOBJ = routines.makeMiniObj()
 
-    createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, ELEMENTS.OPTION_TXT.value);
-    closeNoteSettings();
+            createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, values.active_header);
+            closeNoteSettings();
+    }
 }
 
 export default createNoteCard
