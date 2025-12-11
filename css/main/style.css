@@ -461,8 +461,9 @@ html,body{
 
 .visual-settings-settings{
     width: calc(50% - var(--base_gap));
-    height: 100%;
-    overflow-y: scroll;
+    height: auto;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .scroll{

@@ -340,15 +340,15 @@ class routines {
 
         })
 
-        ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.addEventListener("input", e => {
-            document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
+        // ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.addEventListener("input", e => {
+        //     document.querySelector(':root').style.setProperty("--header_font-size", `${ELEMENTS.OPTION_MAIN_HEADER_FONT_SIZE.value}px`);
 
-        })
+        // })
 
-        ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.addEventListener("input", e => {
-            document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
+        // ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.addEventListener("input", e => {
+        //     document.querySelector(':root').style.setProperty("--text_font-size", `${ELEMENTS.OPTION_MAIN_TEXT_FONT_SIZE.value}px`);
 
-        })
+        // })
 
         ELEMENTS.BUTTON_VISUAL_SETTINGS.addEventListener('click', e => {
             ELEMENTS.MAIN.style.transform = `translateY(${ELEMENTS.MAIN.offsetHeight}px)`;

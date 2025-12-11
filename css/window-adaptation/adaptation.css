@@ -137,6 +137,10 @@
     .option-shortcuts{
         font-size: 20px;
     }
+
+    .picture-editor_submit{
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -296,6 +300,10 @@
     }
 
     .option-shortcuts{
+        font-size: 15px;
+    }
+
+    .picture-editor_submit{
         font-size: 15px;
     }
 }
@@ -515,6 +523,16 @@
     .open-note_open-right-board{
         width: 35px;
         height: 35px;
+    }
+    .picture-editor_option{
+        height: 60%;
+    }
+    .picture-editor_submit,
+    .picture-editor_option-backGround-url,
+    .picture-editor_submit-create{
+        width: 100%;
+        font-size: 17px;
+        height: 40px;
     }
 }
 
