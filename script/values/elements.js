@@ -85,5 +85,6 @@ export default ELEMENTS = {
     TEXT_EDITOR: document.querySelector('.editor'),
     TEXT_EDITOR_INNERHTML: document.querySelector('.ql-editor'),
     DELETE_ACTIVE_BLOCK: document.querySelector('.edit_delete'),
-    ERROR_BLOCK: document.querySelector(".error-window")
+    ERROR_BLOCK: document.querySelector(".error-window"),
+    OPEN_EDUCATION: document.querySelector(".education")
 };

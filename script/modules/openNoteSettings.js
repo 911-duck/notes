@@ -75,6 +75,7 @@ import routines from "../classes/routines.js"
 //__________________function________________
 
 function openNoteSettings(event) {
+    resetOptions();
     openLoading(0);
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;

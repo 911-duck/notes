@@ -78,9 +78,14 @@ function resetOptions() {
     ELEMENTS.OPTION_URL.value = "";
     ELEMENTS.OPTION_HEAD.value = "";
     ELEMENTS.OPTION_TXT_COLOR.value = "";
-    ELEMENTS.OPTION_HEAD_FS.value = "h1";
+    ELEMENTS.OPTION_HEAD_FS.value = "h3";
     ELEMENTS.OPTION_TXT.value = "";
     ELEMENTS.OPTION_TXT_COLOR.value = "";
+
+    ELEMENTS.EXAMPLE_HEAD.innerHTML = "";
+    ELEMENTS.EXAMPLE_TXT.innerHTML = "";
+    ELEMENTS.EXAMPLE.style.backgroundImage = "";
+
 }
 
 export default resetOptions

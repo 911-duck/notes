@@ -71,11 +71,13 @@ import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
+import errorCheck from "../classes/errorCheck.js";
 
 //__________________function________________
 
 function drawOval(event) {
     closePenEditor();
+    errorCheck.getError("105")
     document.addEventListener("mousedown", createOvalStart)
 }
 

@@ -78,33 +78,33 @@ function search(str) {
     const elements = document.querySelectorAll(".note-headers_note-header")
     let count = 0
     let name = ""
-    if (str != 0) {
-        elements.forEach(el => {
-            name = el.querySelector(".note-header_main").querySelector(".note-header_name").innerText
-            name = name.split("")
-            let arr = str.split("")
-            let html = name.map(el=>el)
-            let result = arr.every(e => {
-                if(name.includes(e)){
-                    html[name.findIndex(el => el == e)] = `<span class="searchI">${e}</span>`
-                }
-                return name.includes(e)
-            })
-            el.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML = html.join("")
-            if (result == false) {
-                el.style.display = "none"
-                count++
-            }
-        });
-        if (count - elements.length == 0) document.querySelector(".main").style.backgroundImage = "url('./img/icons/free-icon-leaf-74867778.png')"
-        else document.querySelector(".main").style.backgroundImage = "none"
-    } else {
+    if (elements.length > 0) {
         elements.forEach(el => {
             el.style.display = "flex"
-        document.querySelector(".main").style.backgroundImage = "none"
+            document.querySelector(".main").style.backgroundImage = "none"
             el.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML = el.querySelector(".note-header_main").querySelector(".note-header_name").innerText
-
         });
+        if (str != 0) {
+            elements.forEach(el => {
+                name = el.querySelector(".note-header_main").querySelector(".note-header_name").innerText
+                name = name.split("")
+                let arr = str.split("")
+                let html = name.map(el => el)
+                let result = arr.every(e => {
+                    if (name.includes(e)) {
+                        html[name.findIndex(el => el == e)] = `<span class="searchI">${e}</span>`
+                    }
+                    return name.includes(e)
+                })
+                el.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML = html.join("")
+                if (result == false) {
+                    el.style.display = "none"
+                    count++
+                }
+            });
+            if (count - elements.length == 0) document.querySelector(".main").style.backgroundImage = "url('./img/icons/free-icon-leaf-74867778.png')"
+            else document.querySelector(".main").style.backgroundImage = "none"
+        }
     }
 }
 

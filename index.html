@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="css/main/style.css">
     <link rel="stylesheet" href="css/general/icons.css">
     <link rel="stylesheet" href="css/editor/noteStyles.css">
-    <link rel="stylesheet" href="css/general/fontsStyles.css">
+    <link rel="stylesheet" href="css/general/fonts-styles.css">
+    <link rel="stylesheet" href="css/general/info.css">
     <link rel="stylesheet" href="css/general/error.css">
     <link rel="stylesheet" href="css/window-adaptation/adaptation.css">
     <!-- api styles -->
@@ -46,19 +47,19 @@
             <div class="settings__header-icon-nt"></div>NoteCraft
         </div>
         <div class="settings__header">
-            <div class="settings__header-icon"></div>settings
+            <div class="settings__header-icon"></div>настройки
         </div>
         <div class="settings__visual">
-            <div class="settings__header-icon-vl"></div>visual
+            <div class="settings__header-icon-vl"></div>визуал
         </div>
         <div class="settings__technical">
-            <div class="settings__header-icon-tl"></div>technical
+            <div class="settings__header-icon-tl"></div>технические
         </div>
         <div class="settings__shortcuts">
-            <div class="settings__header-icon-sc"></div>shortcuts
+            <div class="settings__header-icon-sc"></div>клавиши
         </div>
         <div class="settings__header">
-            <div class="settings__header-icon-ab"></div>about
+            <div class="settings__header-icon-ab"></div>информация
         </div>
         <a href="https://github.com/911-duck/notes" class="settings__visual">
             <div class="settings__header-icon-gt"></div>github
@@ -66,7 +67,14 @@
         <a href="" class="settings__shortcuts">
             <div class="settings__header-icon-yt"></div>youtube
         </a>
+        <!-- <div class="settings__visual education">
+            <div class="settings__header-icon-vl"></div>обучение
+        </div> -->
     </div>
+    <!-- info-arrow -->
+    <div class="info-arrow"></div>
+    <!-- info-window -->
+    <div class="info-window">обучение:</div>
     <!-- error window -->
     <div class="error-window">ошибка</div>
     <!-- visual-settings -->
@@ -228,15 +236,15 @@
 
                 <h1 class="note-settings_header">настройки заметки</h1>
                 <div class="note-settings_option option">
-                    <span class="option_header">● фон:</span>
+                    <span class="option_header">фон:</span>
                     <input type="text" class="option_input option_backGround-url" placeholder="url...">
                 </div>
                 <div class="note-settings_option option">
-                    <span class="option_header">● заголовок:</span>
+                    <span class="option_header">заголовок:</span>
                     <input type="text" class="option_input option_header-txt" placeholder="название...">
                 </div>
                 <div class="note-settings_option option">
-                    <span class="option_header">● размер шрифта заголовка:</span>
+                    <span class="option_header">размер шрифта заголовка:</span>
                     <select class="option_input option_header-font-size">
                         <option value="h1">h1</option>
                         <option value="h2">h2</option>
@@ -245,11 +253,11 @@
                     </select>
                 </div>
                 <div class="note-settings_option option">
-                    <span class="option_header">● описание:</span>
+                    <span class="option_header">описание:</span>
                     <input type="text" class="option_input option_description-txt" placeholder="описание...">
                 </div>
                 <div class="note-settings_option option">
-                    <span class="option_header">● цвет текста:</span>
+                    <span class="option_header">цвет текста:</span>
                     <input type="color" class="option_input-color option_txt-color" placeholder="цвет...">
                 </div>
                 <div class="note_submit ns">создать</div>

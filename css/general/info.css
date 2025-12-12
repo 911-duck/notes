@@ -1,0 +1,53 @@
+:root {
+    --base_gap: 20px;
+    --menu_color: #ffe4c4;
+    --notes_color: #fef2e3;
+    --button_color: #f5c993;
+    --txt_color: #000000;
+    --border_weight: 2px;
+    --header_font-size: 50px;
+    --text_font-size: 25px;
+    --setting-icon_size: 40px;
+    --note_height: 60px;
+    --base_border-radius: 20px;
+    --transition: all 1s;
+}
+
+.info-arrow{
+    background-image: url("../../img/icons/Group 14.png");
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100px;
+    width: 100px;
+    display: none;
+position: absolute;
+right: 200px;
+top: 140px;
+transform: rotate(185deg);
+transition: all 1s;
+}
+
+.info-window{
+    display: none;
+    background-color: var(--button_color);
+    font-size: 20px;
+    border-left: 10px solid var(--notes_color);
+    width: 400px;
+    height: 200px;
+    border-radius: 30px;
+    position: absolute;
+    /* display: flex; */
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-wrap: wrap;
+    /* text-align: left; */
+    padding: 40px;
+    z-index: 60;
+
+    right: 40px;
+    bottom: 40px;
+    /* transform: translateX(calc(100% + 40px)); */
+
+    transition: all 0.5s ease-in-out;
+}

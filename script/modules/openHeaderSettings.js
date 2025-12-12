@@ -77,6 +77,7 @@ import routines from "../classes/routines.js"
 function openHeaderSettings(event) {
     ELEMENTS.HEADER_SETTINGS.style.transform = "translateY(-50%)";
     ELEMENTS.HEADER_SETTINGS.style.top = "50%";
+    ELEMENTS.OPTION_HEADER.value = ""
 
     ELEMENTS.BUTTON_SUBMIT_HEADER_CREATE.addEventListener('click', createHeader);
     ELEMENTS.BUTTON_ADD_HEADER.removeEventListener('click', openHeaderSettings);

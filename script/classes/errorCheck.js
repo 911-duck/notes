@@ -70,18 +70,26 @@ import unactiveP from "../modules/unactiveP.js"
 //________________local values__________________ 
 
 const errorsCodes = {
-    "100" : "ошибка: название уже занято.",
-    "101" : "ошибка: укажите название.",
-    "102" : "ошибка: выделите блок который вам нужен.",
-    "103" : "нажмите клавишу для события.",
-    "104" : "ошибка: введите параметр."
+    "100": "ошибка: название уже занято.",
+    "101": "ошибка: укажите название.",
+    "102": "ошибка: выделите блок который вам нужен.",
+    "103": "нажмите клавишу для события.",
+    "104": "ошибка: введите параметр.",
+    "105": "выберите начальную точку и протяните до конечной точки.",
+    "106": "ошибка: URL не действителен.",
+    "107": "ошибка: z индекс должен быть < 30.",
+    "108": "ошибка: z индекс должен быть положительным.",
+    "109": "ошибка: поворот должен быть положительным.",
+    "110": "ошибка: ширина должна быть положительной.",
+    "111": "ошибка: высота должна быть положительной.",
+    "112": "ошибка: закругление должно быть положительным.",
 }
 
 //___________________class______________________
 
 class errorCheck {
     // get error
-    static getError(code){
+    static getError(code) {
         ELEMENTS.ERROR_BLOCK.innerText = errorsCodes[String(code)]
         ELEMENTS.ERROR_BLOCK.style.transform = "translateX(0px)"
         setTimeout(() => {
@@ -89,52 +97,112 @@ class errorCheck {
         }, 5000);
     }
     // check headers names
-    static checkHeaders(name){
+    static checkHeaders(name) {
         let errorCode = 0
 
         const headers = Object.keys(values.notes)
-        const result = headers.every(el=>el != name)
+        const result = headers.every(el => el != name)
         console.log(name)
         console.log(headers)
         console.log(result)
-        
-        if(!result) errorCode = 100
+
+        if (!result) errorCode = 100
 
         const arr = name.split("")
 
-        if(!arr.some(el => el != " ")) errorCode = 101
+        if (!arr.some(el => el != " ")) errorCode = 101
 
-        if(errorCode) this.getError(errorCode)
+        if (errorCode) this.getError(errorCode)
 
         console.log(errorCode)
-            
+
         return errorCode
-    }  
+    }
     // check notes names  
-    static checkNotes(name,activeHeaderN){
+    static checkNotes(name, activeHeaderN) {
         let errorCode = 0
 
         const notes = Object.keys(values.notes[activeHeaderN])
-        const result = notes.every(el=>el != name)
-        
-             console.log(name)
+        const result = notes.every(el => el != name)
+
+        console.log(name)
         console.log(notes)
         console.log(result)
-        if(!result) errorCode = 100
+        if (!result) errorCode = 100
 
         const arr = name.split("")
 
-        if(!arr.some(el => el != " ")) errorCode = 101
+        if (!arr.some(el => el != " ")) errorCode = 101
 
-        if(errorCode) this.getError(errorCode)
-            
+        if (errorCode) this.getError(errorCode)
+
         return errorCode
     }
     // any element select?
-    static checkHaveAnySelectElement(a){
+    static checkHaveAnySelectElement(a) {
         let errorCode = 0
 
-        if(a == 0) errorCode = 102
+        if (a == 0) errorCode = 102
+        if (errorCode) this.getError(errorCode)
+
+        return errorCode
+    }
+    // check url
+    static checkURL(url) {
+        let result = false
+        let errorCode = 0
+
+        try {
+            new URL(url);
+            result = true;
+        } catch (e) {
+            result = false;
+        }
+
+        if (!result) {
+            errorCode = 106
+            this.getError(errorCode)
+        }
+        return errorCode
+    }
+    // check z index
+    static checkZIndex(n) {
+        let errorCode = 0
+
+        if (n > 29) errorCode = 107
+        if (n < 0) errorCode = 108
+
+        if (errorCode) this.getError(errorCode)
+
+        return errorCode
+    }
+    // check rotate
+    static checkRotate(n) {
+        let errorCode = 0
+
+        if (n < 0) errorCode = 109
+
+        if (errorCode) this.getError(errorCode)
+
+        return errorCode
+    }
+    // check width and height
+    static checkWidthAndHeight(w,h){
+        let errorCode = 0
+
+        if(w > 0) errorCode = 110
+        if(h > 0) errorCode = 111
+
+        if(errorCode) this.getError(errorCode)
+
+        return errorCode
+    }
+    // check border radius
+    static checkBorderRadius(r){
+        let errorCode = 0
+
+        if(r < 0) errorCode = 112
+    
         if(errorCode) this.getError(errorCode)
 
         return errorCode

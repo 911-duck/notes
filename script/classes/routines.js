@@ -240,40 +240,38 @@ class routines {
         ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
 
         ELEMENTS.OPTION_BOARD_HEIGHT.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_BOARD_HEIGHT.value == "") errorCheck.getError(104)
-            else values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
+            if (ELEMENTS.OPTION_BOARD_HEIGHT.value == "") errorCheck.getError(104)
+            else if(!errorCheck.checkWidthAndHeight(1,ELEMENTS.OPTION_BOARD_HEIGHT.value))values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_X.addEventListener("input", e => {
-            if( ELEMENTS.OPTION_BOARD_X.value == "") errorCheck.getError(104)
+            if (ELEMENTS.OPTION_BOARD_X.value == "") errorCheck.getError(104)
             else values.editEl.style.left = ELEMENTS.OPTION_BOARD_X.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_WIDTH.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_BOARD_WIDTH.value == "") errorCheck.getError(104)
-            else values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+            if (ELEMENTS.OPTION_BOARD_WIDTH.value == "") errorCheck.getError(104)
+            else if(!errorCheck.checkWidthAndHeight(ELEMENTS.OPTION_BOARD_WIDTH.value,1))values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_Y.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_BOARD_Y.value == "") errorCheck.getError(104)
+            if (ELEMENTS.OPTION_BOARD_Y.value == "") errorCheck.getError(104)
             else values.editEl.style.top = ELEMENTS.OPTION_BOARD_Y.value + "px"
         })
 
         ELEMENTS.OPTION_ROTATE.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_ROTATE.value == "") errorCheck.getError(104)
-            else values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
+            if (ELEMENTS.OPTION_ROTATE.value == "") errorCheck.getError(104)
+            else if(!errorCheck.checkRotate(Math.round(ELEMENTS.OPTION_ROTATE.value)))values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
         })
 
         ELEMENTS.OPTION_BOARD_Z_INDEX.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_BOARD_Z_INDEX.value == "") errorCheck.getError(104)
-            else values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value < 30 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value > -1 ? ELEMENTS.OPTION_BOARD_Z_INDEX.value : 0 : 29
-
+            if (ELEMENTS.OPTION_BOARD_Z_INDEX.value == "") errorCheck.getError(104)
+            else if(!errorCheck.checkZIndex(ELEMENTS.OPTION_BOARD_Z_INDEX.value))values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value
         })
 
         ELEMENTS.OPTION_BOARD_BORDER_RADIUS.addEventListener("input", e => {
-            if(ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value == "") errorCheck.getError(104)
-            else values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
-
+            if (ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value == "") errorCheck.getError(104)
+            else if(!errorCheck.checkBorderRadius(ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value))values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_FONT.addEventListener("input", e => {
@@ -311,13 +309,15 @@ class routines {
         })
 
         ELEMENTS.OPTION_BG_I.addEventListener("input", e => {
-            if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
-            else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
+            if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) {
+                if (!errorCheck.checkURL(ELEMENTS.OPTION_BG_I.value)) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
+            } else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
         })
 
         ELEMENTS.OPTION_CHECK_BOX_I.addEventListener("input", e => {
-            if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
-            else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
+            if (ELEMENTS.OPTION_CHECK_BOX_I.checked == true) {
+                if (!errorCheck.checkURL(ELEMENTS.OPTION_BG_I.value)) ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${ELEMENTS.OPTION_BG_I.value}")`
+            } else ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `none`
         })
 
 
@@ -365,20 +365,17 @@ class routines {
 
 
         ELEMENTS.OPTION_URL.addEventListener("input", e => {
-            ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;
-
+            if (!errorCheck.checkURL(ELEMENTS.OPTION_URL.value)) ELEMENTS.EXAMPLE.style.backgroundImage = `url("${ELEMENTS.OPTION_URL.value}")`;
         }
         )
 
         ELEMENTS.OPTION_HEAD.addEventListener("input", e => {
             ELEMENTS.EXAMPLE_HEAD.innerText = ELEMENTS.OPTION_HEAD.value;
-
         }
         )
 
         ELEMENTS.OPTION_TXT_COLOR.addEventListener("input", e => {
             ELEMENTS.EXAMPLE_HEAD.style.color = ELEMENTS.OPTION_TXT_COLOR.value;
-
         }
         )
 

@@ -70,11 +70,13 @@ import unactiveP from "./unactiveP.js"
 import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
+import errorCheck from "../classes/errorCheck.js";
 import routines from "../classes/routines.js"
 
 //__________________function________________
 
 function drawLine(event) {
+    errorCheck.getError("105")
     closePenEditor();
     document.addEventListener("mousedown", createLineStart)
 }
