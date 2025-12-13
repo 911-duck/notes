@@ -1,9 +1,10 @@
+
 let values
 
 export default values = {
     notes: {},
 
-    active_heade: 0,
+    active_header: 0,
 
     OpenSettings: '',
 
@@ -14,13 +15,14 @@ export default values = {
     OpenNoteCreate: '',
 
     OpenTechnical: '',
+    block: '',
 
     editEl: 0,
 
-    active_not: 0,
+    active_note: 0,
 
     height: 0,
-
+    education_debug: 0,
     activePBlock: 0,
 
     activeBlock: 0,

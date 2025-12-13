@@ -37,8 +37,22 @@
     background-size: cover;
     background-position: 50% 50%;
     transition: all 1s;
-    overflow-y: auto;
-    overflow-x: auto;
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+.open-note_screen::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+.open-note_screen::-webkit-scrollbar-thumb {
+    background: var(--button_color); 
+    height: 5px;
+    border-radius: 5px;
+}
+
+.open-note_screen::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 
 .open-note_header {
@@ -330,6 +344,20 @@
     gap: var(--base_gap);
     padding: var(--base_gap);
     /* border-top: 2px solid grey; */
+}
+
+.right-board_editor::-webkit-scrollbar {
+    width: 10px;
+}
+ 
+.right-board_editor::-webkit-scrollbar-thumb {
+    background: var(--button_color); 
+    height: 5px;
+    border-radius: 5px;
+}
+
+.right-board_editor::-webkit-scrollbar-thumb:hover {
+    background: #555; 
 }
 
 .right-board_scroll {

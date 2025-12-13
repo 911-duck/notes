@@ -103,7 +103,9 @@ function createHeader(event) {
         ELEMENTS.MAIN.style.backgroundImage = "none";
         values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
         closeHeaderSettings();
+        return NOTE_TEMP.querySelector(".note-header_main")
     }
+    return 0
 }
 
 export default createHeader

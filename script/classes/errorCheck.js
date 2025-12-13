@@ -207,6 +207,28 @@ class errorCheck {
 
         return errorCode
     }
+    // check headers names
+    static checkHeadersE(name) {
+        let errorCode = 0
+
+        const headers = Object.keys(values.notes)
+        const result = headers.every(el => el != name)
+        console.log(name)
+        console.log(headers)
+        console.log(result)
+
+        if (!result) errorCode = 100
+
+        const arr = name.split("")
+
+        if (!arr.some(el => el != " ")) errorCode = 101
+
+        // if (errorCode) this.getError(errorCode)
+
+        console.log(errorCode)
+
+        return errorCode
+    }
 }
 
 export default errorCheck

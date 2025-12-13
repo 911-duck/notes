@@ -76,12 +76,14 @@ import errorCheck from "../classes/errorCheck.js";
 //__________________function________________
 
 function createNoteCard(event) {
-    if (!errorCheck.checkNotes(ELEMENTS.OPTION_HEAD.value, values.active_header.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML)) {
-            values.notes = routines.makeObj(values.notes, values.active_header)
-            let noteOBJ = routines.makeMiniObj()
+    if (!errorCheck.checkNotes(ELEMENTS.OPTION_HEAD.value, values.active_header.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText)) {
+        console.log(values.notes, values.active_header)
+        values.notes = routines.makeObj(values.notes, values.active_header)
+        console.log(values.notes)
+        let noteOBJ = routines.makeMiniObj()
 
-            createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, values.active_header);
-            closeNoteSettings();
+        createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, values.active_header);
+        closeNoteSettings();
     }
 }
 

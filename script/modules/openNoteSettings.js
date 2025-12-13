@@ -80,7 +80,8 @@ function openNoteSettings(event) {
     ELEMENTS.MAIN.style.transform = `translateY(-${ELEMENTS.MAIN.offsetHeight}px)`;
     ELEMENTS.NOTE_SETTINGS.style.transform = `translateY(0px)`;
     closeSettings();
-    values.active_header = event.target.parentElement;
+    if(values.education_debug == 0)values.active_header = event.target.parentElement;
+    else values.active_header = values.block.parentElement;
     ELEMENTS.BUTTON_SUBMIT[0].addEventListener('click', createNoteCard);
     ELEMENTS.BUTTON_SUBMIT[1].addEventListener('click', createNoteCard);
     ELEMENTS.BUTTON_RESET_NOTE.addEventListener('click', closeNoteSettings);

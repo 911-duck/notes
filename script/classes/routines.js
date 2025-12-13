@@ -67,6 +67,7 @@ import searchNote from "../modules/searchNote.js"
 import unactive from "../modules/unactive.js"
 import unactiveP from "../modules/unactiveP.js"
 import errorCheck from "./errorCheck.js";
+import education from "../modules/education.js"
 
 //___________________class______________________
 
@@ -235,6 +236,8 @@ class routines {
         let developers = 'Бирюк Евгений, Шитенков Кирилл';
         let data = 'Nov 9, 2025';
 
+        ELEMENTS.OPEN_EDUCATION.addEventListener('click',education)
+
         // ELEMENTS.LOADER[0].style.display = "none"
         document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
         ELEMENTS.BUTTON_ADD_HEADER.addEventListener('click', openHeaderSettings);
@@ -275,7 +278,7 @@ class routines {
         })
 
         ELEMENTS.OPTION_BOARD_FONT.addEventListener("input", e => {
-            routines.deleteFonts(editEl);
+            routines.deleteFonts(values.editEl);
             values.editEl.classList.add(`${ELEMENTS.OPTION_BOARD_FONT.value}`)
         })
 
@@ -341,6 +344,10 @@ class routines {
         ELEMENTS.OPTION_MAIN_BUTTON_COLOR.addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
 
+        })
+
+        document.querySelector(".option_url-main").addEventListener("input",e=>{
+            document.querySelector("body").style.backgroundImage = `url('${document.querySelector(".option_url-main").value}')`
         })
 
         ELEMENTS.OPTION_MAIN_TXT_COLOR.addEventListener("input", e => {

@@ -75,8 +75,8 @@ import routines from "../classes/routines.js"
 //__________________function________________
 
 function openNote(obj) {
-    values.active_note = obj.note_txt.header
-    console.log(values.active_note)
+    if(!values.education_debug)values.active_note = obj.note_txt.header
+    if(!values.education_debug)console.log(values.active_note)
     if (obj.innerHtml == 0) {
         routines.createStartNote(obj)
 
