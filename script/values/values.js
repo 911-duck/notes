@@ -5,15 +5,19 @@ export default values = {
 
     active_heade: 0,
 
-    OpenSettings: '',
+    OpenSettings: localStorage.getItem('OpenSettings'),
 
-    OpenShortcuts: '',
+    OpenShortcuts: localStorage.getItem('OpenShortcuts'),
 
-    OpenVisual: '',
+    OpenVisual: localStorage.getItem('OpenVisual'),
 
-    OpenNoteCreate: '',
+    OpenNoteCreate: localStorage.getItem('OpenNoteCreate'),
 
-    OpenTechnical: '',
+    OpenTechnical: localStorage.getItem('OpenTechnical'),
+
+    deleteNote: localStorage.getItem('deleteNote'),
+
+    deleteHeader: localStorage.getItem('deleteHeader'),
 
     editEl: 0,
 
