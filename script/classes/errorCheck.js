@@ -190,8 +190,8 @@ class errorCheck {
     static checkWidthAndHeight(w,h){
         let errorCode = 0
 
-        if(w > 0) errorCode = 110
-        if(h > 0) errorCode = 111
+        if(w < 0) errorCode = 110
+        if(h < 0) errorCode = 111
 
         if(errorCode) this.getError(errorCode)
 
