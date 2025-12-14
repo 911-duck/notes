@@ -76,6 +76,7 @@ import routines from "./classes/routines.js"
 //______________________start___________________
 
 document.addEventListener('DOMContentLoaded', e => {
+    if(JSON.parse(localStorage.getItem("userData"))) values.notes = JSON.parse(localStorage.getItem("userData"))
     // app start
     routines.appStart()
     // start api

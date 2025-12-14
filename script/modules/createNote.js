@@ -78,7 +78,7 @@ import errorCheck from "../classes/errorCheck.js";
 function createNote(note, h, n) {
     const NOTE_TEMP = document.createElement("div");
     values.active_header.appendChild(NOTE_TEMP);
-    if (values.education_debug) values.active_header.parentElement.querySelector(".note-header_note-list").appendChild(NOTE_TEMP);
+    if (values.education_debug || values.recovery) values.active_header.parentElement.querySelector(".note-header_note-list").appendChild(NOTE_TEMP);
     NOTE_TEMP.classList.add("note-header_note-child");
     NOTE_TEMP.innerHTML += `
         <div class="note-header_header-child">${values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"].header}</div>
@@ -93,20 +93,23 @@ function createNote(note, h, n) {
     NOTE_TEMP.addEventListener('click', e => {
         let el = NOTE_TEMP
         values.active_header = NOTE_TEMP.parentElement
+        console.log("obj :",values.notes[NOTE_TEMP.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][h])
         openNote(values.notes[NOTE_TEMP.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][h])
         ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
     })
 
-    values.active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
+    NOTE_TEMP.querySelector(".note-header_delete-child").addEventListener('click', e => {
         delete values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
         deleteChild(e);
         checkHeaderCount(values.active_header);
-    }));
+    });
+
     document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
 
 
     resetOptions();
-
+    if(!values.recovery)localStorage.setItem("userData", JSON.stringify(values.notes));
+    
 }
 
 export default createNote

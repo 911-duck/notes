@@ -1,3 +1,4 @@
+
 //___________________import_________________
 
 import ELEMENTS from "../values/elements.js";
@@ -11,7 +12,6 @@ import checkHeaderCount from "./checkHeaderCount.js"
 import closeBoard from "./closeBoard.js"
 import closeHeader from "./closeHeader.js"
 import closeHeaderSettings from "./closeHeaderSettings.js"
-import closeNote from "./closeNote.js"
 import closeNoteSettings from "./closeNoteSettings.js"
 import closePenEditor from "./closePenEditor.js"
 import closePictureEditor from "./closePictureEditor.js"
@@ -54,6 +54,7 @@ import openBoard from "./openBoard.js"
 import openHeader from "./openHeader.js"
 import openHeaderSettings from "./openHeaderSettings.js"
 import openLoading from "./openLoading.js"
+import openNote from "./openNote.js"
 import openNoteSettings from "./openNoteSettings.js"
 import openPenEditor from "./openPenEditor.js"
 import openRightBoardEditor from "./openRightBoardEditor.js"
@@ -72,30 +73,22 @@ import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
 
-//__________________function________________
+//______________________function___________________
 
-function openNote(obj) {
-    // localStorage.setItem("userData", JSON.stringify(values.notes));
-
-    if(!values.education_debug)values.active_note = obj.note_txt.header
-    if(!values.education_debug)console.log(values.active_note)
-    if (obj.innerHtml == 0) {
-        routines.createStartNote(obj)
-
-    } else {
-        if (obj.screen != "") {
-                    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `${obj.screen[1]}`
-                    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = `${obj.screen[0]}`
-                }
-                
-                ELEMENTS.OPEN_NOTE_SCREEN.style.width = routines.maxX() + "px"
-        ELEMENTS.OPEN_NOTE.style.right = "0px"
-        ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = obj.innerHtml
-        ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = obj.screen[0]
-        ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = obj.screen[1]
-        document.querySelectorAll('.move-p-block').forEach(el => el.addEventListener('mousedown', activeP));
-        document.querySelectorAll('.move-block').forEach(el => el.addEventListener('mousedown', active));
-    }
+function recovery(){
+    values.recovery = 1
+        for (const key in values.notes) {
+            console.log("1",key,values.notes[key])
+            ELEMENTS.OPTION_HEADER.value = key
+            values.active_header = createHeader()
+            for (const note in values.notes[key]) {
+                console.log("2",note)
+                ELEMENTS.OPTION_HEAD.value = note
+                createNoteCard()
+            }
+            checkHeaderCount(values.active_header.parentElement);
+        }
+        values.recovery = 0
 }
 
-export default openNote
+export default recovery

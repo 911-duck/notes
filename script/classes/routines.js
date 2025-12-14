@@ -68,6 +68,7 @@ import unactive from "../modules/unactive.js"
 import unactiveP from "../modules/unactiveP.js"
 import errorCheck from "./errorCheck.js";
 import education from "../modules/education.js"
+import recovery from "../modules/recovery.js";
 
 //___________________class______________________
 
@@ -103,7 +104,7 @@ class routines {
             picture_url: ELEMENTS.OPTION_URL.value
         };
 
-        notes[activeHeader.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value] = [];
+        notes[activeHeader.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value] = {};
         notes[activeHeader.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"] = note_txt
         notes[activeHeader.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_styles"] = note_styles
         notes[activeHeader.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["innerHtml"] = 0
@@ -231,12 +232,13 @@ class routines {
     }
     // app start
     static appStart() {
+        recovery()
 
         let version = '6.41';
         let developers = 'Бирюк Евгений, Шитенков Кирилл';
         let data = 'Nov 9, 2025';
 
-        ELEMENTS.OPEN_EDUCATION.addEventListener('click',education)
+        ELEMENTS.OPEN_EDUCATION.addEventListener('click', education)
 
         // ELEMENTS.LOADER[0].style.display = "none"
         document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
@@ -244,7 +246,7 @@ class routines {
 
         ELEMENTS.OPTION_BOARD_HEIGHT.addEventListener("input", e => {
             if (ELEMENTS.OPTION_BOARD_HEIGHT.value == "") errorCheck.getError(104)
-            else if(!errorCheck.checkWidthAndHeight(1,ELEMENTS.OPTION_BOARD_HEIGHT.value))values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
+            else if (!errorCheck.checkWidthAndHeight(1, ELEMENTS.OPTION_BOARD_HEIGHT.value)) values.editEl.style.height = ELEMENTS.OPTION_BOARD_HEIGHT.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_X.addEventListener("input", e => {
@@ -254,7 +256,7 @@ class routines {
 
         ELEMENTS.OPTION_BOARD_WIDTH.addEventListener("input", e => {
             if (ELEMENTS.OPTION_BOARD_WIDTH.value == "") errorCheck.getError(104)
-            else if(!errorCheck.checkWidthAndHeight(ELEMENTS.OPTION_BOARD_WIDTH.value,1))values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
+            else if (!errorCheck.checkWidthAndHeight(ELEMENTS.OPTION_BOARD_WIDTH.value, 1)) values.editEl.style.width = ELEMENTS.OPTION_BOARD_WIDTH.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_Y.addEventListener("input", e => {
@@ -264,17 +266,17 @@ class routines {
 
         ELEMENTS.OPTION_ROTATE.addEventListener("input", e => {
             if (ELEMENTS.OPTION_ROTATE.value == "") errorCheck.getError(104)
-            else if(!errorCheck.checkRotate(Math.round(ELEMENTS.OPTION_ROTATE.value)))values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
+            else if (!errorCheck.checkRotate(Math.round(ELEMENTS.OPTION_ROTATE.value))) values.editEl.style.transform = `rotate(${Math.round(ELEMENTS.OPTION_ROTATE.value)}deg)`
         })
 
         ELEMENTS.OPTION_BOARD_Z_INDEX.addEventListener("input", e => {
             if (ELEMENTS.OPTION_BOARD_Z_INDEX.value == "") errorCheck.getError(104)
-            else if(!errorCheck.checkZIndex(ELEMENTS.OPTION_BOARD_Z_INDEX.value))values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value
+            else if (!errorCheck.checkZIndex(ELEMENTS.OPTION_BOARD_Z_INDEX.value)) values.editEl.style.zIndex = ELEMENTS.OPTION_BOARD_Z_INDEX.value
         })
 
         ELEMENTS.OPTION_BOARD_BORDER_RADIUS.addEventListener("input", e => {
             if (ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value == "") errorCheck.getError(104)
-            else if(!errorCheck.checkBorderRadius(ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value))values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
+            else if (!errorCheck.checkBorderRadius(ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value)) values.editEl.style.borderRadius = ELEMENTS.OPTION_BOARD_BORDER_RADIUS.value + "px"
         })
 
         ELEMENTS.OPTION_BOARD_FONT.addEventListener("input", e => {
@@ -346,7 +348,7 @@ class routines {
 
         })
 
-        document.querySelector(".option_url-main").addEventListener("input",e=>{
+        document.querySelector(".option_url-main").addEventListener("input", e => {
             document.querySelector("body").style.backgroundImage = `url('${document.querySelector(".option_url-main").value}')`
         })
 

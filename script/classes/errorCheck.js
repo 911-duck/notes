@@ -112,7 +112,7 @@ class errorCheck {
 
         if (!arr.some(el => el != " ")) errorCode = 101
 
-        if (errorCode) this.getError(errorCode)
+        if (errorCode && !values.recovery) this.getError(errorCode)
 
         console.log(errorCode)
 
@@ -134,7 +134,7 @@ class errorCheck {
 
         if (!arr.some(el => el != " ")) errorCode = 101
 
-        if (errorCode) this.getError(errorCode)
+        if (errorCode && !values.recovery) this.getError(errorCode)
 
         return errorCode
     }

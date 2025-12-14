@@ -5,6 +5,7 @@ export default values = {
     notes: {},
 
     active_header: 0,
+    recovery: 0,
 
     OpenSettings: '',
 

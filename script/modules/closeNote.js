@@ -82,6 +82,7 @@ function closeNote(event) {
     document.querySelector(".open-note_screen").innerHTML = ``
     document.querySelector(".open-note_screen").style.backgroundColor = `var(--menu_color)`
     document.querySelector(".open-note_screen").style.backgroundImage = `none`
+    localStorage.setItem("userData", JSON.stringify(values.notes));
 }
 
 export default closeNote

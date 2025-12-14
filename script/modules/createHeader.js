@@ -76,7 +76,7 @@ import errorCheck from "../classes/errorCheck.js"
 //__________________function________________
 
 function createHeader(event) {
-    if(!errorCheck.checkHeaders(ELEMENTS.OPTION_HEADER.value)){
+    if(!errorCheck.checkHeaders(ELEMENTS.OPTION_HEADER.value) || values.recovery){
         const NOTE_TEMP = document.createElement("div");
         ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
         NOTE_TEMP.classList.add("note-headers_note-header");
@@ -101,9 +101,11 @@ function createHeader(event) {
         ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
 
         ELEMENTS.MAIN.style.backgroundImage = "none";
-        values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
+        if(!values.recovery)values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = {};
         closeHeaderSettings();
+        if(!values.recovery)localStorage.setItem("userData", JSON.stringify(values.notes));
         return NOTE_TEMP.querySelector(".note-header_main")
+            
     }
     return 0
 }

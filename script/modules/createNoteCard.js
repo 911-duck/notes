@@ -76,13 +76,15 @@ import errorCheck from "../classes/errorCheck.js";
 //__________________function________________
 
 function createNoteCard(event) {
-    if (!errorCheck.checkNotes(ELEMENTS.OPTION_HEAD.value, values.active_header.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText)) {
+    if (!errorCheck.checkNotes(ELEMENTS.OPTION_HEAD.value, values.active_header.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText) || values.recovery) {
         console.log(values.notes, values.active_header)
-        values.notes = routines.makeObj(values.notes, values.active_header)
+        if(!values.recovery)values.notes = routines.makeObj(values.notes, values.active_header)
         console.log(values.notes)
-        let noteOBJ = routines.makeMiniObj()
+        let noteOBJ
+        if(!values.recovery) noteOBJ = routines.makeMiniObj()
 
-        createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, values.active_header);
+        if(!values.recovery)createNote(noteOBJ, ELEMENTS.OPTION_HEAD.value, values.active_header);
+        else createNote(values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value], ELEMENTS.OPTION_HEAD.value, values.active_header);
         closeNoteSettings();
     }
 }
