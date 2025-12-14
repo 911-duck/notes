@@ -102,8 +102,9 @@ function closeE() {
     ELEMENTS.MESSAGE_ARROW_EDUCATION.style.display = "none"
 
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.display = "none"
-    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.right = "200px"
-    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.top = "140px"
+    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.right = "40px"
+    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.bottom = "40px"
+    
     closeNote()
     document.removeEventListener("click", closeE)
     values.block.parentElement.remove()
@@ -153,7 +154,8 @@ function openEC() {
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.innerText = message["11"]
     document.removeEventListener("click", openEC)
     setTimeout(() => {
-        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(50%) rotate(0deg)"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(0deg)"
+        if(document.querySelector("body").offsetWidth < 600) ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(-20deg)"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = document.querySelector(".edit").offsetLeft - document.querySelector(".edit").offsetWidth / 2 + (document.querySelector(".edit_text").offsetWidth + 1 * getComputedStyle(document.querySelector(".edit")).gap.slice(0, -2)) * 2 + "px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = `calc(90% - 150px - ${getComputedStyle(document.querySelector(".edit")).height})`
         document.addEventListener("click", openEP)
@@ -165,7 +167,8 @@ function openED() {
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.innerText = message["10"]
     document.removeEventListener("click", openED)
     setTimeout(() => {
-        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(50%) rotate(0deg)"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(0deg)"
+        if(document.querySelector("body").offsetWidth < 600) ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(-20deg)"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = document.querySelector(".edit").offsetLeft - document.querySelector(".edit").offsetWidth / 2 + (document.querySelector(".edit_text").offsetWidth + 1 * getComputedStyle(document.querySelector(".edit")).gap.slice(0, -2)) * 3 + "px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = `calc(90% - 150px - ${getComputedStyle(document.querySelector(".edit")).height})`
         document.addEventListener("click", openEC)
@@ -177,7 +180,8 @@ function openEI() {
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.innerText = message["9"]
     document.removeEventListener("click", openEI)
     setTimeout(() => {
-        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(50%) rotate(0deg)"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(0deg)"
+        if(document.querySelector("body").offsetWidth < 600) ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(-20deg)"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = document.querySelector(".edit").offsetLeft - document.querySelector(".edit").offsetWidth / 2 + (document.querySelector(".edit_text").offsetWidth + 1 * getComputedStyle(document.querySelector(".edit")).gap.slice(0, -2)) * 0 + "px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = `calc(90% - 150px - ${getComputedStyle(document.querySelector(".edit")).height})`
         document.addEventListener("click", openED)
@@ -189,7 +193,9 @@ function openER() {
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.innerText = message["8"]
     document.removeEventListener("click", openER)
     setTimeout(() => {
-        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(50%) rotate(0deg)"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(0deg)"
+        if(document.querySelector("body").offsetWidth < 600) ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(-20deg)"
+
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = document.querySelector(".edit").offsetLeft - document.querySelector(".edit").offsetWidth / 2 + (document.querySelector(".edit_text").offsetWidth + 1 * getComputedStyle(document.querySelector(".edit")).gap.slice(0, -2)) * 4 + "px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = `calc(90% - 150px - ${getComputedStyle(document.querySelector(".edit")).height})`
         document.addEventListener("click", openEI)
@@ -203,7 +209,8 @@ function openENote() {
     openNote(values.notes[name]["lesson"],values.active_header)
     document.removeEventListener("click", openENote)
     setTimeout(() => {
-        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(50%) rotate(0deg)"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(0deg)"
+        if(document.querySelector("body").offsetWidth < 600) ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(-20deg)"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = document.querySelector(".edit").offsetLeft - document.querySelector(".edit").offsetWidth / 2 + (document.querySelector(".edit_text").offsetWidth + 1 * getComputedStyle(document.querySelector(".edit")).gap.slice(0, -2)) * 1 + "px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = `calc(90% - 150px - ${getComputedStyle(document.querySelector(".edit")).height})`
 
@@ -316,7 +323,10 @@ function education(event) {
 
     ELEMENTS.MESSAGE_WINDOW_EDUCATION.innerText = message["1"]
     setTimeout(() => {
-        ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.transform = "translateX(0px)"
+    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.transform = "translateX(0%) translateY(0)"
+       
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = "200px"
+        ELEMENTS.MESSAGE_ARROW_EDUCATION.style.top = "140px"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.transform = "translateX(0%) rotate(185deg)"
         ELEMENTS.MESSAGE_ARROW_EDUCATION.style.right = ((document.querySelector("body").offsetWidth - document.querySelector(".main").offsetWidth) / 2 + 1 * getComputedStyle(document.querySelector(".menu")).paddingRight.slice(0, -2)) + "px"
         document.addEventListener("click", openEHeader)
