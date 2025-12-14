@@ -534,6 +534,20 @@
         font-size: 17px;
         height: 40px;
     }
+
+    .note-header_search{
+        display: none;
+    }
+
+    .note-header_note-add{
+        border-radius: 20px;
+        height: 35px;
+        width: 80%;
+        margin: 0;
+        left: 40%;
+        transform: translateX(-50%);
+        font-size: 17px;
+    }
 }
 
 @media (max-width: 320px) {
