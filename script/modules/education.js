@@ -99,7 +99,10 @@ let name = "education"
 function closeE() {
     ELEMENTS.BLACK_SCREEN_EDUCATION.style.display = "none"
     ELEMENTS.MESSAGE_ARROW_EDUCATION.style.display = "none"
-    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.display = "none"
+    ELEMENTS.MESSAGE_ARROW_EDUCATION.style.display = "none"
+
+    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.right = "200px"
+    ELEMENTS.MESSAGE_WINDOW_EDUCATION.style.top = "140px"
     closeNote()
     document.removeEventListener("click", closeE)
     values.block.parentElement.remove()
