@@ -81,9 +81,11 @@ function openNote(obj) {
         routines.createStartNote(obj)
 
     } else {
-        // if (obj.note_styles.picture_url != "") {
-                    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `url("${obj.note_styles.picture_url}")`
-                // }
+        if (obj.screen != "") {
+                    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundImage = `${obj.screen[1]}`
+                    ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = `${obj.screen[0]}`
+                }
+                
         ELEMENTS.OPEN_NOTE.style.right = "0px"
         ELEMENTS.OPEN_NOTE_SCREEN.innerHTML = obj.innerHtml
         ELEMENTS.OPEN_NOTE_SCREEN.style.backgroundColor = obj.screen[0]
