@@ -78,6 +78,8 @@ function listenerRemoveV2(e) {
     ELEMENTS.BUTTON_SHORTCUTSV2.innerText = `текущая настройка: 'Alt + ${e.key}'`;
     window.removeEventListener('keydown', listenerRemoveV2);
     values.OpenShortcuts = e.code;
+                localStorage.removeItem('OpenShortcuts')
+    localStorage.setItem('OpenShortcuts', values.OpenShortcuts)
 }
 
 export default listenerRemoveV2

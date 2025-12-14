@@ -102,6 +102,8 @@ function createHeader(event) {
 
         ELEMENTS.MAIN.style.backgroundImage = "none";
         values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
+        localStorage.removeItem('notes')
+        localStorage.setItem('notes', JSON.stringify(values.notes))
         closeHeaderSettings();
     }
 }

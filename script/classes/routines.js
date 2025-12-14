@@ -46,6 +46,8 @@ import listenerRemoveV2 from "../modules/listenerRemoveV2.js"
 import listenerRemoveV3 from "../modules/listenerRemoveV3.js"
 import listenerRemoveV4 from "../modules/listenerRemoveV4.js"
 import listenerRemoveV5 from "../modules/listenerRemoveV5.js"
+import listenerRemoveV6 from "../modules/listenerRemoveV6.js"
+import listenerRemoveV7 from "../modules/listenerRemoveV7.js"
 import move from "../modules/move.js"
 import moveP from "../modules/moveP.js"
 import noteHeaderClose from "../modules/noteHeaderClose.js"
@@ -445,6 +447,14 @@ class routines {
             errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV5);
         });
+                ELEMENTS.BUTTON_SHORTCUTSV6.addEventListener('click', () => {
+            errorCheck.getError(103);
+            window.addEventListener('keydown', listenerRemoveV6);
+            ELEMENTS.BUTTON_SHORTCUTSV7.addEventListener('click', () => {
+            errorCheck.getError(103);
+            window.addEventListener('keydown', listenerRemoveV7);
+        });
+        });
         window.addEventListener('keydown', (ev) => {
             if (values.OpenSettings === ev.code && ev.altKey) {
                 ev.preventDefault();
@@ -513,75 +523,6 @@ class routines {
                 ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
             }, 2000);
         });
-        document.addEventListener('DOMContentLoaded', (e) => {
-    ELEMENTS.BUTTON_SHORTCUTSV1.innerText = `текущая настройка: 'Alt + ${OpenSettings}'`
-    ELEMENTS.BUTTON_SHORTCUTSV6.innerText = `текущая настройка: 'навестись + ${DeleteNote}'`;
-    ELEMENTS.BUTTON_SHORTCUTSV7.innerText = `текущая настройка: 'навестись + ${DeleteHeader}'`;
-    ELEMENTS.BUTTON_SHORTCUTSV5.innerText = `текущая настройка: 'Alt + ${OpenNoteCreate}'`;
-    ELEMENTS.BUTTON_SHORTCUTSV4.innerText = `текущая настройка: 'Alt + ${OpenTechnical}'`;
-    ELEMENTS.BUTTON_SHORTCUTSV3.innerText = `текущая настройка: 'Alt + ${OpenVisual}'`;
-    ELEMENTS.BUTTON_SHORTCUTSV2.innerText = `текущая настройка: 'Alt + ${OpenShortcuts}'`;
-    let a = JSON.parse(localStorage.getItem('notesL'))
-    for(const key in notes){
-        let key1 = key
-        const NOTE_TEMP = document.createElement("div");
-        ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
-        NOTE_TEMP.classList.add("note-headers_note-header");
-        NOTE_TEMP.classList.add("note-header");
-        NOTE_TEMP.innerHTML += `
-            <div class="note-header_main">
-                <div class="note-header_name">${key}</div>
-                <div class="note-header_headers">0 заметок</div>
-            </div>
-            <div class="note-header_note-list">
-                <div class="note-header_note-add">+ добавить</div>
-            </div>
-        `
-        NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
-
-        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings2));
-        ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
-        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings2));
-
-        ELEMENTS.MAIN.style.backgroundImage = "none";
-        for(const key in a[key1]){
-    const NOTE_TEMPE = document.createElement("div");
-    active_header.appendChild(NOTE_TEMPE);
-    NOTE_TEMP.classList.add("note-header_note-child");
-    NOTE_TEMP.innerHTML += `
-        <div class="note-header_header-child">${key}</div>
-        <div class="note-header_delete-child">+</div>
-    `;
-    NOTE_TEMP.addEventListener('mouseenter', (e)=> {
-    document.addEventListener("keydown",e=>{
-        deletNote(e, NOTE_TEMPE)
-})
-    })
-    let name = ELEMENTS.OPTION_HEAD.value;
-    checkHeaderCount(active_header);
-    active_note = name
-
-    console.log(note)
-    NOTE_TEMPE.addEventListener('click', e => {
-        let el = NOTE_TEMPE
-        console.log(el)
-        openNote(notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][el.querySelector(".note-header_header-child").innerText])
-    })
-    ELEMENTS.BUTTON_RESET_OPEN_NOTE.addEventListener('click', closeNote)
-
-    active_header.querySelectorAll(".note-header_delete-child").forEach(el => el.addEventListener('click', e => {
-        delete notes[active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][name];
-        deleteChild(e);
-        checkHeaderCount(active_header);
-
-    }));
-    document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings))
-
-    resetOptions();
-            
-        }
-    }
-})
     }
 }
 

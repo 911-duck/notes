@@ -66,7 +66,7 @@ import search from "./search.js"
 import searchNote from "./searchNote.js"
 import unactive from "./unactive.js"
 import unactiveP from "./unactiveP.js"
-
+import deletNote from "./deleteNote.js";
 import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
@@ -74,6 +74,8 @@ import routines from "../classes/routines.js"
 import errorCheck from "../classes/errorCheck.js";
 
 //__________________function________________
+
+
 
 function createNote(note, h, n) {
         const NOTE_TEMP = document.createElement("div");
@@ -83,7 +85,11 @@ function createNote(note, h, n) {
         <div class="note-header_header-child">${values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][ELEMENTS.OPTION_HEAD.value]["note_txt"].header}</div>
         <div class="note-header_delete-child">+</div>
     `;
-
+            NOTE_TEMP.addEventListener('mouseenter', (ev)=> {
+    document.addEventListener("keydown",e=>{
+        deletNote(e, NOTE_TEMP)
+})
+    })
         let name = ELEMENTS.OPTION_HEAD.value;
         checkHeaderCount(values.active_header);
         values.active_note = name
@@ -102,8 +108,12 @@ function createNote(note, h, n) {
             checkHeaderCount(values.active_header);
         }));
         document.querySelectorAll(".note-header_note-add").forEach(el => el.addEventListener('click', openNoteSettings));
-
-
+        localStorage.removeItem(values.notes)
+        localStorage.setItem(values.notes, values.notes);
+        console.log(JSON.stringify(values.notes));
+        console.log(values.notes);
+        
+        
         resetOptions();
     
 }

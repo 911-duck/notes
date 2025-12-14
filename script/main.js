@@ -82,3 +82,41 @@ document.addEventListener('DOMContentLoaded', e => {
     routines.startApi()
     ELEMENTS.LOADER[1].style.display = "none"
 })
+        document.addEventListener('DOMContentLoaded', (e) => {
+    ELEMENTS.BUTTON_SHORTCUTSV1.innerText = `текущая настройка: 'Alt + ${values.OpenSettings}'`
+    ELEMENTS.BUTTON_SHORTCUTSV6.innerText = `текущая настройка: 'навестись + ${values.DeleteNote}'`;
+    ELEMENTS.BUTTON_SHORTCUTSV7.innerText = `текущая настройка: 'навестись + ${values.DeleteHeader}'`;
+    ELEMENTS.BUTTON_SHORTCUTSV5.innerText = `текущая настройка: 'Alt + ${values.OpenNoteCreate}'`;
+    ELEMENTS.BUTTON_SHORTCUTSV4.innerText = `текущая настройка: 'Alt + ${values.OpenTechnical}'`;
+    ELEMENTS.BUTTON_SHORTCUTSV3.innerText = `текущая настройка: 'Alt + ${values.OpenVisual}'`;
+    ELEMENTS.BUTTON_SHORTCUTSV2.innerText = `текущая настройка: 'Alt + ${values.OpenShortcuts}'`;
+    const a = localStorage.getItem('notes')
+    for(const key in JSON.parse(a)){
+        console.log(key, JSON.parse(a)[key]);
+        const NOTE_TEMP = document.createElement("div");
+        ELEMENTS.HEADERS.appendChild(NOTE_TEMP);
+        NOTE_TEMP.classList.add("note-headers_note-header");
+        NOTE_TEMP.classList.add("note-header");
+        NOTE_TEMP.innerHTML += `
+                    <div class="note-header_main">
+                        <div class="note-header_name">${key}</div>
+                        <div class="note-header_headers">0 заметок</div>
+                    </div>
+                    <div class="note-header_note-list">
+                        <div class="note-header_note-add">+ добавить </div><input type="text" placeholder="поиск..." class="note-header_search menu_search"></input>
+                    </div>
+        `;
+        NOTE_TEMP.querySelector(".note-header_main").addEventListener('click', openHeader);
+
+        NOTE_TEMP.querySelector(".note-header_search").addEventListener("input", e => {
+            searchNote(NOTE_TEMP.querySelector(".note-header_note-list"), NOTE_TEMP.querySelector(".note-header_search").value);
+        })
+
+        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.removeEventListener('click', openNoteSettings));
+        ELEMENTS.BUTTON_ADD_NOTE = document.querySelectorAll(".note-header_note-add");
+        ELEMENTS.BUTTON_ADD_NOTE.forEach(el => el.addEventListener('click', openNoteSettings));
+
+        ELEMENTS.MAIN.style.backgroundImage = "none";
+        values.notes[NOTE_TEMP.querySelector(".note-header_main").querySelector(".note-header_name").innerText] = [];
+    }
+})

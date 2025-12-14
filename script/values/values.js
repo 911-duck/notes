@@ -15,9 +15,9 @@ export default values = {
 
     OpenTechnical: localStorage.getItem('OpenTechnical'),
 
-    deleteNote: localStorage.getItem('deleteNote'),
+    DeleteNote: localStorage.getItem('DeleteNote'),
 
-    deleteHeader: localStorage.getItem('deleteHeader'),
+    DeleteHeader: localStorage.getItem('DeleteHeader'),
 
     editEl: 0,
 
