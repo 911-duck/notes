@@ -167,32 +167,37 @@ class routines {
     static createStartNote(obj) {
         ELEMENTS.OPEN_NOTE.style.right = "0px"
         if (obj.note_txt.header != "") {
-            let header = document.createElement(obj.note_styles.header_fontSize)
+            let header = document.createElement("div")
+            let header2 = document.createElement(obj.note_styles.header_fontSize)
+
             header.style = `
         top: 30px;
-        left: calc(50%);
+        left: ${ELEMENTS.OPEN_NOTE_SCREEN.offsetWidth / 2}px;
         transform: translateX(-50%);
         position: absolute;
         color: ${obj.note_styles.txt_color};
         z-index: 1;
         `
-            header.innerText = obj.note_txt.header
+            header2.innerText = obj.note_txt.header
+            header.appendChild(header2);
             ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
             header.classList.add(`move-block`)
             header.addEventListener('mousedown', active)
         } else {
-            let header = document.createElement("h1")
+            let header = document.createElement("div")
+            let header2 = document.createElement("h3")
             ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
             header.style = `
         font-size: 40px;
         top: 30px;
-        left: calc(50%);
+        left: ${ELEMENTS.OPEN_NOTE_SCREEN.offsetWidth / 2}px;
         transform: translateX(-50%);
         position: absolute;
         color: black;
         z-index: 1;
         `
-            header.innerText = obj.note_txt.header
+            header2.innerText = obj.note_txt.header
+            header.appendChild(header2);
             ELEMENTS.OPEN_NOTE_SCREEN.appendChild(header);
             header.classList.add(`move-block`)
             header.addEventListener('mousedown', active)
@@ -328,32 +333,50 @@ class routines {
 
         ELEMENTS.SETTINGS_ICON.addEventListener('click', openSettings)
 
+        if (values.vs.bcolor) document.querySelector(':root').style.setProperty("--menu_color", ` ${values.vs.bcolor}`);
         ELEMENTS.OPTION_MAIN_BASE_COLOR.addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--menu_color", ` ${ELEMENTS.OPTION_MAIN_BASE_COLOR.value}`);
-
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
+            values.vs.bcolor = ELEMENTS.OPTION_MAIN_BASE_COLOR.value
         })
 
+        document.querySelector(':root').style.setProperty("--fontFamily", ` ${values.vs.font}`);
         document.querySelector(".right-board_font-input-vs").addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--fontFamily", `${document.querySelector(".right-board_font-input-vs").value}`);
-
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
+            values.vs.font = document.querySelector(".right-board_font-input-vs").value
         })
 
+        if (values.vs.bbcolor) document.querySelector(':root').style.setProperty("--notes_color", ` ${values.vs.bbcolor}`);
         ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--notes_color", ` ${ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value}`);
+            values.vs.bbcolor = ELEMENTS.OPTION_MAIN_SECOND_BASE_COLOR.value
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
 
         })
 
+        if (values.vs.bbtncolor) document.querySelector(':root').style.setProperty("--button_color", ` ${values.vs.bbtncolor}`);
         ELEMENTS.OPTION_MAIN_BUTTON_COLOR.addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--button_color", ` ${ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value}`);
+            values.vs.bbtncolor = ELEMENTS.OPTION_MAIN_BUTTON_COLOR.value
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
 
         })
 
+        if (values.vs.bimage) document.querySelector("body").style.backgroundImage = `url('${values.vs.bimage}')`
         document.querySelector(".option_url-main").addEventListener("input", e => {
             document.querySelector("body").style.backgroundImage = `url('${document.querySelector(".option_url-main").value}')`
+            values.vs.bimage = document.querySelector(".option_url-main").value
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
+
         })
+
+        if (values.vs.tcolor) document.querySelector(':root').style.setProperty("--txt_color", ` ${values.vs.tcolor}`);
 
         ELEMENTS.OPTION_MAIN_TXT_COLOR.addEventListener("input", e => {
             document.querySelector(':root').style.setProperty("--txt_color", ` ${ELEMENTS.OPTION_MAIN_TXT_COLOR.value}`);
+            values.vs.tcolor = ELEMENTS.OPTION_MAIN_TXT_COLOR.value
+            localStorage.setItem("userStyle", JSON.stringify(values.vs))
 
         })
 

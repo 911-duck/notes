@@ -18,6 +18,15 @@ export default values = {
     OpenTechnical: '',
     block: '',
 
+    vs: {
+        bcolor: 0,
+        bimage: 0,
+        bbcolor: 0,
+        bbtncolor: 0,
+        tcolor:0,
+        font: 0
+    },
+
     editEl: 0,
 
     active_note: 0,
