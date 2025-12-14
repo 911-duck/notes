@@ -1,15 +1,17 @@
-:root {
+/* ____________visual-settings__________ */
+
+:root{
     --base_gap: 20px;
-    --menu_color: #ffe4c4;
-    --notes_color: #fef2e3;
-    --button_color: #f5c993;
-    --txt_color: #000000;
+    --menu_color: #ac9aa0;
+    --notes_color: #91849a;
+    --button_color: #ccb9bf;
     --border_weight: 2px;
-    --header_font-size: 50px;
+    --header_font-size: 40px;
     --text_font-size: 25px;
     --setting-icon_size: 40px;
     --note_height: 60px;
     --base_border-radius: 20px;
+    --fontFamily: ;
     --transition: all 1s;
 }
 
