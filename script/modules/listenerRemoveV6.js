@@ -41,10 +41,10 @@ import draftRectangle from "./draftRectangle.js"
 import drawLine from "./drawLine.js"
 import drawOval from "./drawOval.js"
 import drawRectangle from "./drawRectangle.js"
+import listenerRemoveV1 from "./listenerRemoveV1.js"
 import listenerRemoveV2 from "./listenerRemoveV2.js"
 import listenerRemoveV3 from "./listenerRemoveV3.js"
 import listenerRemoveV4 from "./listenerRemoveV4.js"
-import listenerRemoveV5 from "./listenerRemoveV5.js"
 import move from "./move.js"
 import moveP from "./moveP.js"
 import noteHeaderClose from "./noteHeaderClose.js"
@@ -74,12 +74,12 @@ import routines from "../classes/routines.js"
 
 //__________________function________________
 
-function listenerRemoveV1(e) {
-    ELEMENTS.BUTTON_SHORTCUTSV1.innerText = `текущая настройка: 'Alt + ${e.key}'`;
-    window.removeEventListener('keydown', listenerRemoveV1);
-    values.OpenSettings = e.code;
-                localStorage.removeItem('OpenSettings')
-    localStorage.setItem('OpenSettings', values.OpenSettings)
+function listenerRemoveV6(e) {
+    ELEMENTS.BUTTON_SHORTCUTSV6.innerText = `текущая настройка: 'навестись + ${e.key}'`;
+    window.removeEventListener('keydown', listenerRemoveV6);
+    values.deleteNote = e.code;
+    localStorage.removeItem('deleteNote')
+    localStorage.setItem('deleteNote', values.deleteNote)
 }
 
-export default listenerRemoveV1
+export default listenerRemoveV6

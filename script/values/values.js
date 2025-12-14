@@ -7,13 +7,13 @@ export default values = {
     active_header: 0,
     recovery: 0,
 
-    OpenSettings: '',
+    OpenSettings: localStorage.getItem('OpenSettings'),
 
-    OpenShortcuts: '',
+    OpenShortcuts: localStorage.getItem('OpenShortcuts'),
 
-    OpenVisual: '',
+    OpenVisual: localStorage.getItem('OpenVisual'),
 
-    OpenNoteCreate: '',
+    OpenNoteCreate: localStorage.getItem('OpenNoteCreate'),
 
     OpenTechnical: '',
     block: '',

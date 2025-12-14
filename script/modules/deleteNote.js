@@ -41,6 +41,7 @@ import draftRectangle from "./draftRectangle.js"
 import drawLine from "./drawLine.js"
 import drawOval from "./drawOval.js"
 import drawRectangle from "./drawRectangle.js"
+import listenerRemoveV1 from "./listenerRemoveV1.js"
 import listenerRemoveV2 from "./listenerRemoveV2.js"
 import listenerRemoveV3 from "./listenerRemoveV3.js"
 import listenerRemoveV4 from "./listenerRemoveV4.js"
@@ -63,7 +64,6 @@ import openTextReeditor from "./openTextReeditor.js"
 import resetActiveBlock from "./resetActiveBlock.js"
 import resetOptions from "./resetOptions.js"
 import search from "./search.js"
-import searchNote from "./searchNote.js"
 import unactive from "./unactive.js"
 import unactiveP from "./unactiveP.js"
 
@@ -72,14 +72,13 @@ import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
 import routines from "../classes/routines.js"
 
-//__________________function________________
-
-function listenerRemoveV1(e) {
-    ELEMENTS.BUTTON_SHORTCUTSV1.innerText = `текущая настройка: 'Alt + ${e.key}'`;
-    window.removeEventListener('keydown', listenerRemoveV1);
-    values.OpenSettings = e.code;
-                localStorage.removeItem('OpenSettings')
-    localStorage.setItem('OpenSettings', values.OpenSettings)
+//__________________function_______________
+function deletNote(ev, el) {
+    if(values.DeleteNote === ev.code){
+        delete notes[el.parentElement.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerHTML][el.querySelector(".note-header_header-child").innerText];
+        el.remove();
+        checkHeaderCount(active_header);
+    }
+    document.removeEventListener('keydown', deletNote)
 }
-
-export default listenerRemoveV1
+export default deletNote

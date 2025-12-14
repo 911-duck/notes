@@ -66,7 +66,7 @@ import search from "./search.js"
 import searchNote from "./searchNote.js"
 import unactive from "./unactive.js"
 import unactiveP from "./unactiveP.js"
-
+import deletNote from "./deleteNote.js";
 import editorEvents from "../classes/editorEvents.js"
 import TextDeformation from "../classes/TextDeformation.js"
 import JsonToggles from "../classes/JsonToggles.js"
@@ -74,6 +74,8 @@ import routines from "../classes/routines.js"
 import errorCheck from "../classes/errorCheck.js";
 
 //__________________function________________
+
+
 
 function createNote(note, h, n) {
     const NOTE_TEMP = document.createElement("div");

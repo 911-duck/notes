@@ -3,5 +3,6 @@ let shortcuts = {
     OpenShortcuts:  '',
     OpenVisual:  '',
     OpenNoteCreate:  '',
+    OpenTechnical: '',
 }
 export default shortcuts

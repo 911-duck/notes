@@ -46,6 +46,8 @@ import listenerRemoveV2 from "../modules/listenerRemoveV2.js"
 import listenerRemoveV3 from "../modules/listenerRemoveV3.js"
 import listenerRemoveV4 from "../modules/listenerRemoveV4.js"
 import listenerRemoveV5 from "../modules/listenerRemoveV5.js"
+import listenerRemoveV6 from "../modules/listenerRemoveV6.js"
+import listenerRemoveV7 from "../modules/listenerRemoveV7.js"
 import move from "../modules/move.js"
 import moveP from "../modules/moveP.js"
 import noteHeaderClose from "../modules/noteHeaderClose.js"
@@ -477,6 +479,14 @@ class routines {
             errorCheck.getError(103);
             window.addEventListener('keydown', listenerRemoveV5);
         });
+                ELEMENTS.BUTTON_SHORTCUTSV6.addEventListener('click', () => {
+            errorCheck.getError(103);
+            window.addEventListener('keydown', listenerRemoveV6);
+            ELEMENTS.BUTTON_SHORTCUTSV7.addEventListener('click', () => {
+            errorCheck.getError(103);
+            window.addEventListener('keydown', listenerRemoveV7);
+        });
+        });
         window.addEventListener('keydown', (ev) => {
             if (values.OpenSettings === ev.code && ev.altKey) {
                 ev.preventDefault();
@@ -545,7 +555,6 @@ class routines {
                 ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
             }, 2000);
         });
-
     }
 }
 

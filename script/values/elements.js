@@ -70,6 +70,8 @@ export default ELEMENTS = {
     BUTTON_SHORTCUTSV3: document.querySelector('.button-shortcutsV3'),
     BUTTON_SHORTCUTSV4: document.querySelector('.button-shortcutsV4'),
     BUTTON_SHORTCUTSV5: document.querySelector('.button-shortcutsV5'),
+    BUTTON_SHORTCUTSV6: document.querySelector('.button-shortcutsV6'),
+    BUTTON_SHORTCUTSV7: document.querySelector('.button-shortcutsV7'),
     TECHNICAL: document.querySelector('.technical-settings-screen'),
     TECHNICAL_EXIT: document.querySelector('.technical-settings-exit'),
     BUTTON_TECHNICALV1: document.querySelector('.button-technicalV1'),
