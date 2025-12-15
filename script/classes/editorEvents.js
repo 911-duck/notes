@@ -74,16 +74,6 @@ class editorEvents {
     // constractor
     constructor() {
     }
-    // delete
-    static deleteBlock() {
-        if (values.activeBlock != 0) {
-            values.activeBlock.remove()
-        }else if (values.activePBlock != 0) {
-            values.activePBlock.remove()
-        }else{
-            errorCheck.checkHaveAnySelectElement(0)
-        }
-    }
     // reset
     static reset() {
         values.activeBlock = 0;
@@ -91,6 +81,18 @@ class editorEvents {
         document.querySelectorAll(".move-block").forEach(el => el.style.border = "none")
         document.querySelectorAll(".move-p-block").forEach(el => el.style.border = "none")
         closeRightBoardEditor();
+    }
+    // delete
+    static deleteBlock() {
+        if (values.activeBlock != 0) {
+            values.activeBlock.remove()
+            this.reset()
+        }else if (values.activePBlock != 0) {
+            values.activePBlock.remove()
+            this.reset()
+        }else{
+            errorCheck.checkHaveAnySelectElement(0)
+        }
     }
     // create text block
     static createText(TEXT) {

@@ -75,6 +75,7 @@ import routines from "../classes/routines.js"
 //__________________function________________
 
 function closeNote(event) {
+    editorEvents.reset()
     console.log(values.notes, values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText, values.active_note)
     values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][values.active_note].innerHtml = String(document.querySelector(".open-note_screen").innerHTML)
     values.notes[values.active_header.parentElement.querySelector(".note-header_main").querySelector(".note-header_name").innerText][values.active_note].screen = [document.querySelector(".open-note_screen").style.backgroundColor, document.querySelector(".open-note_screen").style.backgroundImage]
