@@ -555,6 +555,11 @@ class routines {
                 ELEMENTS.TECHNICAL_SCREEN.style.transform = 'translateX(100%)';
             }, 2000);
         });
+        setTimeout(() => {
+            ELEMENTS.LOADER[1].style.display = "none"
+            ELEMENTS.MAIN.style.opacity = "1"
+            ELEMENTS.MAIN.style.transform = "scale(1)"
+        }, 2000);
     }
 }
 

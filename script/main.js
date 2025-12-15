@@ -82,5 +82,4 @@ document.addEventListener('DOMContentLoaded', e => {
     routines.appStart()
     // start api
     routines.startApi()
-    ELEMENTS.LOADER[1].style.display = "none"
 })
